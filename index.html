@@ -36,93 +36,54 @@
 
     /* ── TOPBAR ── */
     .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(15,31,61,0.96);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      position: sticky; top: 0; z-index: 100;
+      background: linear-gradient(135deg, rgba(10,20,50,0.72) 0%, rgba(26,60,120,0.65) 100%);
+      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
     }
     .topbar-inner {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 1.25rem;
-      height: 52px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
+      max-width: 1000px; margin: 0 auto; padding: 0 1.25rem;
+      height: 56px; display: flex; align-items: center;
+      justify-content: space-between; gap: 1rem;
     }
     .topbar-brand {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      text-decoration: none;
+      display: flex; align-items: center; gap: 0.65rem;
+      text-decoration: none; flex-shrink: 0;
+    }
+    .topbar-photo {
+      width: 34px; height: 34px; border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(240,165,0,0.6);
       flex-shrink: 0;
     }
-    .topbar-avatar {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
+    .topbar-photo-fallback {
+      width: 34px; height: 34px; border-radius: 50%;
       background: linear-gradient(135deg, var(--gold), #c97b00);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.68rem;
-      font-weight: 800;
-      color: #fff;
-      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.72rem; font-weight: 800; color: #fff;
+      border: 2px solid rgba(240,165,0,0.6); flex-shrink: 0;
     }
-    .topbar-name {
-      color: #fff;
-      font-size: 0.88rem;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-    .topbar-links {
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-    }
+    .topbar-name { color: #fff; font-size: 0.88rem; font-weight: 700; white-space: nowrap; }
+    .topbar-links { display: flex; align-items: center; gap: 0.2rem; }
     .topbar-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      color: #94a3b8;
-      text-decoration: none;
-      font-size: 0.78rem;
-      font-weight: 500;
-      padding: 0.35rem 0.7rem;
-      border-radius: 6px;
-      transition: color 0.15s, background 0.15s;
-      white-space: nowrap;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      color: rgba(255,255,255,0.7); text-decoration: none;
+      font-size: 0.78rem; font-weight: 500;
+      padding: 0.35rem 0.65rem; border-radius: 6px;
+      transition: color 0.15s, background 0.15s; white-space: nowrap;
     }
-    .topbar-link:hover {
-      color: #fff;
-      background: rgba(255,255,255,0.08);
-    }
-    .topbar-link svg {
-      width: 14px; height: 14px; flex-shrink: 0;
-    }
-    .topbar-link.linkedin {
-      color: #60a5fa;
-    }
-    .topbar-link.linkedin:hover {
-      color: #fff;
-      background: rgba(96,165,250,0.15);
-    }
+    .topbar-link:hover { color: #fff; background: rgba(255,255,255,0.1); }
+    .topbar-link svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .topbar-link.linkedin { color: #93c5fd; }
+    .topbar-link.linkedin:hover { background: rgba(96,165,250,0.15); color: #fff; }
     .topbar-link.cta {
-      background: var(--gold);
-      color: var(--navy);
-      font-weight: 700;
-      margin-left: 0.25rem;
+      background: var(--gold); color: var(--navy);
+      font-weight: 800; margin-left: 0.3rem;
     }
-    .topbar-link.cta:hover {
-      background: var(--gold2);
-      color: var(--navy);
-    }
-    @media (max-width: 600px) {
+    .topbar-link.cta:hover { background: var(--gold2); color: var(--navy); }
+    @media (max-width: 700px) {
       .topbar-link span { display: none; }
       .topbar-link { padding: 0.35rem 0.5rem; }
       .topbar-name { display: none; }
@@ -527,22 +488,27 @@
 <!-- TOPBAR -->
 <nav class="topbar">
   <div class="topbar-inner">
-    <a class="topbar-brand" href="https://training-hub.ailearrning.guru" target="_blank" rel="noopener">
-      <div class="topbar-avatar">DB</div>
+    <a class="topbar-brand" href="about.html">
+      <img class="topbar-photo" src="photo.jpg" alt="CA Deepak Bholusaria"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="topbar-photo-fallback" style="display:none">DB</div>
       <span class="topbar-name">CA Deepak Bholusaria</span>
     </a>
     <div class="topbar-links">
-      <a class="topbar-link" href="mailto:deepak@bholusaria.com">
+      <a class="topbar-link" href="mailto:deepak@ailearrning.guru">
         <svg viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
-        <span>deepak@bholusaria.com</span>
+        <span>deepak@ailearrning.guru</span>
       </a>
-      <a class="topbar-link linkedin" href="https://www.linkedin.com/in/deepakbholusaria/" target="_blank" rel="noopener">
+      <a class="topbar-link" href="tel:+919810575565">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+        <span>+91-98105 75565</span>
+      </a>
+      <a class="topbar-link linkedin" href="https://www.linkedin.com/in/Bhholusaria/" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         <span>LinkedIn</span>
       </a>
-      <a class="topbar-link" href="https://training-hub.ailearrning.guru" target="_blank" rel="noopener">
-        <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/></svg>
-        <span>All Workshops</span>
+      <a class="topbar-link" href="about.html">
+        <span>About</span>
       </a>
       <a class="topbar-link cta" href="https://download-directory.github.io/?url=https://github.com/dkbholusaria/pq-usecases/tree/main/UC" target="_blank" rel="noopener">
         ⬇ Download All
