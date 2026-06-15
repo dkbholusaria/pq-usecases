@@ -6,7 +6,7 @@
   "usecases": [
     {
       "id": "uc-01",
-      "folder": "UC-01-Bank-Recon",
+      "folder": "UC/UC-01-Bank-Recon",
       "title": "Bank Recon",
       "description": "Identify unmatched transactions between the bank statement and the books using Power Query Merge (Anti Join) — without writing a single VLOOKUP",
       "objective": "Identify unmatched transactions between the bank statement and the books using Power Query Merge (Anti Join) — without writing a single VLOOKUP.",
@@ -38,7 +38,7 @@
     },
     {
       "id": "uc-02",
-      "folder": "UC-02-Multi-File-Consolidation",
+      "folder": "UC/UC-02-Multi-File-Consolidation",
       "title": "Multi File Consolidation",
       "description": "Combine 3 monthly sales CSV files into one clean table automatically",
       "objective": "Combine 3 monthly sales CSV files into one clean table automatically. Adding a new month file later requires zero manual work — just Refresh.",
@@ -79,7 +79,7 @@
     },
     {
       "id": "uc-03",
-      "folder": "UC-03-GST-Data-Cleanup",
+      "folder": "UC/UC-03-GST-Data-Cleanup",
       "title": "GST Data Cleanup",
       "description": "Clean a raw GSTR-2B dump, flag ITC unavailable rows, and build supplier-wise and period-wise ITC summaries using three approaches: Reference Queries, Pivot Tables, and optionally DAX measures in the Data Model",
       "objective": "Clean a raw GSTR-2B dump, flag ITC unavailable rows, and build supplier-wise and period-wise ITC summaries using three approaches: Reference Queries, Pivot Tables, and optionally DAX measures in the Data Model.",
@@ -128,7 +128,7 @@
     },
     {
       "id": "uc-04",
-      "folder": "UC-04-MIS-Automation",
+      "folder": "UC/UC-04-MIS-Automation",
       "title": "MIS Automation",
       "description": "Transform a messy wide-format Trial Balance (months as columns) into a clean tall format, then enrich with account classifications from the Chart of Accounts",
       "objective": "Transform a messy wide-format Trial Balance (months as columns) into a clean tall format, then enrich with account classifications from the Chart of Accounts.",
@@ -188,7 +188,7 @@
     },
     {
       "id": "uc-05",
-      "folder": "UC-05-Aged-Payables",
+      "folder": "UC/UC-05-Aged-Payables",
       "title": "Aged Payables",
       "description": "Build an automated aged payables report — vendor-wise outstanding balances, aging bucket summary, and overdue flagging — with one-click refresh",
       "objective": "Build an automated aged payables report — vendor-wise outstanding balances, aging bucket summary, and overdue flagging — with one-click refresh.",
@@ -235,7 +235,7 @@
     },
     {
       "id": "uc-06",
-      "folder": "UC-06-TDS-Reconciliation",
+      "folder": "UC/UC-06-TDS-Reconciliation",
       "title": "TDS Reconciliation",
       "description": "Reconcile TDS as per books against 26AS — flag mismatches, identify entries not in 26AS, and build a section-wise TDS summary",
       "objective": "Reconcile TDS as per books against 26AS — flag mismatches, identify entries not in 26AS, and build a section-wise TDS summary.",
@@ -282,7 +282,7 @@
     },
     {
       "id": "uc-07",
-      "folder": "UC-07-Expense-Claims",
+      "folder": "UC/UC-07-Expense-Claims",
       "title": "Expense Claims",
       "description": "Analyse 120 employee expense claims — department spend, rejection patterns, policy breaches, and pending approval list — with full drill-down capability",
       "objective": "Analyse 120 employee expense claims — department spend, rejection patterns, policy breaches, and pending approval list — with full drill-down capability.",
@@ -337,7 +337,7 @@
     },
     {
       "id": "uc-08",
-      "folder": "UC-08-Salary-Register",
+      "folder": "UC/UC-08-Salary-Register",
       "title": "Salary Register",
       "description": "Process the monthly salary register — department-wise payroll cost, statutory compliance check (PF/ESI eligibility), and CTC analysis",
       "objective": "Process the monthly salary register — department-wise payroll cost, statutory compliance check (PF/ESI eligibility), and CTC analysis.",
@@ -380,7 +380,7 @@
     },
     {
       "id": "uc-09",
-      "folder": "UC-09-Inventory-Movement",
+      "folder": "UC/UC-09-Inventory-Movement",
       "title": "Inventory Movement",
       "description": "Combine two months of stock data, calculate movement trends, flag items below reorder level, and build category-wise stock valuation summaries",
       "objective": "Combine two months of stock data, calculate movement trends, flag items below reorder level, and build category-wise stock valuation summaries.",
@@ -436,7 +436,7 @@
     },
     {
       "id": "uc-10",
-      "folder": "UC-10-Multi-Year-Order-Analysis",
+      "folder": "UC/UC-10-Multi-Year-Order-Analysis",
       "title": "Multi Year Order Analysis",
       "description": "Combine 4 years of order data from Excel files with INCONSISTENT sheet names, fix dirty data in a numeric column, split a compound field, and build a year-over-year performance summary",
       "objective": "Combine 4 years of order data from Excel files with INCONSISTENT sheet names, fix dirty data in a numeric column, split a compound field, and build a year-over-year performance summary.",

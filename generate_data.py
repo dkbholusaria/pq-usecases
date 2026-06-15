@@ -11,6 +11,7 @@ REPO = "dkbholusaria/pq-usecases"
 TOPIC = "Power Query"
 BRANCH = "main"
 OUTPUT = "data.json"
+UC_DIR = "UC"
 
 RAW_BASE = f"https://github.com/{REPO}/raw/{BRANCH}"
 ZIP_BASE = "https://download-directory.github.io/?url=https://github.com/{repo}/tree/{branch}/{folder}"
@@ -120,7 +121,7 @@ def build_uc_entry(folder_name, folder_path, existing):
 
     return {
         "id": uc_id,
-        "folder": folder_name,
+        "folder": f"{UC_DIR}/{folder_name}",
         "title": title,
         "description": description,
         "objective": objective,
@@ -140,16 +141,17 @@ def main():
         for uc in existing_data.get("usecases", []):
             existing_map[uc["id"]] = uc
 
-    # Scan UC-*/ folders
+    # Scan UC/UC-*/ folders
     uc_folders = sorted(
-        d for d in os.listdir(".")
-        if re.match(r"UC-\d+", d, re.IGNORECASE) and os.path.isdir(d)
+        d for d in os.listdir(UC_DIR)
+        if re.match(r"UC-\d+", d, re.IGNORECASE) and os.path.isdir(os.path.join(UC_DIR, d))
     )
 
     usecases = []
     for folder_name in uc_folders:
         uc_id = folder_to_id(folder_name)
-        entry = build_uc_entry(folder_name, folder_name, existing_map.get(uc_id, {}))
+        folder_path = os.path.join(UC_DIR, folder_name)
+        entry = build_uc_entry(folder_name, folder_path, existing_map.get(uc_id, {}))
         usecases.append(entry)
 
     data = {
