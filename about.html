@@ -97,6 +97,7 @@
     }
     .hero-photo-col { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
     .profile-photo-wrap { position: relative; display: inline-block; }
+    .profile-photo-wrap::after { content:''; position:absolute; inset:0; border-radius:50%; z-index:2; }
     .profile-photo {
       width: 150px; height: 150px; border-radius: 50%; object-fit: cover;
       border: 4px solid rgba(240,165,0,0.55);
@@ -307,7 +308,8 @@
   <div class="topbar-inner">
     <a class="topbar-brand" href="index.html">
       <img class="topbar-photo" src="photo.jpg" alt="CA Deepak Bholusaria"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+        oncontextmenu="return false" ondragstart="return false">
       <div class="topbar-photo-fallback">DB</div>
       <span class="topbar-name">CA Deepak Bholusaria</span>
     </a>
@@ -357,7 +359,8 @@
     <div class="hero-photo-col">
       <div class="profile-photo-wrap">
         <img class="profile-photo" src="photo.jpg" alt="CA Deepak Bholusaria"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+          oncontextmenu="return false" ondragstart="return false">
         <div class="profile-photo-fallback">DB</div>
       </div>
       <div class="cert-badges">
