@@ -137,14 +137,15 @@
     }
 
     /* Stat pills */
-    .stat-pills { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.5rem; }
+    .stat-pills { display: flex; flex-wrap: wrap; gap: 0.6rem; }
     .stat-pill {
       display: flex; align-items: center; gap: 0.5rem;
-      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+      background: #fff; border: 1px solid var(--gray200);
       border-radius: 8px; padding: 0.55rem 0.9rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
     }
-    .stat-pill-num { font-size: 1.1rem; font-weight: 900; color: var(--gold); line-height: 1; }
-    .stat-pill-label { font-size: 0.72rem; color: #94a3b8; line-height: 1.3; }
+    .stat-pill-num { font-size: 1.1rem; font-weight: 900; color: var(--gold2); line-height: 1; }
+    .stat-pill-label { font-size: 0.72rem; color: var(--gray600); line-height: 1.3; }
 
     /* Contact row */
     .hero-contacts { display: flex; flex-wrap: wrap; gap: 0.5rem; }
@@ -294,7 +295,7 @@
       .layout { grid-template-columns: 1fr; }
       .col-side { order: -1; }
       .hero-inner { flex-direction: column; align-items: center; text-align: center; }
-      .hero-contacts, .stat-pills { justify-content: center; }
+      .stat-pills { justify-content: center; }
       .record-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
@@ -346,7 +347,20 @@
         &amp; Privacy (ICAI–DPCAC) for CA professionals. Tax depth. AI command. One speaker.
       </p>
 
-      <div class="stat-pills">
+    </div>
+
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<main>
+  <div class="layout">
+
+    <!-- LEFT COLUMN -->
+    <div class="col-main">
+
+      <!-- Stats strip -->
+      <div class="stat-pills" style="margin-bottom:1.25rem;">
         <div class="stat-pill">
           <div class="stat-pill-num">2,200+</div>
           <div class="stat-pill-label">CAs trained<br>under ICAI AI</div>
@@ -364,18 +378,6 @@
           <div class="stat-pill-label">Delhi ICAI<br>study circles</div>
         </div>
       </div>
-
-    </div>
-
-  </div>
-</div>
-
-<!-- MAIN CONTENT -->
-<main>
-  <div class="layout">
-
-    <!-- LEFT COLUMN -->
-    <div class="col-main">
 
       <!-- About -->
       <div class="card">
