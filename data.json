@@ -1,0 +1,518 @@
+{
+  "topic": "Power Query",
+  "github_repo": "dkbholusaria/pq-usecases",
+  "branch": "main",
+  "raw_base": "https://github.com/dkbholusaria/pq-usecases/raw/main",
+  "usecases": [
+    {
+      "id": "uc-01",
+      "folder": "UC-01-Bank-Recon",
+      "title": "Bank Recon",
+      "description": "Identify unmatched transactions between the bank statement and the books using Power Query Merge (Anti Join) — without writing a single VLOOKUP",
+      "objective": "Identify unmatched transactions between the bank statement and the books using Power Query Merge (Anti Join) — without writing a single VLOOKUP.",
+      "youtube_id": "",
+      "files": [
+        "Bank_Statement_SBI_Jun2025.csv",
+        "Book_Entries_Jun2025.csv",
+        "INSTRUCTIONS.txt"
+      ],
+      "parts": [
+        {
+          "title": "PART A — Load the Bank Statement",
+          "screenshot": ""
+        },
+        {
+          "title": "PART B — Load the Book Entries",
+          "screenshot": ""
+        },
+        {
+          "title": "PART C — Find Bank transactions NOT in Books (Bank-only items)",
+          "screenshot": ""
+        },
+        {
+          "title": "PART D — Find Book entries NOT in Bank (Book-only items)",
+          "screenshot": ""
+        }
+      ],
+      "key_learning": []
+    },
+    {
+      "id": "uc-02",
+      "folder": "UC-02-Multi-File-Consolidation",
+      "title": "Multi File Consolidation",
+      "description": "Combine 3 monthly sales CSV files into one clean table automatically",
+      "objective": "Combine 3 monthly sales CSV files into one clean table automatically. Adding a new month file later requires zero manual work — just Refresh.",
+      "youtube_id": "",
+      "files": [
+        "Sales_Apr2025.csv",
+        "Sales_Jun2025.csv",
+        "Sales_May2025.csv",
+        "INSTRUCTIONS.txt"
+      ],
+      "parts": [
+        {
+          "title": "PART A — Load the Folder",
+          "screenshot": ""
+        },
+        {
+          "title": "PART B — Review the Auto-Created Queries",
+          "screenshot": ""
+        },
+        {
+          "title": "PART C — Clean Up",
+          "screenshot": ""
+        },
+        {
+          "title": "PART D — Add a Month Column",
+          "screenshot": ""
+        },
+        {
+          "title": "PART E — Load",
+          "screenshot": ""
+        }
+      ],
+      "key_learning": [
+        "Combine & Transform works when all files have identical structure",
+        "Source.Name tells you which file each row came from",
+        "For files with different sheet names, use UC-10 approach instead"
+      ]
+    },
+    {
+      "id": "uc-03",
+      "folder": "UC-03-GST-Data-Cleanup",
+      "title": "GST Data Cleanup",
+      "description": "Clean a raw GSTR-2B dump, flag ITC unavailable rows, and build supplier-wise and period-wise ITC summaries using three approaches: Reference Queries, Pivot Tables, and optionally DAX measures in the Data Model",
+      "objective": "Clean a raw GSTR-2B dump, flag ITC unavailable rows, and build supplier-wise and period-wise ITC summaries using three approaches: Reference Queries, Pivot Tables, and optionally DAX measures in the Data Model.",
+      "youtube_id": "",
+      "files": [
+        "GSTR2B_Mock_Jun2025.csv",
+        "INSTRUCTIONS.txt"
+      ],
+      "parts": [
+        {
+          "title": "PART A — Load the File",
+          "screenshot": ""
+        },
+        {
+          "title": "PART B — Fix Data Types",
+          "screenshot": ""
+        },
+        {
+          "title": "PART C — Add a Total Tax Column",
+          "screenshot": ""
+        },
+        {
+          "title": "PART D — Flag ITC Availability",
+          "screenshot": ""
+        },
+        {
+          "title": "PART E — ITC Summary by Status",
+          "screenshot": ""
+        },
+        {
+          "title": "PART F — ITC Summary by Supplier",
+          "screenshot": ""
+        },
+        {
+          "title": "PART G — Load All Queries",
+          "screenshot": ""
+        }
+      ],
+      "key_learning": [
+        "Power Query's job: clean and shape — not calculate business KPIs",
+        "Pivot Table + slicers = fastest ad-hoc ITC analysis, no extra queries needed",
+        "Reference Query = live link to base; Duplicate = static copy",
+        "DAX is the next layer after Power Query — it lives in the Data Model",
+        "Keep the layers separate: PQ cleans → Data Model calculates → Pivot presents"
+      ]
+    },
+    {
+      "id": "uc-04",
+      "folder": "UC-04-MIS-Automation",
+      "title": "MIS Automation",
+      "description": "Transform a messy wide-format Trial Balance (months as columns) into a clean tall format, then enrich with account classifications from the Chart of Accounts",
+      "objective": "Transform a messy wide-format Trial Balance (months as columns) into a clean tall format, then enrich with account classifications from the Chart of Accounts.",
+      "youtube_id": "",
+      "files": [
+        "Chart_of_Accounts.csv",
+        "Trial_Balance_Messy.xlsx",
+        "INSTRUCTIONS.txt"
+      ],
+      "parts": [
+        {
+          "title": "PART A — Load the Trial Balance",
+          "screenshot": ""
+        },
+        {
+          "title": "PART B — Remove Junk Rows at Top",
+          "screenshot": ""
+        },
+        {
+          "title": "PART C — Promote Headers",
+          "screenshot": ""
+        },
+        {
+          "title": "PART D — Remove Blank Separator Rows",
+          "screenshot": ""
+        },
+        {
+          "title": "PART E — Unpivot the Month Columns",
+          "screenshot": ""
+        },
+        {
+          "title": "PART F — Split Period and Dr/Cr",
+          "screenshot": ""
+        },
+        {
+          "title": "PART G — Fix Data Type",
+          "screenshot": ""
+        },
+        {
+          "title": "PART H — Load Chart of Accounts",
+          "screenshot": ""
+        },
+        {
+          "title": "PART I — Merge to Enrich Trial Balance",
+          "screenshot": ""
+        },
+        {
+          "title": "PART J — Load",
+          "screenshot": ""
+        }
+      ],
+      "key_learning": [
+        "Unpivot Other Columns is the single most powerful step for accounting data",
+        "Always select the columns to KEEP, then unpivot everything else",
+        "Merge (Left Outer) enriches every row without VLOOKUP or INDEX-MATCH"
+      ]
+    },
+    {
+      "id": "uc-05",
+      "folder": "UC-05-Aged-Payables",
+      "title": "Aged Payables",
+      "description": "Build an automated aged payables report — vendor-wise outstanding balances, aging bucket summary, and overdue flagging — with one-click refresh",
+      "objective": "Build an automated aged payables report — vendor-wise outstanding balances, aging bucket summary, and overdue flagging — with one-click refresh.",
+      "youtube_id": "",
+      "files": [
+        "Aged_Payables_Jun2025.csv",
+        "INSTRUCTIONS.txt"
+      ],
+      "parts": [
+        {
+          "title": "PART A — Load the File",
+          "screenshot": ""
+        },
+        {
+          "title": "PART B — Fix Data Types",
+          "screenshot": ""
+        },
+        {
+          "title": "PART C — Flag Overdue Severity",
+          "screenshot": ""
+        },
+        {
+          "title": "PART D — Vendor-wise Outstanding Summary",
+          "screenshot": ""
+        },
+        {
+          "title": "PART E — Aging Bucket Summary",
+          "screenshot": ""
+        },
+        {
+          "title": "PART F — Critical Overdue List",
+          "screenshot": ""
+        },
+        {
+          "title": "PART G — Load All",
+          "screenshot": ""
+        }
+      ],
+      "key_learning": [
+        "Reference Query creates a live link — all summaries update when AgedPayables refreshes",
+        "Group By with Advanced mode allows grouping by multiple columns",
+        "Sort Descending on Outstanding immediately shows priority vendors"
+      ]
+    },
+    {
+      "id": "uc-06",
+      "folder": "UC-06-TDS-Reconciliation",
+      "title": "TDS Reconciliation",
+      "description": "Reconcile TDS as per books against 26AS — flag mismatches, identify entries not in 26AS, and build a section-wise TDS summary",
+      "objective": "Reconcile TDS as per books against 26AS — flag mismatches, identify entries not in 26AS, and build a section-wise TDS summary.",
+      "youtube_id": "",
+      "files": [
+        "TDS_Reconciliation_Q1FY26.csv",
+        "INSTRUCTIONS.txt"
+      ],
+      "parts": [
+        {
+          "title": "PART A — Load the File",
+          "screenshot": ""
+        },
+        {
+          "title": "PART B — Fix Data Types",
+          "screenshot": ""
+        },
+        {
+          "title": "PART C — Add Absolute Difference Column",
+          "screenshot": ""
+        },
+        {
+          "title": "PART D — Add Action Column",
+          "screenshot": ""
+        },
+        {
+          "title": "PART E — Exception Report (non-matched rows only)",
+          "screenshot": ""
+        },
+        {
+          "title": "PART F — Section-wise TDS Summary",
+          "screenshot": ""
+        },
+        {
+          "title": "PART G — Load All",
+          "screenshot": ""
+        }
+      ],
+      "key_learning": [
+        "Number.Abs() in Custom Column — useful for sorting by magnitude of difference",
+        "Conditional Column with multiple clauses handles complex business rules cleanly",
+        "Exception Report pattern (filter + sort by amount) is your audit priority list"
+      ]
+    },
+    {
+      "id": "uc-07",
+      "folder": "UC-07-Expense-Claims",
+      "title": "Expense Claims",
+      "description": "Analyse 120 employee expense claims — department spend, rejection patterns, policy breaches, and pending approval list — with full drill-down capability",
+      "objective": "Analyse 120 employee expense claims — department spend, rejection patterns, policy breaches, and pending approval list — with full drill-down capability.",
+      "youtube_id": "",
+      "files": [
+        "Expense_Claims_Q1FY26.csv",
+        "INSTRUCTIONS.txt"
+      ],
+      "parts": [
+        {
+          "title": "PART A — Load the File",
+          "screenshot": ""
+        },
+        {
+          "title": "PART B — Fix Data Types",
+          "screenshot": ""
+        },
+        {
+          "title": "PART C — Handle Nulls in Approved Amount",
+          "screenshot": ""
+        },
+        {
+          "title": "PART D — Add Variance Column",
+          "screenshot": ""
+        },
+        {
+          "title": "PART E — Flag Policy Breaches",
+          "screenshot": ""
+        },
+        {
+          "title": "PART F — Department Spend Summary",
+          "screenshot": ""
+        },
+        {
+          "title": "PART G — Rejection Analysis",
+          "screenshot": ""
+        },
+        {
+          "title": "PART H — Pending Approvals List",
+          "screenshot": ""
+        },
+        {
+          "title": "PART I — Load All",
+          "screenshot": ""
+        }
+      ],
+      "key_learning": [
+        "Replace Values handles blanks before type conversion — always do this first",
+        "Reference Query + Filter = instant drill-down reports — all linked to one source load",
+        "Rejection Analysis pattern reveals process improvement opportunities"
+      ]
+    },
+    {
+      "id": "uc-08",
+      "folder": "UC-08-Salary-Register",
+      "title": "Salary Register",
+      "description": "Process the monthly salary register — department-wise payroll cost, statutory compliance check (PF/ESI eligibility), and CTC analysis",
+      "objective": "Process the monthly salary register — department-wise payroll cost, statutory compliance check (PF/ESI eligibility), and CTC analysis.",
+      "youtube_id": "",
+      "files": [
+        "Salary_Register_Jun2025.csv",
+        "INSTRUCTIONS.txt"
+      ],
+      "parts": [
+        {
+          "title": "PART A — Load the File",
+          "screenshot": ""
+        },
+        {
+          "title": "PART B — Fix Data Types (Bulk)",
+          "screenshot": ""
+        },
+        {
+          "title": "PART C — ESI Compliance Check",
+          "screenshot": ""
+        },
+        {
+          "title": "PART D — Employer Cost Column",
+          "screenshot": ""
+        },
+        {
+          "title": "PART E — Department Payroll Summary",
+          "screenshot": ""
+        },
+        {
+          "title": "PART F — Load All",
+          "screenshot": ""
+        }
+      ],
+      "key_learning": [
+        "Bulk type change — select all INR columns together, change once",
+        "Nested if in Custom Column handles multi-condition compliance checks",
+        "Employer Cost as a column shows true payroll burden beyond gross salary"
+      ]
+    },
+    {
+      "id": "uc-09",
+      "folder": "UC-09-Inventory-Movement",
+      "title": "Inventory Movement",
+      "description": "Combine two months of stock data, calculate movement trends, flag items below reorder level, and build category-wise stock valuation summaries",
+      "objective": "Combine two months of stock data, calculate movement trends, flag items below reorder level, and build category-wise stock valuation summaries.",
+      "youtube_id": "",
+      "files": [
+        "Stock_Register_Apr2025.csv",
+        "Stock_Register_May2025.csv",
+        "INSTRUCTIONS.txt"
+      ],
+      "parts": [
+        {
+          "title": "PART A — Load April File",
+          "screenshot": ""
+        },
+        {
+          "title": "PART B — Add Month Column to April Query",
+          "screenshot": ""
+        },
+        {
+          "title": "PART C — Fix Data Types for April",
+          "screenshot": ""
+        },
+        {
+          "title": "PART D — Load May File",
+          "screenshot": ""
+        },
+        {
+          "title": "PART E — Append Both Months",
+          "screenshot": ""
+        },
+        {
+          "title": "PART F — Reorder Alert Flag",
+          "screenshot": ""
+        },
+        {
+          "title": "PART G — Category Stock Valuation Summary",
+          "screenshot": ""
+        },
+        {
+          "title": "PART H — Reorder List",
+          "screenshot": ""
+        },
+        {
+          "title": "PART I — Load All",
+          "screenshot": ""
+        }
+      ],
+      "key_learning": [
+        "Add Month column BEFORE appending — so you know which month each row is from",
+        "Append (not Merge) = stacking rows from tables with same structure",
+        "Only Create Connection for helper queries — keeps your workbook clean"
+      ]
+    },
+    {
+      "id": "uc-10",
+      "folder": "UC-10-Multi-Year-Order-Analysis",
+      "title": "Multi Year Order Analysis",
+      "description": "Combine 4 years of order data from Excel files with INCONSISTENT sheet names, fix dirty data in a numeric column, split a compound field, and build a year-over-year performance summary",
+      "objective": "Combine 4 years of order data from Excel files with INCONSISTENT sheet names, fix dirty data in a numeric column, split a compound field, and build a year-over-year performance summary.",
+      "youtube_id": "",
+      "files": [
+        "2017 Order Data.xlsx",
+        "2018 Order Data.xlsx",
+        "2019 Order Data.xlsx",
+        "2020 Order Data.xlsx",
+        "INSTRUCTIONS.txt"
+      ],
+      "parts": [
+        {
+          "title": "PART A — Load the Folder",
+          "screenshot": ""
+        },
+        {
+          "title": "PART B — Remove Unnecessary Columns",
+          "screenshot": ""
+        },
+        {
+          "title": "PART C — Open Each File as an Excel Workbook",
+          "screenshot": ""
+        },
+        {
+          "title": "PART D — Expand the Workbook Column",
+          "screenshot": ""
+        },
+        {
+          "title": "PART E — Filter to Sheets Only  *** KEY STEP ***",
+          "screenshot": ""
+        },
+        {
+          "title": "PART F — Remove Helper Columns",
+          "screenshot": ""
+        },
+        {
+          "title": "PART G — Extract Year from Filename",
+          "screenshot": ""
+        },
+        {
+          "title": "PART H — Expand the Data",
+          "screenshot": ""
+        },
+        {
+          "title": "PART I — Fix Data Types",
+          "screenshot": ""
+        },
+        {
+          "title": "PART J — Fix the Dirty Revenue Data",
+          "screenshot": ""
+        },
+        {
+          "title": "PART K — Split Customer ID",
+          "screenshot": ""
+        },
+        {
+          "title": "PART L — Add Derived Columns",
+          "screenshot": ""
+        },
+        {
+          "title": "PART M — Year-over-Year Summary",
+          "screenshot": ""
+        },
+        {
+          "title": "PART N — Load All",
+          "screenshot": ""
+        }
+      ],
+      "key_learning": [
+        "Filter Kind = Sheet sidesteps sheet name inconsistency entirely",
+        "Excel.Workbook() is a function — must be typed, not just inserted",
+        "Replace Errors after type change = standard dirty data handling pattern",
+        "Duration.Days() handles date arithmetic; nulls flow through gracefully",
+        "Never use Combine & Transform when files have different sheet names"
+      ]
+    }
+  ]
+}

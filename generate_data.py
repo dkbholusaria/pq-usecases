@@ -1,5 +1,5 @@
 """
-Scans UC-*/ folders, parses INSTRUCTIONS.txt, and writes training-hub/data.json.
+Scans UC-*/ folders, parses INSTRUCTIONS.txt, and writes data.json in the same repo.
 Preserves existing youtube_id and screenshot values already in data.json.
 """
 
@@ -10,7 +10,7 @@ import re
 REPO = "dkbholusaria/pq-usecases"
 TOPIC = "Power Query"
 BRANCH = "main"
-OUTPUT = "training-hub/data.json"
+OUTPUT = "data.json"
 
 RAW_BASE = f"https://github.com/{REPO}/raw/{BRANCH}"
 ZIP_BASE = "https://download-directory.github.io/?url=https://github.com/{repo}/tree/{branch}/{folder}"

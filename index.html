@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Power Query Use Cases — CA Deepak Bholusaria</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f5f7fa;
+      color: #1a1a2e;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      color: #fff;
+      padding: 3rem 1.5rem 2.5rem;
+      text-align: center;
+    }
+    header .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #e0e0e0;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 2rem;
+      margin-bottom: 1rem;
+    }
+    header h1 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      color: #a0aec0;
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+    header .author {
+      color: #63b3ed;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    /* Stats bar */
+    .stats {
+      background: #fff;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .stats span {
+      font-size: 0.85rem;
+      color: #718096;
+    }
+    .stats strong { color: #2d3748; }
+
+    /* Main content */
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1.25rem;
+    }
+
+    .section-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #718096;
+      margin-bottom: 1rem;
+    }
+
+    /* UC Card */
+    .uc-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .uc-card:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border-color: #bee3f8;
+    }
+
+    .uc-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+    .uc-badge {
+      flex-shrink: 0;
+      background: #ebf8ff;
+      color: #2b6cb0;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      margin-top: 0.1rem;
+    }
+    .uc-meta { flex: 1; }
+    .uc-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1a202c;
+      margin-bottom: 0.2rem;
+    }
+    .uc-desc {
+      font-size: 0.85rem;
+      color: #718096;
+      line-height: 1.5;
+    }
+    .uc-view-btn {
+      flex-shrink: 0;
+      background: #2b6cb0;
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.45rem 1rem;
+      border-radius: 6px;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+    .uc-view-btn:hover { background: #2c5282; }
+
+    /* Files row */
+    .uc-files {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+    .file-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: #f7fafc;
+      border: 1px solid #e2e8f0;
+      color: #2d3748;
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.3rem 0.65rem;
+      border-radius: 6px;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .file-chip:hover {
+      background: #ebf8ff;
+      border-color: #90cdf4;
+      color: #2b6cb0;
+    }
+    .file-chip .icon { font-size: 0.7rem; opacity: 0.7; }
+
+    .download-all-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #276749;
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.35rem 0.85rem;
+      border-radius: 6px;
+      margin-left: auto;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+    .download-all-btn:hover { background: #22543d; }
+
+    /* Loading / error */
+    #loading {
+      text-align: center;
+      color: #718096;
+      padding: 3rem 0;
+      font-size: 0.95rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      color: #a0aec0;
+      font-size: 0.8rem;
+      padding: 2.5rem 1rem;
+      border-top: 1px solid #e2e8f0;
+      margin-top: 3rem;
+    }
+    footer a { color: #63b3ed; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .uc-header { flex-wrap: wrap; }
+      .uc-view-btn { width: 100%; text-align: center; }
+      .download-all-btn { margin-left: 0; width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="badge">Power Query Workshop</div>
+  <h1>Use Cases &amp; Practice Files</h1>
+  <p class="author">CA Deepak Bholusaria</p>
+  <p>Download the data files, follow the instructions, and build real Power Query skills.</p>
+</header>
+
+<div class="stats" id="stats">
+  <span>Loading…</span>
+</div>
+
+<main>
+  <div class="section-title">All Use Cases</div>
+  <div id="uc-list"><div id="loading">Loading use cases…</div></div>
+</main>
+
+<footer>
+  <p>
+    All files are hosted on
+    <a href="https://github.com/dkbholusaria/pq-usecases" target="_blank" rel="noopener">GitHub</a>.
+    No login required to download.
+  </p>
+  <p style="margin-top:0.5rem;">&copy; CA Deepak Bholusaria · <a href="https://ailearning.guru" target="_blank" rel="noopener">ailearning.guru</a></p>
+</footer>
+
+<script>
+const DATA_URL = "data.json";
+const GITHUB_RAW = "https://github.com/dkbholusaria/pq-usecases/raw/main";
+const ZIP_BASE   = "https://download-directory.github.io/?url=https://github.com/dkbholusaria/pq-usecases/tree/main";
+
+function fileIcon(name) {
+  const ext = name.split(".").pop().toLowerCase();
+  if (ext === "csv")  return "📄";
+  if (ext === "xlsx") return "📊";
+  if (ext === "txt")  return "📝";
+  return "📁";
+}
+
+function renderUC(uc) {
+  const filesHtml = uc.files.map(f =>
+    `<a class="file-chip" href="${GITHUB_RAW}/${uc.folder}/${encodeURIComponent(f)}" download target="_blank" rel="noopener">
+       <span class="icon">${fileIcon(f)}</span>${f}
+     </a>`
+  ).join("");
+
+  const zipUrl = `${ZIP_BASE}/${uc.folder}`;
+
+  return `
+    <div class="uc-card">
+      <div class="uc-header">
+        <span class="uc-badge">${uc.id.toUpperCase()}</span>
+        <div class="uc-meta">
+          <div class="uc-title">${uc.title}</div>
+          <div class="uc-desc">${uc.description}</div>
+        </div>
+        <a class="uc-view-btn" href="uc-detail.html?id=${uc.id}">View Details →</a>
+      </div>
+      <div class="uc-files">
+        ${filesHtml}
+        <a class="download-all-btn" href="${zipUrl}" target="_blank" rel="noopener">⬇ Download All (ZIP)</a>
+      </div>
+    </div>`;
+}
+
+fetch(DATA_URL)
+  .then(r => r.json())
+  .then(data => {
+    const ucs = data.usecases || [];
+
+    // Stats bar
+    const totalFiles = ucs.reduce((sum, uc) => sum + uc.files.length, 0);
+    document.getElementById("stats").innerHTML = `
+      <span><strong>${ucs.length}</strong> Use Cases</span>
+      <span><strong>${totalFiles}</strong> Data Files</span>
+      <span><strong>Free</strong> — No login required</span>`;
+
+    // UC list
+    document.getElementById("uc-list").innerHTML = ucs.map(renderUC).join("");
+  })
+  .catch(err => {
+    document.getElementById("loading").textContent = "Failed to load use cases. Please refresh.";
+    console.error(err);
+  });
+</script>
+</body>
+</html>

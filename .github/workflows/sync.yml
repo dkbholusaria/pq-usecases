@@ -8,6 +8,8 @@ on:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout pq-usecases
         uses: actions/checkout@v4
@@ -17,21 +19,13 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Checkout training-hub
-        uses: actions/checkout@v4
-        with:
-          repository: dkbholusaria/training-hub
-          token: ${{ secrets.TRAINING_HUB_TOKEN }}
-          path: training-hub
-
       - name: Generate data.json
         run: python generate_data.py
 
-      - name: Commit and push data.json to training-hub
+      - name: Commit and push data.json
         run: |
-          cd training-hub
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data.json
-          git diff --staged --quiet || git commit -m "Auto-update data.json from pq-usecases [skip ci]"
+          git diff --staged --quiet || git commit -m "Auto-update data.json [skip ci]"
           git push

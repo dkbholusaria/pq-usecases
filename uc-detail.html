@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Use Case Detail — Power Query</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f5f7fa;
+      color: #1a1a2e;
+      min-height: 100vh;
+    }
+
+    /* Top nav */
+    .topnav {
+      background: #1a1a2e;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .topnav a {
+      color: #a0aec0;
+      text-decoration: none;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.15s;
+    }
+    .topnav a:hover { color: #fff; }
+    .topnav .separator { color: #4a5568; }
+    .topnav .current { color: #63b3ed; font-weight: 600; }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      color: #fff;
+      padding: 2rem 1.5rem 2rem;
+    }
+    .hero-inner { max-width: 860px; margin: 0 auto; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #e0e0e0;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 2rem;
+      margin-bottom: 0.75rem;
+    }
+    .hero h1 {
+      font-size: clamp(1.4rem, 3.5vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.35rem;
+    }
+    .hero .meta { color: #a0aec0; font-size: 0.85rem; }
+
+    /* Main */
+    main { max-width: 860px; margin: 2rem auto; padding: 0 1.25rem 3rem; }
+
+    /* Section card */
+    .card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .card-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #718096;
+      margin-bottom: 0.6rem;
+    }
+    .objective-text {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #2d3748;
+    }
+
+    /* Video embed */
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #000;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+
+    /* Files */
+    .files-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .file-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: #f7fafc;
+      border: 1px solid #e2e8f0;
+      color: #2d3748;
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 0.35rem 0.7rem;
+      border-radius: 6px;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .file-chip:hover { background: #ebf8ff; border-color: #90cdf4; color: #2b6cb0; }
+    .download-all-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #276749;
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.4rem 0.9rem;
+      border-radius: 6px;
+      margin-left: auto;
+      transition: background 0.15s;
+    }
+    .download-all-btn:hover { background: #22543d; }
+
+    /* Steps accordion */
+    .steps-title {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #718096;
+      margin-bottom: 0.75rem;
+    }
+
+    details.part {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      margin-bottom: 0.6rem;
+      overflow: hidden;
+    }
+    details.part[open] { border-color: #bee3f8; }
+
+    details.part summary {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem 1.1rem;
+      background: #f7fafc;
+      cursor: pointer;
+      user-select: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #2d3748;
+      list-style: none;
+    }
+    details.part[open] summary { background: #ebf8ff; color: #2b6cb0; }
+    details.part summary::-webkit-details-marker { display: none; }
+    details.part summary::before {
+      content: "▶";
+      font-size: 0.6rem;
+      color: #a0aec0;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    details.part[open] summary::before {
+      transform: rotate(90deg);
+      color: #2b6cb0;
+    }
+    .part-body {
+      padding: 1rem 1.25rem;
+      border-top: 1px solid #e2e8f0;
+      background: #fff;
+    }
+    .part-screenshot {
+      margin-top: 0.75rem;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+    }
+    .part-screenshot img {
+      width: 100%;
+      display: block;
+    }
+
+    /* Key learning */
+    .key-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .key-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.88rem;
+      color: #2d3748;
+      line-height: 1.5;
+    }
+    .key-list li::before {
+      content: "✔";
+      color: #38a169;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+
+    /* Loading / error */
+    #loading { text-align: center; color: #718096; padding: 3rem 0; }
+
+    @media (max-width: 600px) {
+      .download-all-btn { margin-left: 0; width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="index.html">← All Use Cases</a>
+  <span class="separator">/</span>
+  <span class="current" id="nav-title">Loading…</span>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge" id="hero-badge">…</div>
+    <h1 id="hero-title">Loading…</h1>
+    <div class="meta">Power Query Workshop &nbsp;·&nbsp; CA Deepak Bholusaria</div>
+  </div>
+</div>
+
+<main id="main-content">
+  <div id="loading">Loading use case…</div>
+</main>
+
+<script>
+const GITHUB_RAW = "https://github.com/dkbholusaria/pq-usecases/raw/main";
+const ZIP_BASE   = "https://download-directory.github.io/?url=https://github.com/dkbholusaria/pq-usecases/tree/main";
+
+function fileIcon(name) {
+  const ext = name.split(".").pop().toLowerCase();
+  if (ext === "csv")  return "📄";
+  if (ext === "xlsx") return "📊";
+  if (ext === "txt")  return "📝";
+  return "📁";
+}
+
+function getId() {
+  return new URLSearchParams(window.location.search).get("id") || "";
+}
+
+fetch("data.json")
+  .then(r => r.json())
+  .then(data => {
+    const id = getId();
+    const uc = (data.usecases || []).find(u => u.id === id);
+
+    if (!uc) {
+      document.getElementById("loading").innerHTML =
+        `<p>Use case "<strong>${id}</strong>" not found. <a href="index.html">Back to all use cases</a></p>`;
+      return;
+    }
+
+    // Update page title and hero
+    document.title = `${uc.title} — Power Query`;
+    document.getElementById("nav-title").textContent = uc.title;
+    document.getElementById("hero-badge").textContent = uc.id.toUpperCase();
+    document.getElementById("hero-title").textContent = uc.title;
+
+    const main = document.getElementById("main-content");
+    let html = "";
+
+    // Video section (only if youtube_id set)
+    if (uc.youtube_id) {
+      html += `
+        <div class="card">
+          <div class="card-label">Video Guide</div>
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/${uc.youtube_id}"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+        </div>`;
+    }
+
+    // Objective
+    if (uc.objective) {
+      html += `
+        <div class="card">
+          <div class="card-label">Objective</div>
+          <p class="objective-text">${uc.objective}</p>
+        </div>`;
+    }
+
+    // Files
+    const filesHtml = (uc.files || []).map(f =>
+      `<a class="file-chip" href="${GITHUB_RAW}/${uc.folder}/${encodeURIComponent(f)}" download target="_blank" rel="noopener">
+         ${fileIcon(f)} ${f}
+       </a>`
+    ).join("");
+    const zipUrl = `${ZIP_BASE}/${uc.folder}`;
+    html += `
+      <div class="card">
+        <div class="card-label">Files in This Use Case</div>
+        <div class="files-row">
+          ${filesHtml}
+          <a class="download-all-btn" href="${zipUrl}" target="_blank" rel="noopener">⬇ Download All (ZIP)</a>
+        </div>
+      </div>`;
+
+    // Step-by-step parts
+    if (uc.parts && uc.parts.length > 0) {
+      const partsHtml = uc.parts.map(part => {
+        const screenshot = part.screenshot
+          ? `<div class="part-screenshot"><img src="${part.screenshot}" alt="${part.title} screenshot" loading="lazy"></div>`
+          : "";
+        return `
+          <details class="part">
+            <summary>${part.title}</summary>
+            <div class="part-body">
+              <p style="color:#718096;font-size:0.85rem;">
+                Open INSTRUCTIONS.txt for the full step-by-step guide for this part.
+              </p>
+              ${screenshot}
+            </div>
+          </details>`;
+      }).join("");
+
+      html += `
+        <div class="card">
+          <div class="steps-title">Step-by-Step Instructions</div>
+          ${partsHtml}
+        </div>`;
+    }
+
+    // Key Learning
+    if (uc.key_learning && uc.key_learning.length > 0) {
+      const klHtml = uc.key_learning.map(k => `<li>${k}</li>`).join("");
+      html += `
+        <div class="card">
+          <div class="card-label">Key Learning</div>
+          <ul class="key-list">${klHtml}</ul>
+        </div>`;
+    }
+
+    main.innerHTML = html;
+  })
+  .catch(err => {
+    document.getElementById("loading").textContent = "Failed to load. Please refresh.";
+    console.error(err);
+  });
+</script>
+</body>
+</html>
