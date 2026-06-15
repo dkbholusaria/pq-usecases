@@ -1,0 +1,139 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║  UC-04  MIS AUTOMATION — TRIAL BALANCE UNPIVOT                             ║
+║  Power Query Workshop  |  CA Deepak Bholusaria                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+OBJECTIVE
+─────────
+Transform a messy wide-format Trial Balance (months as columns) into a clean
+tall format, then enrich with account classifications from the Chart of Accounts.
+
+FILES IN THIS FOLDER
+────────────────────
+  Trial_Balance_Messy.xlsx    —  Messy Excel TB, months as columns (Apr–Jun 2025)
+  Chart_of_Accounts.csv       —  40 accounts with Group, Type, Nature
+
+─────────────────────────────────────────────────────────────────────────────
+STEP-BY-STEP INSTRUCTIONS
+─────────────────────────────────────────────────────────────────────────────
+
+PART A — Load the Trial Balance
+─────────────────────────────────
+  1. In Excel: DATA tab → Get Data → From File → From Excel Workbook
+  2. Browse to Trial_Balance_Messy.xlsx → click Import
+  3. A Navigator pane opens showing sheet names
+  4. Select Sheet1 (or the TB sheet) → click Transform Data
+  5. Power Query Editor opens — you will see the messy structure with
+     company name and blank rows at the top, and merged-looking headers
+  6. Rename the query to: TrialBalance
+
+PART B — Remove Junk Rows at Top
+──────────────────────────────────
+  7. In Power Query Editor:
+     Home tab → Remove Rows → Remove Top Rows
+     In the dialog: enter 4 → click OK
+     This removes in one step: company name, report title, blank row,
+     and the "(Amount in INR)" note row.
+
+PART C — Promote Headers
+─────────────────────────
+  9. Home tab → Use First Row as Headers
+     Column names now show:
+     Account Code | Account Name | April 2025 | Column4 | May 2025 | Column6 | June 2025 | Column8
+
+     ℹ  Why Column4, Column6, Column8? The original Excel has merged cells for
+        each month (spanning Debit + Credit columns). Power Query unmerges them —
+        the first column gets the month name, the second gets a placeholder name.
+
+  10. The first data row is now the Debit/Credit sub-header row (null, null, Debit, Credit…)
+      Home tab → Remove Rows → Remove Top Rows → enter 1 → click OK
+
+  11. Rename columns to combine month + Dr/Cr into one clear name:
+      Double-click "April 2025" column header → type Apr-25 Debit → Enter
+      Double-click "Column4"    column header → type Apr-25 Credit → Enter
+      Double-click "May 2025"   column header → type May-25 Debit → Enter
+      Double-click "Column6"    column header → type May-25 Credit → Enter
+      Double-click "June 2025"  column header → type Jun-25 Debit → Enter
+      Double-click "Column8"    column header → type Jun-25 Credit → Enter
+
+      ℹ  These names matter — after Unpivot (Part E), the Attribute column will
+         contain exactly these names and you will split them on the space to get
+         Period (Apr-25) and Dr_Cr (Debit/Credit) as separate columns.
+
+PART D — Remove Blank Separator Rows
+──────────────────────────────────────
+  12. Click the dropdown arrow on the Account Code column header
+      Uncheck (null) → click OK
+      The data file has blank rows separating account groups (Assets, Liabilities,
+      Income, Expenses). These rows have null in Account Code — filtering them out
+      leaves only the actual account rows.
+
+PART E — Unpivot the Month Columns
+────────────────────────────────────
+  13. Click the Account Code column header to select it
+      Hold Ctrl → click Account Name column header
+      Both columns are now selected (highlighted)
+  14. Right-click either selected column header
+      Click Unpivot Other Columns
+  15. Two new columns appear:
+      Attribute — contains "Apr-25 Debit", "Apr-25 Credit", "May-25 Debit" etc.
+      Value — contains the amounts
+  16. Rename the Attribute column:
+      Double-click Attribute column header → type Period_DrCr → Enter
+  17. Rename the Value column:
+      Double-click Value → type Amount → Enter
+
+PART F — Split Period and Dr/Cr
+─────────────────────────────────
+  18. Select the Period_DrCr column
+      Home tab → Split Column → By Delimiter
+      In the dialog:
+        Select or enter delimiter: Space (select "Space" from dropdown)
+        Split at: Right-most delimiter
+        Click OK
+      You now get: Period_DrCr.1 (e.g. "Apr-25") and Period_DrCr.2 (e.g. "Debit")
+  19. Rename Period_DrCr.1 to: Period
+  20. Rename Period_DrCr.2 to: Dr_Cr
+
+PART G — Fix Data Type
+────────────────────────
+  21. Select the Amount column
+      Home tab → Data Type → Decimal Number
+
+PART H — Load Chart of Accounts
+─────────────────────────────────
+  22. Home tab → New Source → Text/CSV
+  23. Browse to Chart_of_Accounts.csv → click Import → click OK
+  24. Rename this query to: ChartOfAccounts
+
+PART I — Merge to Enrich Trial Balance
+────────────────────────────────────────
+  25. In the left panel, click TrialBalance to make it active
+  26. Home tab → Merge Queries → Merge Queries
+  27. In Merge dialog:
+      Top table: TrialBalance — click Account Code column
+      Bottom dropdown: select ChartOfAccounts
+      Click Account Code column in ChartOfAccounts
+      Join Kind: Left Outer (all rows from left, matching from right)
+      Click OK
+  28. A new ChartOfAccounts column appears at the right
+      Click the expand icon (two arrows) on the ChartOfAccounts column header
+      Uncheck "Use original column name as prefix"
+      Check only: Account Group, Account Type, Nature
+      Click OK
+
+PART J — Load
+──────────────
+  29. Home tab → Close & Load → Close & Load To
+      Table → New worksheet → OK
+  30. In Excel, insert a Pivot Table from this data:
+      Rows: Account Group → Account Name
+      Columns: Period
+      Values: Sum of Amount
+      → Your MIS report updates with one click every month
+
+KEY LEARNING
+────────────
+  ✔  Unpivot Other Columns is the single most powerful step for accounting data
+  ✔  Always select the columns to KEEP, then unpivot everything else
+  ✔  Merge (Left Outer) enriches every row without VLOOKUP or INDEX-MATCH

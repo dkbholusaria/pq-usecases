@@ -1,0 +1,197 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║  UC-03  GST DATA CLEANUP — GSTR-2B ANALYSIS                                ║
+║  Power Query Workshop  |  CA Deepak Bholusaria                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+OBJECTIVE
+─────────
+Clean a raw GSTR-2B dump, flag ITC unavailable rows, and build supplier-wise
+and period-wise ITC summaries using three approaches: Reference Queries,
+Pivot Tables, and optionally DAX measures in the Data Model.
+
+FILES IN THIS FOLDER
+────────────────────
+  GSTR2B_Mock_Jun2025.csv   —  150 rows of GSTR-2B invoice data
+
+─────────────────────────────────────────────────────────────────────────────
+STEP-BY-STEP INSTRUCTIONS
+─────────────────────────────────────────────────────────────────────────────
+
+PART A — Load the File
+────────────────────────
+  1. In Excel: DATA tab → Get Data → From File → From Text/CSV
+  2. Browse to GSTR2B_Mock_Jun2025.csv → click Import
+  3. Click Transform Data
+  4. Rename the query to: GSTR2B
+
+PART B — Fix Data Types
+─────────────────────────
+  5. Hold Ctrl and select these columns:
+     Invoice Value (INR), Taxable Value (INR), IGST, CGST, SGST, Cess
+     Right-click any selected column → Change Type → Decimal Number
+  6. Select Invoice Date column
+     Home tab → Data Type → Date
+
+PART C — Add a Total Tax Column
+────────────────────────────────
+  7. Add Column tab → Custom Column
+     Name: Total Tax
+     Formula: = [IGST] + [CGST] + [SGST]
+     Click OK
+  8. Right-click the Total Tax column → Change Type → Decimal Number
+
+PART D — Flag ITC Availability
+────────────────────────────────
+  9. Add Column tab → Conditional Column
+     Name: ITC Flag
+     Condition setup:
+       If   Column Name: ITC Availability  |  Operator: equals  |  Value: Yes
+       Then: Eligible
+       Else: Blocked / Pending
+     Click OK
+  10. Add Column tab → Conditional Column
+      Name: Action Required
+      If   Column Name: ITC Availability  |  Operator: equals  |  Value: Yes
+      Then: No Action
+      Else: Follow up with supplier / check filing status
+      Click OK
+
+═══════════════════════════════════════════════════════════════════════════════
+APPROACH 1 — REFERENCE QUERIES (Power Query summaries)
+═══════════════════════════════════════════════════════════════════════════════
+  Best for: fixed formatted reports, feeding data into other queries or systems
+
+PART E — ITC Summary by Status
+────────────────────────────────
+  11. Right-click the GSTR2B query in left panel → Reference
+
+      ℹ  Reference creates a LIVE link to the base query — any cleanup
+         you do on the base automatically applies here too.
+         (Duplicate would create a static copy with no link to the source)
+
+      Rename to: ITC_Summary_by_Status
+  12. With ITC_Summary_by_Status active:
+      Home tab → Group By
+      In Group By dialog:
+        Group by: ITC Availability
+        Add Aggregation:
+          New column name: Total Taxable Value  |  Operation: Sum  |  Column: Taxable Value (INR)
+        Click Add Aggregation:
+          New column name: Total Tax Credit  |  Operation: Sum  |  Column: Total Tax
+        Click Add Aggregation:
+          New column name: Invoice Count  |  Operation: Count Rows
+      Click OK
+
+PART F — ITC Summary by Supplier
+──────────────────────────────────
+  13. Right-click the GSTR2B query → Reference → Rename to: ITC_Summary_by_Supplier
+  14. Home tab → Group By
+      Group by: Trade Name
+      Add Aggregation: Total Taxable  |  Sum  |  Taxable Value (INR)
+      Add Aggregation: Total ITC      |  Sum  |  Total Tax
+      Add Aggregation: Invoice Count  |  Count Rows
+      Click OK
+  15. Click Total ITC column → Home tab → Sort Descending
+
+PART G — Load All Queries
+───────────────────────────
+  16. Home tab → Close & Load → Close & Load To
+      Load each query to a separate Table on a New worksheet
+
+═══════════════════════════════════════════════════════════════════════════════
+APPROACH 2 — PIVOT TABLE (recommended for ad-hoc analysis)
+═══════════════════════════════════════════════════════════════════════════════
+  Best for: slicing and dicing interactively — no M code needed after load
+  Prerequisite: complete Parts A–D above first, then load as below
+
+  17. Instead of loading to a Table, load GSTR2B to the Data Model:
+      Home tab → Close & Load → Close & Load To
+      Select: Only Create Connection
+      Check the box: Add this data to the Data Model
+      Click OK
+
+  18. In Excel: Insert tab → PivotTable
+      Select: Use this workbook's Data Model
+      Choose: New Worksheet → click OK
+
+  19. In the PivotTable Fields panel, drag:
+      Rows:    ITC Availability → Trade Name
+      Columns: GSTR-1 Filing Period
+      Values:  Taxable Value (INR) — set to Sum
+               Total Tax — set to Sum (add a second value)
+      Filters: Invoice Type (drag here to filter Regular / Credit Note)
+
+  20. Right-click anywhere in the Pivot → Add Slicer
+      Add slicers for: ITC Availability, Place of Supply, GSTR-1 Filing Period
+      → One click on a slicer instantly filters the entire summary
+
+  21. To add a custom formula inside the Pivot (Calculated Field):
+      PivotTable Analyze tab → Fields, Items & Sets → Calculated Field
+      Name: ITC %
+      Formula: = 'Total Tax' / 'Taxable Value (INR)'
+      Click OK
+      → ITC as a % of taxable value now appears as a column in the Pivot
+
+═══════════════════════════════════════════════════════════════════════════════
+APPROACH 3 — DAX MEASURES (advanced — Power Pivot / Power BI)
+═══════════════════════════════════════════════════════════════════════════════
+  DAX (Data Analysis Expressions) is the formula language of the Data Model.
+  It looks like Excel formulas but works on entire columns, not individual cells.
+  This is a brief introduction — DAX is a full topic on its own.
+
+  Prerequisite: GSTR2B must be loaded to the Data Model (step 17 above)
+
+  22. Power Pivot tab → Manage (opens the Power Pivot window)
+      If Power Pivot tab is not visible:
+      File → Options → Add-ins → COM Add-ins → check Microsoft Power Pivot → OK
+
+  23. In the Power Pivot window, click the GSTR2B table tab at the bottom
+      Click in an empty cell in the calculation area (below the data rows)
+
+  24. Type this measure and press Enter:
+      ITC Eligible Amount :=
+        CALCULATE(
+          SUM(GSTR2B[Taxable Value (INR)]),
+          GSTR2B[ITC Availability] = "Yes"
+        )
+
+  25. Add another measure:
+      ITC Blocked Amount :=
+        CALCULATE(
+          SUM(GSTR2B[Taxable Value (INR)]),
+          GSTR2B[ITC Availability] = "No"
+        )
+
+  26. Add a ratio measure:
+      ITC Eligible % :=
+        DIVIDE([ITC Eligible Amount], SUM(GSTR2B[Taxable Value (INR)]))
+
+  27. Return to Excel → these measures now appear in the PivotTable Fields panel
+      Drag them into the Values area — they update dynamically with every slicer click
+
+  ℹ  DAX vs Pivot Calculated Field:
+     Calculated Field (step 21) = simple row-level formula, limited capability
+     DAX Measure = dynamic, filter-aware, handles complex business logic
+     For CA work: use DAX when you need ratios, YoY comparisons, or
+     conditional aggregations that Calculated Fields cannot handle.
+
+═══════════════════════════════════════════════════════════════════════════════
+WHICH APPROACH TO USE?
+═══════════════════════════════════════════════════════════════════════════════
+  ┌─────────────────────┬──────────────────────────────────────────────────┐
+  │ Situation           │ Use                                              │
+  ├─────────────────────┼──────────────────────────────────────────────────┤
+  │ Quick ITC summary   │ Approach 2 — Pivot Table with slicers            │
+  │ Fixed formatted MIS │ Approach 1 — Reference Queries → Table output    │
+  │ % ratios in Pivot   │ Approach 2 — Pivot Calculated Field              │
+  │ Complex KPIs / YoY  │ Approach 3 — DAX Measures in Data Model         │
+  │ Feed another query  │ Approach 1 — Reference Query output              │
+  └─────────────────────┴──────────────────────────────────────────────────┘
+
+KEY LEARNING
+────────────
+  ✔  Power Query's job: clean and shape — not calculate business KPIs
+  ✔  Pivot Table + slicers = fastest ad-hoc ITC analysis, no extra queries needed
+  ✔  Reference Query = live link to base; Duplicate = static copy
+  ✔  DAX is the next layer after Power Query — it lives in the Data Model
+  ✔  Keep the layers separate: PQ cleans → Data Model calculates → Pivot presents

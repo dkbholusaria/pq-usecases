@@ -1,0 +1,94 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║  UC-05  AGED PAYABLES ANALYSIS                                              ║
+║  Power Query Workshop  |  CA Deepak Bholusaria                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+OBJECTIVE
+─────────
+Build an automated aged payables report — vendor-wise outstanding balances,
+aging bucket summary, and overdue flagging — with one-click refresh.
+
+FILES IN THIS FOLDER
+────────────────────
+  Aged_Payables_Jun2025.csv   —  100 rows, 15 vendors, multiple invoices each
+
+─────────────────────────────────────────────────────────────────────────────
+STEP-BY-STEP INSTRUCTIONS
+─────────────────────────────────────────────────────────────────────────────
+
+PART A — Load the File
+────────────────────────
+  1. In Excel: DATA tab → Get Data → From File → From Text/CSV
+  2. Browse to Aged_Payables_Jun2025.csv → Import → Transform Data
+  3. Rename the query to: AgedPayables
+
+PART B — Fix Data Types
+─────────────────────────
+  4. Select Invoice Date column → Home tab → Data Type → Date
+  5. Select Due Date column → Home tab → Data Type → Date
+  6. Hold Ctrl and select:
+     Invoice Amount (INR), Amount Paid (INR), Balance Outstanding (INR)
+     Right-click → Change Type → Decimal Number
+  7. Select Overdue Days column → Right-click → Change Type → Whole Number
+
+PART C — Flag Overdue Severity
+────────────────────────────────
+  8. Add Column tab → Conditional Column
+     Name: Overdue Flag
+     Condition 1: If  Overdue Days  is greater than  90  Then  Critical
+     Click Add Clause
+     Condition 2: If  Overdue Days  is greater than  30  Then  Overdue
+     Else: Current
+     Click OK
+
+PART D — Vendor-wise Outstanding Summary
+──────────────────────────────────────────
+  9. Right-click AgedPayables in the left panel → Reference
+
+      ℹ  Reference creates a LIVE link to the base query — any cleanup
+         you do on the base automatically applies here too.
+         (Duplicate would create a static copy with no link to the source)
+     Rename to: Vendor_Summary
+  10. With Vendor_Summary active:
+      Home tab → Group By
+      In Group By dialog — click Advanced
+      Group by: Vendor Name
+      Click Add Grouping → Vendor GSTIN
+      Aggregations:
+        Total Invoiced     |  Sum  |  Invoice Amount (INR)
+        Total Paid         |  Sum  |  Amount Paid (INR)
+        Total Outstanding  |  Sum  |  Balance Outstanding (INR)
+        Invoice Count      |  Count Rows
+      Click OK
+  11. Click Total Outstanding column → Home tab → Sort Descending
+      Highest outstanding vendors appear at top
+
+PART E — Aging Bucket Summary
+───────────────────────────────
+  12. Right-click AgedPayables → Duplicate
+      Rename to: Aging_Summary
+  13. Home tab → Group By
+      Group by: Aging Bucket
+      Aggregations:
+        Total Outstanding  |  Sum  |  Balance Outstanding (INR)
+        Invoice Count      |  Count Rows
+      Click OK
+
+PART F — Critical Overdue List
+────────────────────────────────
+  14. Right-click AgedPayables → Duplicate
+      Rename to: Critical_Followup
+  15. Click dropdown on Overdue Flag column
+      Uncheck everything except Critical → OK
+      This is your immediate collections follow-up list with contact details
+
+PART G — Load All
+───────────────────
+  16. Home tab → Close & Load → Close & Load To
+      Load each query to a separate Table on a New worksheet
+
+KEY LEARNING
+────────────
+  ✔  Reference Query creates a live link — all summaries update when AgedPayables refreshes
+  ✔  Group By with Advanced mode allows grouping by multiple columns
+  ✔  Sort Descending on Outstanding immediately shows priority vendors

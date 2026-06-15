@@ -1,0 +1,105 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║  UC-01  BANK RECONCILIATION                                                 ║
+║  Power Query Workshop  |  CA Deepak Bholusaria                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+OBJECTIVE
+─────────
+Identify unmatched transactions between the bank statement and the books
+using Power Query Merge (Anti Join) — without writing a single VLOOKUP.
+
+FILES IN THIS FOLDER
+────────────────────
+  Bank_Statement_SBI_Jun2025.csv   —  120 bank transactions (Apr–Jun 2025)
+  Book_Entries_Jun2025.csv         —  ~220 book entries
+
+─────────────────────────────────────────────────────────────────────────────
+STEP-BY-STEP INSTRUCTIONS
+─────────────────────────────────────────────────────────────────────────────
+
+PART A — Load the Bank Statement
+──────────────────────────────────
+  1. In Excel: click the DATA tab on the ribbon
+  2. Click Get Data → From File → From Text/CSV
+  3. Browse to this folder → select Bank_Statement_SBI_Jun2025.csv → click Import
+  4. A preview window opens. Check that columns look correct.
+  5. Click Transform Data (not Load) — this opens Power Query Editor
+  6. In Power Query Editor, double-click the query name in the left panel
+     Rename it to: BankStatement
+  7. Select the Debit (INR) and Credit (INR) and Balance (INR) columns
+     (hold Ctrl and click each column header)
+  8. Right-click any selected column → Change Type → Decimal Number
+  9. Click the Value Date column header
+     Home tab → Data Type → Date
+
+PART B — Load the Book Entries
+────────────────────────────────
+  10. In Power Query Editor: Home tab → New Source → Text/CSV
+  11. Browse to this folder → select Book_Entries_Jun2025.csv → click Import
+  12. Rename the query to: BookEntries
+  13. Select the Debit (INR) and Credit (INR) columns
+      Right-click → Change Type → Decimal Number
+  14. Select the Date column → Home tab → Data Type → Date
+  15. We only want Payment and Receipt vouchers for recon (not Journal entries)
+      Click the dropdown arrow on the Voucher Type column header
+      Uncheck Journal → click OK
+
+PART C — Find Bank transactions NOT in Books (Bank-only items)
+───────────────────────────────────────────────────────────────
+  16. In the left panel, click BankStatement to make it active
+  17. Home tab → Merge Queries → Merge Queries as New
+      (This creates a separate query and keeps BankStatement unchanged)
+  18. In the Merge dialog:
+      • Top table is already BankStatement — click the "Ref / Cheque No" column
+        to highlight it (it turns green)
+      • Bottom dropdown: select BookEntries
+      • Click the "Ref / Cheque No" column in BookEntries table
+      • Join Kind dropdown: select Left Anti (rows only in left table)
+      • Click OK
+  19. A new query called "Merge1" appears in the left panel — rename it to: BankOnly
+
+  20. DELETE the BookEntries column:
+      Right-click the "BookEntries" column header (it shows "Table" in every row)
+      → Remove Column
+      This column was only needed for the join — we don't need its contents.
+
+  21. Add an Amount column to standardise with BooksOnly later:
+      Add Column tab → Custom Column
+      Name: Amount (INR)
+      Formula: = if [#"Debit (INR)"] <> null then [#"Debit (INR)"]
+                  else [#"Credit (INR)"]
+      Click OK → Right-click → Change Type → Decimal Number
+
+  22. Add Column tab → Custom Column
+      Name: Exception Type
+      Formula: = "In Bank — Not in Books"
+      Click OK
+
+  23. Keep only the columns needed for the final report:
+      Hold Ctrl and click: Value Date, Description, Ref / Cheque No,
+                           Amount (INR), Exception Type
+      Right-click → Remove Other Columns
+
+  24. Rename Value Date column: double-click header → type Date → Enter
+
+PART D — Find Book entries NOT in Bank (Book-only items)
+──────────────────────────────────────────────────────────
+  25. In the left panel, click BookEntries to make it active
+  26. Home tab → Merge Queries → Merge Queries as New
+  27. In the Merge dialog:
+      • Top table is already BookEntries — click "Ref / Cheque No"
+      • Bottom dropdown: select BankStatement
+      • Click "Ref / Cheque No" in BankStatement
+      • Join Kind: Left Anti
+      • Click OK
+  28. A new query "Merge2" appears — rename it to: BooksOnly
+
+  29. DELETE the BankStatement column:
+      Right-click the "BankStatement" column header (shows "Table" in every row)
+      → Remove Column
+
+  30. Add an Amount column:
+      Add Column tab → Custom Column
+      Name: Amount (INR)
+      Formula: = if [#"Debit (INR)"] <> null then [#"Debit (INR)"]
+                  else [#"Cr

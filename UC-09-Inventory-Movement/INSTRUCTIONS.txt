@@ -1,0 +1,107 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║  UC-09  INVENTORY MOVEMENT ANALYSIS                                         ║
+║  Power Query Workshop  |  CA Deepak Bholusaria                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+OBJECTIVE
+─────────
+Combine two months of stock data, calculate movement trends, flag items below
+reorder level, and build category-wise stock valuation summaries.
+
+FILES IN THIS FOLDER
+────────────────────
+  Stock_Register_Apr2025.csv   —  100 items, April 2025
+  Stock_Register_May2025.csv   —  100 items, May 2025
+
+─────────────────────────────────────────────────────────────────────────────
+STEP-BY-STEP INSTRUCTIONS
+─────────────────────────────────────────────────────────────────────────────
+
+PART A — Load April File
+──────────────────────────
+  1. In Excel: DATA tab → Get Data → From File → From Text/CSV
+  2. Browse to Stock_Register_Apr2025.csv → Import → Transform Data
+  3. Rename the query to: Stock_Apr
+
+PART B — Add Month Column to April Query
+──────────────────────────────────────────
+  4. Add Column tab → Custom Column
+     Name: Month
+     Formula: = "Apr-2025"
+     Click OK
+
+PART C — Fix Data Types for April
+───────────────────────────────────
+  5. Hold Ctrl and select:
+     Opening Qty, Receipts Qty, Issues Qty, Closing Qty, Reorder Level
+     Right-click → Change Type → Whole Number
+  6. Hold Ctrl and select:
+     Unit Cost (INR), Closing Stock Value (INR)
+     Right-click → Change Type → Decimal Number
+  7. Select Stock Entry Date → Home tab → Data Type → Date
+
+PART D — Load May File
+────────────────────────
+  8. Home tab → New Source → Text/CSV
+  9. Browse to Stock_Register_May2025.csv → Import → click OK
+  10. Rename to: Stock_May
+  11. Repeat steps 4–7 above for Stock_May, changing the Month formula to:
+      = "May-2025"
+
+PART E — Append Both Months
+─────────────────────────────
+  12. In the left panel, click Stock_Apr to make it active
+  13. Home tab → Append Queries → Append Queries as New
+  14. In Append dialog:
+      Select: Two tables
+      First table: Stock_Apr
+      Table to append: Stock_May
+      Click OK
+  15. A new query appears — rename it to: Stock_Combined
+  16. You now have 200 rows covering both months
+
+PART F — Reorder Alert Flag
+─────────────────────────────
+  17. With Stock_Combined active:
+      Add Column tab → Conditional Column
+      Name: Reorder Alert
+      Condition: If  Closing Qty  is less than or equal to  Reorder Level
+      Then: REORDER NOW
+      Else: OK
+      Click OK
+
+PART G — Category Stock Valuation Summary
+───────────────────────────────────────────
+  18. Right-click Stock_Combined → Reference → Rename to: Category_Summary
+  19. Home tab → Group By → click Advanced
+      Group by: Category
+      Click Add Grouping → Month
+      Aggregations:
+        Total Stock Value  |  Sum  |  Closing Stock Value (INR)
+        Total Receipts     |  Sum  |  Receipts Qty
+        Total Issues       |  Sum  |  Issues Qty
+      Click OK
+      → Month-over-month stock value by category
+
+PART H — Reorder List
+───────────────────────
+  20. Right-click Stock_Combined → Reference → Rename to: Reorder_List
+  21. Click dropdown on Reorder Alert → check only REORDER NOW → OK
+  22. Select columns to keep: Item Code, Item Description, Category,
+      Closing Qty, Reorder Level, Unit Cost (INR), Supplier Code, Location
+      Right-click → Remove Other Columns
+  23. Click Closing Qty column → Home tab → Sort Ascending
+      Items furthest below reorder level appear first
+
+PART I — Load All
+───────────────────
+  24. Home tab → Close & Load → Close & Load To
+      Load Stock_Combined, Category_Summary, Reorder_List each to new worksheets
+      (You can choose not to load Stock_Apr and Stock_May to sheets —
+       right-click them → Load To → Only Create Connection)
+
+KEY LEARNING
+────────────
+  ✔  Add Month column BEFORE appending — so you know which month each row is from
+  ✔  Append (not Merge) = stacking rows from tables with same structure
+  ✔  Only Create Connection for helper queries — keeps your workbook clean

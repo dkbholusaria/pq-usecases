@@ -1,0 +1,92 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║  UC-08  SALARY REGISTER — PAYROLL ANALYSIS                                 ║
+║  Power Query Workshop  |  CA Deepak Bholusaria                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+OBJECTIVE
+─────────
+Process the monthly salary register — department-wise payroll cost,
+statutory compliance check (PF/ESI eligibility), and CTC analysis.
+
+FILES IN THIS FOLDER
+────────────────────
+  Salary_Register_Jun2025.csv   —  50 employees across 7 departments
+
+─────────────────────────────────────────────────────────────────────────────
+STEP-BY-STEP INSTRUCTIONS
+─────────────────────────────────────────────────────────────────────────────
+
+PART A — Load the File
+────────────────────────
+  1. In Excel: DATA tab → Get Data → From File → From Text/CSV
+  2. Browse to Salary_Register_Jun2025.csv → Import → Transform Data
+  3. Rename the query to: SalaryRegister
+
+PART B — Fix Data Types (Bulk)
+────────────────────────────────
+  4. Hold Ctrl and click each of these column headers:
+     Basic Salary (INR), HRA (INR), Conveyance Allowance (INR),
+     Special Allowance (INR), Gross Salary (INR),
+     PF Employee (12%) (INR), ESI Employee (0.75%) (INR),
+     Professional Tax (INR), TDS (INR), Total Deductions (INR),
+     Net Salary Payable (INR), PF Employer (12%) (INR),
+     ESI Employer (3.25%) (INR), Total CTC (INR)
+  5. Right-click any selected column → Change Type → Decimal Number
+  6. Select Date of Joining → Home tab → Data Type → Date
+
+PART C — ESI Compliance Check
+───────────────────────────────
+  7. Add Column tab → Conditional Column
+     Name: ESI Eligible
+     Condition: If  Gross Salary (INR)  is less than or equal to  21000
+     Then: Yes
+     Else: No
+     Click OK
+  8. Add Column tab → Conditional Column
+     Name: ESI Compliance Check
+     Condition 1: If  ESI Eligible  equals  Yes  AND ... 
+     (Simplified approach — use Custom Column instead):
+     
+     Add Column tab → Custom Column
+     Name: ESI Compliance Check
+     Formula: = if [ESI Eligible] = "Yes" and [#"ESI Employee (0.75%) (INR)"] = 0
+               then "ERROR — ESI not deducted"
+               else if [ESI Eligible] = "No" and [#"ESI Employee (0.75%) (INR)"] > 0
+               then "ERROR — ESI deducted incorrectly"
+               else "OK"
+     Click OK
+
+PART D — Employer Cost Column
+───────────────────────────────
+  9. Add Column tab → Custom Column
+     Name: Total Employer Cost
+     Formula: = [#"PF Employer (12%) (INR)"] + [#"ESI Employer (3.25%) (INR)"]
+     Click OK
+     Right-click → Change Type → Decimal Number
+
+PART E — Department Payroll Summary
+─────────────────────────────────────
+  10. Right-click SalaryRegister → Reference → Rename to: Dept_Payroll_Summary
+  11. Home tab → Group By → click Advanced
+      Group by: Department
+      Aggregations:
+        Employee Count      |  Count Rows
+        Total Gross         |  Sum  |  Gross Salary (INR)
+        Total Net Payable   |  Sum  |  Net Salary Payable (INR)
+        Total PF (Emp)      |  Sum  |  PF Employee (12%) (INR)
+        Total PF (Er)       |  Sum  |  PF Employer (12%) (INR)
+        Total CTC           |  Sum  |  Total CTC (INR)
+      Click OK
+
+PART F — Load All
+───────────────────
+  12. Home tab → Close & Load → Close & Load To
+      Load SalaryRegister and Dept_Payroll_Summary each to a new worksheet
+  13. On the SalaryRegister sheet in Excel, add a filter on
+      ESI Compliance Check = ERROR to instantly find compliance issues
+
+KEY LEARNING
+────────────
+  ✔  Bulk type change — select all INR columns together, change once
+  ✔  Nested if in Custom Column handles multi-condition compliance checks
+  ✔  Employer Cost as a column shows true payroll burden beyond gross salary

@@ -1,0 +1,101 @@
+Vendor Code,Vendor Name,Vendor GSTIN,PAN,Invoice Number,Invoice Date,Due Date,Invoice Amount (INR),Amount Paid (INR),Balance Outstanding (INR),Payment Terms,Aging Bucket,Overdue Days,Contact Person,Contact Email
+V013,Laxmi Exports,19AABCL2345R1Z6,AABCL2345R,PINV/3553,26-Feb-2025,28-Mar-2025,"19,707","9,854","9,853",Net 30,Above 120 days,94,Mohan Laxmi,mohan@laxmiexp.com
+V007,Patel Industries,24AABCP6789L1Z4,AABCP6789L,PINV/2363,14-Apr-2025,14-May-2025,"301,640",0,"301,640",Net 30,61-90 days,47,Nitin Patel,nitin@patelinds.com
+V009,Raj Distributors,33AABCR5678N1Z8,AABCR5678N,PINV/3878,25-Apr-2025,25-May-2025,"196,421",0,"196,421",Net 30,61-90 days,36,Rajesh Kumar,rajesh@rajdist.com
+V008,Singh Logistics,27AABCS1234M1Z6,AABCS1234M,PINV/5640,25-Mar-2025,24-May-2025,"285,450","142,725","142,725",Net 60,61-90 days,37,Gurpreet Singh,g.singh@singhlog.com
+V002,Sunrise Enterprises,29AACCS5678G1Z3,AACCS5678G,PINV/6459,26-May-2025,10-Jul-2025,"360,283",0,"360,283",Net 45,Current (0-30),0,Priya Nair,priya@sunrise.com
+V003,Bharat Stationery,07AABCB9012H1Z1,AABCB9012H,PINV/4106,28-Jun-2025,28-Jul-2025,"16,289","16,289",0,Net 30,Current (0-30),0,Amit Sharma,amit@bharatstat.com
+V012,Om Traders,36AABCO7890Q1Z4,AABCO7890Q,PINV/7131,24-Feb-2025,25-Apr-2025,"208,232","104,116","104,116",Net 60,91-120 days,66,Rekha Joshi,rekha@omtraders.com
+V007,Patel Industries,24AABCP6789L1Z4,AABCP6789L,PINV/7113,23-Mar-2025,22-Apr-2025,"249,880","249,880",0,Net 30,91-120 days,69,Nitin Patel,nitin@patelinds.com
+V002,Sunrise Enterprises,29AACCS5678G1Z3,AACCS5678G,PINV/7697,20-Jun-2025,04-Aug-2025,"496,312",0,"496,312",Net 45,Current (0-30),0,Priya Nair,priya@sunrise.com
+V007,Patel Industries,24AABCP6789L1Z4,AABCP6789L,PINV/3660,11-May-2025,10-Jun-2025,"383,846",0,"383,846",Net 30,31-60 days,20,Nitin Patel,nitin@patelinds.com
+V013,Laxmi Exports,19AABCL2345R1Z6,AABCL2345R,PINV/6711,19-Feb-2025,21-Mar-2025,"357,473",0,"357,473",Net 30,Above 120 days,101,Mohan Laxmi,mohan@laxmiexp.com
+V012,Om Traders,36AABCO7890Q1Z4,AABCO7890Q,PINV/1945,23-Mar-2025,22-May-2025,"463,994",0,"463,994",Net 60,61-90 days,39,Rekha Joshi,rekha@omtraders.com
+V004,Anand Electricals,33AABCA3456I1Z7,AABCA3456I,PINV/8827,21-Jun-2025,20-Aug-2025,"461,520",0,"461,520",Net 60,Current (0-30),0,Suresh Anand,suresh@anandele.com
+V011,Tech Solutions,29AABCT3456P1Z2,AABCT3456P,PINV/1462,23-May-2025,22-Jun-2025,"138,052","69,026","69,026",Net 30,31-60 days,8,Arjun Das,arjun@techsol.com
+V011,Tech Solutions,29AABCT3456P1Z2,AABCT3456P,PINV/3414,25-Apr-2025,25-May-2025,"131,233","131,233",0,Net 30,61-90 days,36,Arjun Das,arjun@techsol.com
+V011,Tech Solutions,29AABCT3456P1Z2,AABCT3456P,PINV/3644,26-Jun-2025,26-Jul-2025,"67,198",0,"67,198",Net 30,Current (0-30),0,Arjun Das,arjun@techsol.com
+V011,Tech Solutions,29AABCT3456P1Z2,AABCT3456P,PINV/7297,20-Mar-2025,19-Apr-2025,"355,974",0,"355,974",Net 30,91-120 days,72,Arjun Das,arjun@techsol.com
+V009,Raj Distributors,33AABCR5678N1Z8,AABCR5678N,PINV/4093,13-Mar-2025,12-Apr-2025,"91,254","45,627","45,627",Net 30,91-120 days,79,Rajesh Kumar,rajesh@rajdist.com
+V005,Global Traders,36AABCG7890J1Z9,AABCG7890J,PINV/5951,21-Feb-2025,23-Mar-2025,"484,165","242,082","242,083",Net 30,Above 120 days,99,Deepa Reddy,deepa@globaltr.com
+V010,New India Corp,07AABCN9012O1Z0,AABCN9012O,PINV/6045,16-Mar-2025,30-Apr-2025,"378,707",0,"378,707",Net 45,91-120 days,61,Sunita Verma,sunita@newinda.com
+V002,Sunrise Enterprises,29AACCS5678G1Z3,AACCS5678G,PINV/6642,24-May-2025,08-Jul-2025,"141,820",0,"141,820",Net 45,Current (0-30),0,Priya Nair,priya@sunrise.com
+V015,Gupta Brothers,27AABCG1234T1Z0,AABCG1234T,PINV/7520,12-Apr-2025,12-May-2025,"13,146",0,"13,146",Net 30,61-90 days,49,Ramesh Gupta,ramesh@guptabr.com
+V014,National Agencies,24AABCN6789S1Z8,AABCN6789S,PINV/9056,29-Jun-2025,13-Aug-2025,"57,467","28,734","28,733",Net 45,Current (0-30),0,Kavita Rao,kavita@natlag.com
+V009,Raj Distributors,33AABCR5678N1Z8,AABCR5678N,PINV/7829,17-Apr-2025,17-May-2025,"369,191",0,"369,191",Net 30,61-90 days,44,Rajesh Kumar,rajesh@rajdist.com
+V003,Bharat Stationery,07AABCB9012H1Z1,AABCB9012H,PINV/7138,13-May-2025,12-Jun-2025,"354,983",0,"354,983",Net 30,31-60 days,18,Amit Sharma,amit@bharatstat.com
+V008,Singh Logistics,27AABCS1234M1Z6,AABCS1234M,PINV/3981,21-Feb-2025,22-Apr-2025,"474,757","237,378","237,379",Net 60,91-120 days,69,Gurpreet Singh,g.singh@singhlog.com
+V010,New India Corp,07AABCN9012O1Z0,AABCN9012O,PINV/4482,13-May-2025,27-Jun-2025,"108,461",0,"108,461",Net 45,31-60 days,3,Sunita Verma,sunita@newinda.com
+V013,Laxmi Exports,19AABCL2345R1Z6,AABCL2345R,PINV/4143,24-Apr-2025,24-May-2025,"491,644","245,822","245,822",Net 30,61-90 days,37,Mohan Laxmi,mohan@laxmiexp.com
+V008,Singh Logistics,27AABCS1234M1Z6,AABCS1234M,PINV/2789,18-May-2025,17-Jul-2025,"49,107",0,"49,107",Net 60,Current (0-30),0,Gurpreet Singh,g.singh@singhlog.com
+V007,Patel Industries,24AABCP6789L1Z4,AABCP6789L,PINV/3042,20-Apr-2025,20-May-2025,"41,489",0,"41,489",Net 30,61-90 days,41,Nitin Patel,nitin@patelinds.com
+V010,New India Corp,07AABCN9012O1Z0,AABCN9012O,PINV/4846,27-Feb-2025,13-Apr-2025,"247,745",0,"247,745",Net 45,91-120 days,78,Sunita Verma,sunita@newinda.com
+V001,Mehta Trading Co,27AABCM1234F1Z5,AABCM1234F,PINV/2000,22-Apr-2025,22-May-2025,"378,381",0,"378,381",Net 30,61-90 days,39,Rahul Mehta,rahul@mehtatrading.com
+V011,Tech Solutions,29AABCT3456P1Z2,AABCT3456P,PINV/1685,05-Jun-2025,05-Jul-2025,"113,423",0,"113,423",Net 30,Current (0-30),0,Arjun Das,arjun@techsol.com
+V007,Patel Industries,24AABCP6789L1Z4,AABCP6789L,PINV/9520,22-Apr-2025,22-May-2025,"466,743","233,372","233,371",Net 30,61-90 days,39,Nitin Patel,nitin@patelinds.com
+V013,Laxmi Exports,19AABCL2345R1Z6,AABCL2345R,PINV/6521,12-Mar-2025,11-Apr-2025,"174,910",0,"174,910",Net 30,91-120 days,80,Mohan Laxmi,mohan@laxmiexp.com
+V006,Kumar & Sons,09AABCK2345K1Z2,AABCK2345K,PINV/4925,29-Mar-2025,13-May-2025,"335,888","167,944","167,944",Net 45,61-90 days,48,Vijay Kumar,vijay@kumarsons.com
+V010,New India Corp,07AABCN9012O1Z0,AABCN9012O,PINV/1937,30-Mar-2025,14-May-2025,"437,808",0,"437,808",Net 45,61-90 days,47,Sunita Verma,sunita@newinda.com
+V001,Mehta Trading Co,27AABCM1234F1Z5,AABCM1234F,PINV/8486,19-Mar-2025,18-Apr-2025,"365,358",0,"365,358",Net 30,91-120 days,73,Rahul Mehta,rahul@mehtatrading.com
+V001,Mehta Trading Co,27AABCM1234F1Z5,AABCM1234F,PINV/3013,14-Feb-2025,16-Mar-2025,"146,939",0,"146,939",Net 30,Above 120 days,106,Rahul Mehta,rahul@mehtatrading.com
+V006,Kumar & Sons,09AABCK2345K1Z2,AABCK2345K,PINV/8404,28-Feb-2025,14-Apr-2025,"262,308",0,"262,308",Net 45,91-120 days,77,Vijay Kumar,vijay@kumarsons.com
+V001,Mehta Trading Co,27AABCM1234F1Z5,AABCM1234F,PINV/6278,25-Jun-2025,25-Jul-2025,"320,551",0,"320,551",Net 30,Current (0-30),0,Rahul Mehta,rahul@mehtatrading.com
+V013,Laxmi Exports,19AABCL2345R1Z6,AABCL2345R,PINV/6333,08-Mar-2025,07-Apr-2025,"124,444","62,222","62,222",Net 30,91-120 days,84,Mohan Laxmi,mohan@laxmiexp.com
+V007,Patel Industries,24AABCP6789L1Z4,AABCP6789L,PINV/2333,01-Apr-2025,01-May-2025,"219,679","109,840","109,839",Net 30,61-90 days,60,Nitin Patel,nitin@patelinds.com
+V011,Tech Solutions,29AABCT3456P1Z2,AABCT3456P,PINV/2645,23-Mar-2025,22-Apr-2025,"153,993",0,"153,993",Net 30,91-120 days,69,Arjun Das,arjun@techsol.com
+V012,Om Traders,36AABCO7890Q1Z4,AABCO7890Q,PINV/3345,16-Feb-2025,17-Apr-2025,"439,355","439,355",0,Net 60,91-120 days,74,Rekha Joshi,rekha@omtraders.com
+V001,Mehta Trading Co,27AABCM1234F1Z5,AABCM1234F,PINV/3094,22-Feb-2025,24-Mar-2025,"400,442",0,"400,442",Net 30,Above 120 days,98,Rahul Mehta,rahul@mehtatrading.com
+V014,National Agencies,24AABCN6789S1Z8,AABCN6789S,PINV/9990,02-Mar-2025,16-Apr-2025,"92,346","46,173","46,173",Net 45,91-120 days,75,Kavita Rao,kavita@natlag.com
+V002,Sunrise Enterprises,29AACCS5678G1Z3,AACCS5678G,PINV/8899,11-Feb-2025,28-Mar-2025,"128,042",0,"128,042",Net 45,Above 120 days,94,Priya Nair,priya@sunrise.com
+V003,Bharat Stationery,07AABCB9012H1Z1,AABCB9012H,PINV/2465,02-Jun-2025,02-Jul-2025,"223,098",0,"223,098",Net 30,Current (0-30),0,Amit Sharma,amit@bharatstat.com
+V003,Bharat Stationery,07AABCB9012H1Z1,AABCB9012H,PINV/6349,23-Mar-2025,22-Apr-2025,"385,491",0,"385,491",Net 30,91-120 days,69,Amit Sharma,amit@bharatstat.com
+V012,Om Traders,36AABCO7890Q1Z4,AABCO7890Q,PINV/5220,28-Feb-2025,29-Apr-2025,"476,237",0,"476,237",Net 60,91-120 days,62,Rekha Joshi,rekha@omtraders.com
+V011,Tech Solutions,29AABCT3456P1Z2,AABCT3456P,PINV/3224,13-Feb-2025,15-Mar-2025,"320,439","160,220","160,219",Net 30,Above 120 days,107,Arjun Das,arjun@techsol.com
+V002,Sunrise Enterprises,29AACCS5678G1Z3,AACCS5678G,PINV/6452,03-May-2025,17-Jun-2025,"466,572","466,572",0,Net 45,31-60 days,13,Priya Nair,priya@sunrise.com
+V002,Sunrise Enterprises,29AACCS5678G1Z3,AACCS5678G,PINV/6623,25-Mar-2025,09-May-2025,"455,982","227,991","227,991",Net 45,61-90 days,52,Priya Nair,priya@sunrise.com
+V011,Tech Solutions,29AABCT3456P1Z2,AABCT3456P,PINV/8159,01-May-2025,31-May-2025,"119,540",0,"119,540",Net 30,31-60 days,30,Arjun Das,arjun@techsol.com
+V005,Global Traders,36AABCG7890J1Z9,AABCG7890J,PINV/2436,01-Jun-2025,01-Jul-2025,"53,678","53,678",0,Net 30,Current (0-30),0,Deepa Reddy,deepa@globaltr.com
+V015,Gupta Brothers,27AABCG1234T1Z0,AABCG1234T,PINV/4082,31-May-2025,30-Jun-2025,"290,691",0,"290,691",Net 30,Current (0-30),0,Ramesh Gupta,ramesh@guptabr.com
+V014,National Agencies,24AABCN6789S1Z8,AABCN6789S,PINV/6134,24-Mar-2025,08-May-2025,"292,689",0,"292,689",Net 45,61-90 days,53,Kavita Rao,kavita@natlag.com
+V005,Global Traders,36AABCG7890J1Z9,AABCG7890J,PINV/2013,12-Feb-2025,14-Mar-2025,"103,030","51,515","51,515",Net 30,Above 120 days,108,Deepa Reddy,deepa@globaltr.com
+V007,Patel Industries,24AABCP6789L1Z4,AABCP6789L,PINV/6237,28-Mar-2025,27-Apr-2025,"400,784",0,"400,784",Net 30,91-120 days,64,Nitin Patel,nitin@patelinds.com
+V009,Raj Distributors,33AABCR5678N1Z8,AABCR5678N,PINV/4639,02-Jun-2025,02-Jul-2025,"203,703","203,703",0,Net 30,Current (0-30),0,Rajesh Kumar,rajesh@rajdist.com
+V014,National Agencies,24AABCN6789S1Z8,AABCN6789S,PINV/8546,10-Apr-2025,25-May-2025,"80,903",0,"80,903",Net 45,61-90 days,36,Kavita Rao,kavita@natlag.com
+V014,National Agencies,24AABCN6789S1Z8,AABCN6789S,PINV/4586,22-Feb-2025,08-Apr-2025,"343,191",0,"343,191",Net 45,91-120 days,83,Kavita Rao,kavita@natlag.com
+V010,New India Corp,07AABCN9012O1Z0,AABCN9012O,PINV/5643,23-May-2025,07-Jul-2025,"376,059",0,"376,059",Net 45,Current (0-30),0,Sunita Verma,sunita@newinda.com
+V010,New India Corp,07AABCN9012O1Z0,AABCN9012O,PINV/6245,11-Apr-2025,26-May-2025,"256,165",0,"256,165",Net 45,61-90 days,35,Sunita Verma,sunita@newinda.com
+V005,Global Traders,36AABCG7890J1Z9,AABCG7890J,PINV/8836,05-May-2025,04-Jun-2025,"252,563","126,282","126,281",Net 30,31-60 days,26,Deepa Reddy,deepa@globaltr.com
+V001,Mehta Trading Co,27AABCM1234F1Z5,AABCM1234F,PINV/6458,21-May-2025,20-Jun-2025,"415,664",0,"415,664",Net 30,31-60 days,10,Rahul Mehta,rahul@mehtatrading.com
+V014,National Agencies,24AABCN6789S1Z8,AABCN6789S,PINV/4687,16-Jun-2025,31-Jul-2025,"462,347",0,"462,347",Net 45,Current (0-30),0,Kavita Rao,kavita@natlag.com
+V014,National Agencies,24AABCN6789S1Z8,AABCN6789S,PINV/8987,21-Mar-2025,05-May-2025,"156,560",0,"156,560",Net 45,61-90 days,56,Kavita Rao,kavita@natlag.com
+V001,Mehta Trading Co,27AABCM1234F1Z5,AABCM1234F,PINV/9977,21-Mar-2025,20-Apr-2025,"175,331","87,666","87,665",Net 30,91-120 days,71,Rahul Mehta,rahul@mehtatrading.com
+V006,Kumar & Sons,09AABCK2345K1Z2,AABCK2345K,PINV/7412,21-Mar-2025,05-May-2025,"45,193",0,"45,193",Net 45,61-90 days,56,Vijay Kumar,vijay@kumarsons.com
+V005,Global Traders,36AABCG7890J1Z9,AABCG7890J,PINV/4196,09-Feb-2025,11-Mar-2025,"202,949",0,"202,949",Net 30,Above 120 days,111,Deepa Reddy,deepa@globaltr.com
+V006,Kumar & Sons,09AABCK2345K1Z2,AABCK2345K,PINV/1886,13-Apr-2025,28-May-2025,"234,191",0,"234,191",Net 45,61-90 days,33,Vijay Kumar,vijay@kumarsons.com
+V010,New India Corp,07AABCN9012O1Z0,AABCN9012O,PINV/3253,08-Mar-2025,22-Apr-2025,"351,018",0,"351,018",Net 45,91-120 days,69,Sunita Verma,sunita@newinda.com
+V015,Gupta Brothers,27AABCG1234T1Z0,AABCG1234T,PINV/3372,07-May-2025,06-Jun-2025,"116,887",0,"116,887",Net 30,31-60 days,24,Ramesh Gupta,ramesh@guptabr.com
+V012,Om Traders,36AABCO7890Q1Z4,AABCO7890Q,PINV/1149,29-Mar-2025,28-May-2025,"365,719","365,719",0,Net 60,61-90 days,33,Rekha Joshi,rekha@omtraders.com
+V002,Sunrise Enterprises,29AACCS5678G1Z3,AACCS5678G,PINV/3418,25-Mar-2025,09-May-2025,"475,695","237,848","237,847",Net 45,61-90 days,52,Priya Nair,priya@sunrise.com
+V011,Tech Solutions,29AABCT3456P1Z2,AABCT3456P,PINV/3756,15-Jun-2025,15-Jul-2025,"57,063","28,532","28,531",Net 30,Current (0-30),0,Arjun Das,arjun@techsol.com
+V003,Bharat Stationery,07AABCB9012H1Z1,AABCB9012H,PINV/1859,30-May-2025,29-Jun-2025,"490,336",0,"490,336",Net 30,31-60 days,1,Amit Sharma,amit@bharatstat.com
+V010,New India Corp,07AABCN9012O1Z0,AABCN9012O,PINV/8107,22-May-2025,06-Jul-2025,"317,217","158,608","158,609",Net 45,Current (0-30),0,Sunita Verma,sunita@newinda.com
+V004,Anand Electricals,33AABCA3456I1Z7,AABCA3456I,PINV/1556,30-May-2025,29-Jul-2025,"128,019","64,010","64,009",Net 60,Current (0-30),0,Suresh Anand,suresh@anandele.com
+V005,Global Traders,36AABCG7890J1Z9,AABCG7890J,PINV/3826,25-Mar-2025,24-Apr-2025,"390,166",0,"390,166",Net 30,91-120 days,67,Deepa Reddy,deepa@globaltr.com
+V013,Laxmi Exports,19AABCL2345R1Z6,AABCL2345R,PINV/8596,24-Mar-2025,23-Apr-2025,"144,856","72,428","72,428",Net 30,91-120 days,68,Mohan Laxmi,mohan@laxmiexp.com
+V006,Kumar & Sons,09AABCK2345K1Z2,AABCK2345K,PINV/1190,30-May-2025,14-Jul-2025,"67,148",0,"67,148",Net 45,Current (0-30),0,Vijay Kumar,vijay@kumarsons.com
+V008,Singh Logistics,27AABCS1234M1Z6,AABCS1234M,PINV/9351,03-May-2025,02-Jul-2025,"21,283","21,283",0,Net 60,Current (0-30),0,Gurpreet Singh,g.singh@singhlog.com
+V010,New India Corp,07AABCN9012O1Z0,AABCN9012O,PINV/8856,20-Apr-2025,04-Jun-2025,"349,926",0,"349,926",Net 45,31-60 days,26,Sunita Verma,sunita@newinda.com
+V013,Laxmi Exports,19AABCL2345R1Z6,AABCL2345R,PINV/3967,23-Mar-2025,22-Apr-2025,"247,254","123,627","123,627",Net 30,91-120 days,69,Mohan Laxmi,mohan@laxmiexp.com
+V005,Global Traders,36AABCG7890J1Z9,AABCG7890J,PINV/3051,04-Jun-2025,04-Jul-2025,"169,362","169,362",0,Net 30,Current (0-30),0,Deepa Reddy,deepa@globaltr.com
+V003,Bharat Stationery,07AABCB9012H1Z1,AABCB9012H,PINV/7640,24-Jun-2025,24-Jul-2025,"202,960","202,960",0,Net 30,Current (0-30),0,Amit Sharma,amit@bharatstat.com
+V013,Laxmi Exports,19AABCL2345R1Z6,AABCL2345R,PINV/9684,24-Feb-2025,26-Mar-2025,"41,327","41,327",0,Net 30,Above 120 days,96,Mohan Laxmi,mohan@laxmiexp.com
+V009,Raj Distributors,33AABCR5678N1Z8,AABCR5678N,PINV/3033,07-May-2025,06-Jun-2025,"483,184",0,"483,184",Net 30,31-60 days,24,Rajesh Kumar,rajesh@rajdist.com
+V003,Bharat Stationery,07AABCB9012H1Z1,AABCB9012H,PINV/3948,28-Jun-2025,28-Jul-2025,"281,814",0,"281,814",Net 30,Current (0-30),0,Amit Sharma,amit@bharatstat.com
+V002,Sunrise Enterprises,29AACCS5678G1Z3,AACCS5678G,PINV/1641,28-May-2025,12-Jul-2025,"291,790",0,"291,790",Net 45,Current (0-30),0,Priya Nair,priya@sunrise.com
+V002,Sunrise Enterprises,29AACCS5678G1Z3,AACCS5678G,PINV/5206,21-Jun-2025,05-Aug-2025,"51,459",0,"51,459",Net 45,Current (0-30),0,Priya Nair,priya@sunrise.com
+V009,Raj Distributors,33AABCR5678N1Z8,AABCR5678N,PINV/5891,28-Mar-2025,27-Apr-2025,"483,475",0,"483,475",Net 30,91-120 days,64,Rajesh Kumar,rajesh@rajdist.com
+V007,Patel Industries,24AABCP6789L1Z4,AABCP6789L,PINV/1001,27-Apr-2025,27-May-2025,"157,294","157,294",0,Net 30,61-90 days,34,Nitin Patel,nitin@patelinds.com
+V015,Gupta Brothers,27AABCG1234T1Z0,AABCG1234T,PINV/5807,13-Feb-2025,15-Mar-2025,"228,011","228,011",0,Net 30,Above 120 days,107,Ramesh Gupta,ramesh@guptabr.com
+V008,Singh Logistics,27AABCS1234M1Z6,AABCS1234M,PINV/6127,16-Feb-2025,17-Apr-2025,"456,284",0,"456,284",Net 60,91-120 days,74,Gurpreet Singh,g.singh@singhlog.com
+V010,New India Corp,07AABCN9012O1Z0,AABCN9012O,PINV/9818,19-Feb-2025,05-Apr-2025,"112,821",0,"112,821",Net 45,91-120 days,86,Sunita Verma,sunita@newinda.com
+V011,Tech Solutions,29AABCT3456P1Z2,AABCT3456P,PINV/1732,30-Apr-2025,30-May-2025,"28,000",0,"28,000",Net 30,61-90 days,31,Arjun Das,arjun@techsol.com

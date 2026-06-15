@@ -1,0 +1,38 @@
+Account Code,Account Name,Account Group,Account Subgroup,Account Type,Nature,Notes
+1001,Cash in Hand,Assets,Current Assets,Cash & Bank,Debit,Petty cash register
+1002,SBI Current Account,Assets,Current Assets,Cash & Bank,Debit,Primary operating account
+1003,HDFC OD Account,Assets,Current Assets,Cash & Bank,Credit,Overdraft facility - credit balance normal
+1004,Sundry Debtors,Assets,Current Assets,Trade Receivables,Debit,Customer outstanding
+1005,Stock in Trade,Assets,Current Assets,Inventory,Debit,Closing stock at cost
+1006,Advance to Suppliers,Assets,Current Assets,Loans & Advances,Debit,Prepaid purchase advances
+1007,GST Input Credit (ITC),Assets,Current Assets,Tax Assets,Debit,CGST + SGST + IGST ITC available
+1008,TDS Receivable,Assets,Current Assets,Tax Assets,Debit,TDS deducted by customers
+1009,Prepaid Expenses,Assets,Current Assets,Other Current Assets,Debit,Insurance and subscription prepaid
+1010,Fixed Assets - Computers,Assets,Fixed Assets,Tangible Assets,Debit,Net of depreciation
+1011,Fixed Assets - Furniture,Assets,Fixed Assets,Tangible Assets,Debit,Net of depreciation
+1012,Fixed Assets - Vehicles,Assets,Fixed Assets,Tangible Assets,Debit,Net of depreciation
+1013,Security Deposits,Assets,Non-Current Assets,Loans & Advances,Debit,Office rent deposit
+2001,Share Capital,Liabilities,Equity,Capital,Credit,Paid-up share capital
+2002,Reserves & Surplus,Liabilities,Equity,Retained Earnings,Credit,Accumulated profits
+2003,Sundry Creditors,Liabilities,Current Liabilities,Trade Payables,Credit,Vendor outstanding
+2004,Bank Loan (Axis Bank),Liabilities,Non-Current Liabilities,Borrowings,Credit,Term loan
+2005,GST Output Liability,Liabilities,Current Liabilities,Tax Liabilities,Credit,GST collected on sales
+2006,TDS Payable,Liabilities,Current Liabilities,Tax Liabilities,Credit,TDS deducted from vendors
+2007,Salary Payable,Liabilities,Current Liabilities,Accrued Expenses,Credit,Salary due but unpaid
+2008,Provision for Tax,Liabilities,Current Liabilities,Provisions,Credit,Income tax provision
+2009,Advance from Customers,Liabilities,Current Liabilities,Other Current Liabilities,Credit,Advances received
+3001,Sales - Office Supplies,Income,Revenue,Sales,Credit,
+3002,Sales - IT Hardware,Income,Revenue,Sales,Credit,
+3003,Sales - Furniture,Income,Revenue,Sales,Credit,
+3004,Interest Income,Income,Other Income,Finance Income,Credit,Bank interest
+3005,Misc. Income,Income,Other Income,Non-Operating,Credit,
+4001,Purchase - Office Supplies,Expenses,Cost of Goods Sold,Direct Cost,Debit,
+4002,Purchase - IT Hardware,Expenses,Cost of Goods Sold,Direct Cost,Debit,
+4003,Purchase - Furniture,Expenses,Cost of Goods Sold,Direct Cost,Debit,
+4004,Salaries & Wages,Expenses,Operating Expenses,Personnel Cost,Debit,Gross salary
+4005,Rent Expense,Expenses,Operating Expenses,Occupancy,Debit,Monthly office rent
+4006,Electricity & Utilities,Expenses,Operating Expenses,Overheads,Debit,
+4007,Freight Outward,Expenses,Operating Expenses,Distribution,Debit,Delivery charges
+4008,Bank Charges,Expenses,Operating Expenses,Finance Charges,Debit,
+4009,Depreciation,Expenses,Operating Expenses,Non-Cash,Debit,Straight-line method
+4010,Miscellaneous Expenses,Expenses,Operating Expenses,Overheads,Debit,

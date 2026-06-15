@@ -1,0 +1,223 @@
+Entry No,Date,Ledger Account,Narration,Voucher Type,Ref / Cheque No,Debit (INR),Credit (INR)
+BK-0001,01-Apr-2025,Bank A/c - SBI,Being receipt from Raj Distributors via 7211755002,Receipt,7211755002,"114,118",
+BK-0001,01-Apr-2025,Capital A/c,Being receipt from Raj Distributors via 7211755002,Receipt,7211755002,,"114,118"
+BK-0002,01-Apr-2025,Advance to Supplier,Being payment to Tech Solutions Pvt Ltd by CHQ-482397,Payment,CHQ-482397,"44,006",
+BK-0002,01-Apr-2025,Bank A/c - SBI,Being payment to Tech Solutions Pvt Ltd by CHQ-482397,Payment,CHQ-482397,,"44,006"
+BK-0003,03-Apr-2025,Bank A/c - SBI,Being receipt from Kumar & Sons via 1067988348,Receipt,1067988348,"352,401",
+BK-0003,03-Apr-2025,Loan A/c,Being receipt from Kumar & Sons via 1067988348,Receipt,1067988348,,"352,401"
+BK-0004,03-Apr-2025,Bank A/c - SBI,Being receipt from Bharat Stationery via CHQ-474341,Receipt,CHQ-474341,"37,763",
+BK-0004,03-Apr-2025,Capital A/c,Being receipt from Bharat Stationery via CHQ-474341,Receipt,CHQ-474341,,"37,763"
+BK-0005,05-Apr-2025,Rent A/c,Being payment to Laxmi Exports by 6394225258,Payment,6394225258,"257,216",
+BK-0005,05-Apr-2025,Bank A/c - SBI,Being payment to Laxmi Exports by 6394225258,Payment,6394225258,,"257,216"
+BK-0006,05-Apr-2025,Sundry Expenses,Being payment to National Agencies by 6740395980,Payment,6740395980,"385,456",
+BK-0006,05-Apr-2025,Bank A/c - SBI,Being payment to National Agencies by 6740395980,Payment,6740395980,,"385,456"
+BK-0007,07-Apr-2025,Bank A/c - SBI,Being receipt from Laxmi Exports via 4982519826,Receipt,4982519826,"4,545",
+BK-0007,07-Apr-2025,Sales A/c,Being receipt from Laxmi Exports via 4982519826,Receipt,4982519826,,"4,545"
+BK-0008,09-Apr-2025,Bank A/c - SBI,Being receipt from Raj Distributors via 3098830890,Receipt,3098830890,"68,554",
+BK-0008,09-Apr-2025,Debtors A/c,Being receipt from Raj Distributors via 3098830890,Receipt,3098830890,,"68,554"
+BK-0009,11-Apr-2025,Bank Charges A/c,Being payment to Raj Distributors by CHQ-477110,Payment,CHQ-477110,"116,225",
+BK-0009,11-Apr-2025,Bank A/c - SBI,Being payment to Raj Distributors by CHQ-477110,Payment,CHQ-477110,,"116,225"
+BK-0010,14-Apr-2025,Bank A/c - SBI,Being receipt from Anand Electricals via 2062980262,Receipt,2062980262,"125,284",
+BK-0010,14-Apr-2025,Capital A/c,Being receipt from Anand Electricals via 2062980262,Receipt,2062980262,,"125,284"
+BK-0011,15-Apr-2025,Advance to Supplier,Being payment to Tech Solutions Pvt Ltd by 0444769043,Payment,0444769043,"270,461",
+BK-0011,15-Apr-2025,Bank A/c - SBI,Being payment to Tech Solutions Pvt Ltd by 0444769043,Payment,0444769043,,"270,461"
+BK-0012,15-Apr-2025,Bank A/c - SBI,Being receipt from National Agencies via 2948509899,Receipt,2948509899,"243,272",
+BK-0012,15-Apr-2025,Capital A/c,Being receipt from National Agencies via 2948509899,Receipt,2948509899,,"243,272"
+BK-0013,15-Apr-2025,Bank A/c - SBI,Being receipt from Om Traders via CHQ-498038,Receipt,CHQ-498038,"291,694",
+BK-0013,15-Apr-2025,Loan A/c,Being receipt from Om Traders via CHQ-498038,Receipt,CHQ-498038,,"291,694"
+BK-0014,16-Apr-2025,Creditors A/c,Being payment to Global Traders by 5581901562,Payment,5581901562,"291,565",
+BK-0014,16-Apr-2025,Bank A/c - SBI,Being payment to Global Traders by 5581901562,Payment,5581901562,,"291,565"
+BK-0015,16-Apr-2025,Bank A/c - SBI,Being receipt from New India Corp via 5592723623,Receipt,5592723623,"5,159",
+BK-0015,16-Apr-2025,Loan A/c,Being receipt from New India Corp via 5592723623,Receipt,5592723623,,"5,159"
+BK-0016,18-Apr-2025,Bank A/c - SBI,Being receipt from Anand Electricals via 5513022453,Receipt,5513022453,"335,592",
+BK-0016,18-Apr-2025,Debtors A/c,Being receipt from Anand Electricals via 5513022453,Receipt,5513022453,,"335,592"
+BK-0017,21-Apr-2025,Capital A/c,Being payment to Anand Electricals by 1115267262,Payment,1115267262,"50,688",
+BK-0017,21-Apr-2025,Bank A/c - SBI,Being payment to Anand Electricals by 1115267262,Payment,1115267262,,"50,688"
+BK-0018,22-Apr-2025,Advance to Supplier,Being payment to Global Traders by 3191475196,Payment,3191475196,"293,342",
+BK-0018,22-Apr-2025,Bank A/c - SBI,Being payment to Global Traders by 3191475196,Payment,3191475196,,"293,342"
+BK-0019,22-Apr-2025,Bank A/c - SBI,Being receipt from Om Traders via 1974672173,Receipt,1974672173,"6,624",
+BK-0019,22-Apr-2025,Sales A/c,Being receipt from Om Traders via 1974672173,Receipt,1974672173,,"6,624"
+BK-0020,23-Apr-2025,TDS Payable,Being payment to Gupta Brothers by 8826320735,Payment,8826320735,"469,922",
+BK-0020,23-Apr-2025,Bank A/c - SBI,Being payment to Gupta Brothers by 8826320735,Payment,8826320735,,"469,922"
+BK-0021,24-Apr-2025,Bank A/c - SBI,Being receipt from Om Traders via CHQ-490027,Receipt,CHQ-490027,"262,361",
+BK-0021,24-Apr-2025,Loan A/c,Being receipt from Om Traders via CHQ-490027,Receipt,CHQ-490027,,"262,361"
+BK-0022,26-Apr-2025,Bank A/c - SBI,Being receipt from Raj Distributors via 4996619563,Receipt,4996619563,"213,121",
+BK-0022,26-Apr-2025,Sales A/c,Being receipt from Raj Distributors via 4996619563,Receipt,4996619563,,"213,121"
+BK-0023,28-Apr-2025,Purchase A/c,Being payment to Patel Industries by CHQ-467561,Payment,CHQ-467561,"88,997",
+BK-0023,28-Apr-2025,Bank A/c - SBI,Being payment to Patel Industries by CHQ-467561,Payment,CHQ-467561,,"88,997"
+BK-0024,30-Apr-2025,Advance to Supplier,Being payment to Global Traders by 8762102480,Payment,8762102480,"360,581",
+BK-0024,30-Apr-2025,Bank A/c - SBI,Being payment to Global Traders by 8762102480,Payment,8762102480,,"360,581"
+BK-0025,01-May-2025,Bank A/c - SBI,Being receipt from Gupta Brothers via 6077141950,Receipt,6077141950,"71,003",
+BK-0025,01-May-2025,Loan A/c,Being receipt from Gupta Brothers via 6077141950,Receipt,6077141950,,"71,003"
+BK-0026,03-May-2025,Salary A/c,Being payment to Laxmi Exports by 3748849418,Payment,3748849418,"3,876",
+BK-0026,03-May-2025,Bank A/c - SBI,Being payment to Laxmi Exports by 3748849418,Payment,3748849418,,"3,876"
+BK-0027,06-May-2025,Bank A/c - SBI,Being receipt from Gupta Brothers via 8379085492,Receipt,8379085492,"271,419",
+BK-0027,06-May-2025,Interest Income,Being receipt from Gupta Brothers via 8379085492,Receipt,8379085492,,"271,419"
+BK-0028,08-May-2025,Advance to Supplier,Being payment to Patel Industries by 2403641416,Payment,2403641416,"46,554",
+BK-0028,08-May-2025,Bank A/c - SBI,Being payment to Patel Industries by 2403641416,Payment,2403641416,,"46,554"
+BK-0029,09-May-2025,Sundry Expenses,Being payment to Om Traders by CHQ-485426,Payment,CHQ-485426,"115,990",
+BK-0029,09-May-2025,Bank A/c - SBI,Being payment to Om Traders by CHQ-485426,Payment,CHQ-485426,,"115,990"
+BK-0030,09-May-2025,Purchase A/c,Being payment to Raj Distributors by 1011652671,Payment,1011652671,"390,007",
+BK-0030,09-May-2025,Bank A/c - SBI,Being payment to Raj Distributors by 1011652671,Payment,1011652671,,"390,007"
+BK-0031,10-May-2025,Bank A/c - SBI,Being receipt from Global Traders via 4353881968,Receipt,4353881968,"309,877",
+BK-0031,10-May-2025,Capital A/c,Being receipt from Global Traders via 4353881968,Receipt,4353881968,,"309,877"
+BK-0032,12-May-2025,Advance to Supplier,Being payment to Anand Electricals by 8532924756,Payment,8532924756,"1,073",
+BK-0032,12-May-2025,Bank A/c - SBI,Being payment to Anand Electricals by 8532924756,Payment,8532924756,,"1,073"
+BK-0033,12-May-2025,Sundry Expenses,Being payment to Singh Logistics by 2258551245,Payment,2258551245,"226,846",
+BK-0033,12-May-2025,Bank A/c - SBI,Being payment to Singh Logistics by 2258551245,Payment,2258551245,,"226,846"
+BK-0034,13-May-2025,Bank A/c - SBI,Being receipt from Global Traders via 6354547372,Receipt,6354547372,"161,196",
+BK-0034,13-May-2025,Interest Income,Being receipt from Global Traders via 6354547372,Receipt,6354547372,,"161,196"
+BK-0035,15-May-2025,TDS Payable,Being payment to Om Traders by CHQ-438290,Payment,CHQ-438290,"27,530",
+BK-0035,15-May-2025,Bank A/c - SBI,Being payment to Om Traders by CHQ-438290,Payment,CHQ-438290,,"27,530"
+BK-0036,17-May-2025,Bank A/c - SBI,Being receipt from Singh Logistics via CHQ-419887,Receipt,CHQ-419887,"290,625",
+BK-0036,17-May-2025,Capital A/c,Being receipt from Singh Logistics via CHQ-419887,Receipt,CHQ-419887,,"290,625"
+BK-0037,17-May-2025,Bank A/c - SBI,Being receipt from Bharat Stationery via 9176725448,Receipt,9176725448,"306,767",
+BK-0037,17-May-2025,Interest Income,Being receipt from Bharat Stationery via 9176725448,Receipt,9176725448,,"306,767"
+BK-0038,17-May-2025,Bank A/c - SBI,Being receipt from Singh Logistics via 6110045227,Receipt,6110045227,"462,336",
+BK-0038,17-May-2025,Loan A/c,Being receipt from Singh Logistics via 6110045227,Receipt,6110045227,,"462,336"
+BK-0039,19-May-2025,Bank A/c - SBI,Being receipt from Tech Solutions Pvt Ltd via 1212107589,Receipt,1212107589,"351,368",
+BK-0039,19-May-2025,Loan A/c,Being receipt from Tech Solutions Pvt Ltd via 1212107589,Receipt,1212107589,,"351,368"
+BK-0040,21-May-2025,Salary A/c,Being payment to National Agencies by 6915640336,Payment,6915640336,"2,578",
+BK-0040,21-May-2025,Bank A/c - SBI,Being payment to National Agencies by 6915640336,Payment,6915640336,,"2,578"
+BK-0041,23-May-2025,Bank A/c - SBI,Being receipt from Patel Industries via 7002178808,Receipt,7002178808,"5,170",
+BK-0041,23-May-2025,Debtors A/c,Being receipt from Patel Industries via 7002178808,Receipt,7002178808,,"5,170"
+BK-0042,24-May-2025,Sundry Expenses,Being payment to Sunrise Enterprises by 0212840677,Payment,0212840677,647,
+BK-0042,24-May-2025,Bank A/c - SBI,Being payment to Sunrise Enterprises by 0212840677,Payment,0212840677,,647
+BK-0043,24-May-2025,Creditors A/c,Being payment to Anand Electricals by 6192744441,Payment,6192744441,"4,421",
+BK-0043,24-May-2025,Bank A/c - SBI,Being payment to Anand Electricals by 6192744441,Payment,6192744441,,"4,421"
+BK-0044,24-May-2025,Bank A/c - SBI,Being receipt from Mehta Trading Co via 7495822594,Receipt,7495822594,"169,558",
+BK-0044,24-May-2025,Interest Income,Being receipt from Mehta Trading Co via 7495822594,Receipt,7495822594,,"169,558"
+BK-0045,26-May-2025,TDS Payable,Being payment to Tech Solutions Pvt Ltd by 3165270778,Payment,3165270778,"4,908",
+BK-0045,26-May-2025,Bank A/c - SBI,Being payment to Tech Solutions Pvt Ltd by 3165270778,Payment,3165270778,,"4,908"
+BK-0046,27-May-2025,Bank A/c - SBI,Being receipt from Raj Distributors via 5588454746,Receipt,5588454746,"172,588",
+BK-0046,27-May-2025,Debtors A/c,Being receipt from Raj Distributors via 5588454746,Receipt,5588454746,,"172,588"
+BK-0047,29-May-2025,Creditors A/c,Being payment to Mehta Trading Co by 3659684562,Payment,3659684562,"374,649",
+BK-0047,29-May-2025,Bank A/c - SBI,Being payment to Mehta Trading Co by 3659684562,Payment,3659684562,,"374,649"
+BK-0048,29-May-2025,Purchase A/c,Being payment to Raj Distributors by 1203034246,Payment,1203034246,"311,757",
+BK-0048,29-May-2025,Bank A/c - SBI,Being payment to Raj Distributors by 1203034246,Payment,1203034246,,"311,757"
+BK-0049,31-May-2025,Bank A/c - SBI,Being receipt from Laxmi Exports via 4255929625,Receipt,4255929625,"7,330",
+BK-0049,31-May-2025,Capital A/c,Being receipt from Laxmi Exports via 4255929625,Receipt,4255929625,,"7,330"
+BK-0050,03-Jun-2025,Salary A/c,Being payment to Raj Distributors by 5702711595,Payment,5702711595,"4,587",
+BK-0050,03-Jun-2025,Bank A/c - SBI,Being payment to Raj Distributors by 5702711595,Payment,5702711595,,"4,587"
+BK-0051,04-Jun-2025,Bank A/c - SBI,Being receipt from New India Corp via 8840726638,Receipt,8840726638,"11,890",
+BK-0051,04-Jun-2025,Sales A/c,Being receipt from New India Corp via 8840726638,Receipt,8840726638,,"11,890"
+BK-0052,05-Jun-2025,Advance to Supplier,Being payment to Global Traders by 7236364693,Payment,7236364693,"455,147",
+BK-0052,05-Jun-2025,Bank A/c - SBI,Being payment to Global Traders by 7236364693,Payment,7236364693,,"455,147"
+BK-0053,06-Jun-2025,Bank A/c - SBI,Being receipt from Kumar & Sons via 0091253396,Receipt,0091253396,"443,280",
+BK-0053,06-Jun-2025,Debtors A/c,Being receipt from Kumar & Sons via 0091253396,Receipt,0091253396,,"443,280"
+BK-0054,09-Jun-2025,Sundry Expenses,Being payment to Om Traders by 2690397285,Payment,2690397285,"167,637",
+BK-0054,09-Jun-2025,Bank A/c - SBI,Being payment to Om Traders by 2690397285,Payment,2690397285,,"167,637"
+BK-0055,11-Jun-2025,Salary A/c,Being payment to Tech Solutions Pvt Ltd by 8112160072,Payment,8112160072,"67,745",
+BK-0055,11-Jun-2025,Bank A/c - SBI,Being payment to Tech Solutions Pvt Ltd by 8112160072,Payment,8112160072,,"67,745"
+BK-0056,11-Jun-2025,Creditors A/c,Being payment to Sunrise Enterprises by 9006026539,Payment,9006026539,"2,265",
+BK-0056,11-Jun-2025,Bank A/c - SBI,Being payment to Sunrise Enterprises by 9006026539,Payment,9006026539,,"2,265"
+BK-0057,13-Jun-2025,Bank Charges A/c,Being payment to Raj Distributors by 6858484837,Payment,6858484837,"190,279",
+BK-0057,13-Jun-2025,Bank A/c - SBI,Being payment to Raj Distributors by 6858484837,Payment,6858484837,,"190,279"
+BK-0058,14-Jun-2025,Bank A/c - SBI,Being receipt from Om Traders via 8007855531,Receipt,8007855531,"434,706",
+BK-0058,14-Jun-2025,Debtors A/c,Being receipt from Om Traders via 8007855531,Receipt,8007855531,,"434,706"
+BK-0059,16-Jun-2025,Bank A/c - SBI,Being receipt from National Agencies via 1514835122,Receipt,1514835122,"306,452",
+BK-0059,16-Jun-2025,Capital A/c,Being receipt from National Agencies via 1514835122,Receipt,1514835122,,"306,452"
+BK-0060,18-Jun-2025,Bank A/c - SBI,Being receipt from New India Corp via 1733085416,Receipt,1733085416,"191,216",
+BK-0060,18-Jun-2025,Interest Income,Being receipt from New India Corp via 1733085416,Receipt,1733085416,,"191,216"
+BK-0061,25-Jun-2025,TDS Payable,Being payment to Global Traders by 3151593788,Payment,3151593788,"90,882",
+BK-0061,25-Jun-2025,Bank A/c - SBI,Being payment to Global Traders by 3151593788,Payment,3151593788,,"90,882"
+BK-0062,27-Jun-2025,Salary A/c,Being payment to Tech Solutions Pvt Ltd by 9645568693,Payment,9645568693,"38,802",
+BK-0062,27-Jun-2025,Bank A/c - SBI,Being payment to Tech Solutions Pvt Ltd by 9645568693,Payment,9645568693,,"38,802"
+BK-0063,30-Jun-2025,Bank A/c - SBI,Being receipt from Bharat Stationery via 3576006276,Receipt,3576006276,"1,111",
+BK-0063,30-Jun-2025,Debtors A/c,Being receipt from Bharat Stationery via 3576006276,Receipt,3576006276,,"1,111"
+BK-0064,30-Jun-2025,Bank A/c - SBI,Being receipt from New India Corp via 3312942108,Receipt,3312942108,"5,464",
+BK-0064,30-Jun-2025,Sales A/c,Being receipt from New India Corp via 3312942108,Receipt,3312942108,,"5,464"
+BK-0065,30-Jun-2025,Bank Charges A/c,Being payment to Gupta Brothers by CHQ-431348,Payment,CHQ-431348,"392,981",
+BK-0065,30-Jun-2025,Bank A/c - SBI,Being payment to Gupta Brothers by CHQ-431348,Payment,CHQ-431348,,"392,981"
+BK-0066,30-Jun-2025,Rent A/c,Being payment to New India Corp by 8399423598,Payment,8399423598,450,
+BK-0066,30-Jun-2025,Bank A/c - SBI,Being payment to New India Corp by 8399423598,Payment,8399423598,,450
+BK-0067,30-Jun-2025,Bank Charges A/c,Being payment to Tech Solutions Pvt Ltd by 9751014580,Payment,9751014580,"465,584",
+BK-0067,30-Jun-2025,Bank A/c - SBI,Being payment to Tech Solutions Pvt Ltd by 9751014580,Payment,9751014580,,"465,584"
+BK-0068,30-Jun-2025,Rent A/c,Being payment to Laxmi Exports by 0028575123,Payment,0028575123,"2,394",
+BK-0068,30-Jun-2025,Bank A/c - SBI,Being payment to Laxmi Exports by 0028575123,Payment,0028575123,,"2,394"
+BK-0069,30-Jun-2025,Capital A/c,Being payment to Om Traders by 3469207376,Payment,3469207376,840,
+BK-0069,30-Jun-2025,Bank A/c - SBI,Being payment to Om Traders by 3469207376,Payment,3469207376,,840
+BK-0070,30-Jun-2025,Bank A/c - SBI,Being receipt from Anand Electricals via 3840628062,Receipt,3840628062,"372,937",
+BK-0070,30-Jun-2025,Capital A/c,Being receipt from Anand Electricals via 3840628062,Receipt,3840628062,,"372,937"
+BK-0071,30-Jun-2025,Bank A/c - SBI,Being receipt from New India Corp via 4495870685,Receipt,4495870685,"156,715",
+BK-0071,30-Jun-2025,Interest Income,Being receipt from New India Corp via 4495870685,Receipt,4495870685,,"156,715"
+BK-0072,30-Jun-2025,Bank A/c - SBI,Being receipt from Patel Industries via CHQ-418714,Receipt,CHQ-418714,"341,308",
+BK-0072,30-Jun-2025,Loan A/c,Being receipt from Patel Industries via CHQ-418714,Receipt,CHQ-418714,,"341,308"
+BK-0073,30-Jun-2025,Bank A/c - SBI,Being receipt from Laxmi Exports via 9015917726,Receipt,9015917726,"65,706",
+BK-0073,30-Jun-2025,Interest Income,Being receipt from Laxmi Exports via 9015917726,Receipt,9015917726,,"65,706"
+BK-0074,30-Jun-2025,Bank A/c - SBI,Being receipt from Raj Distributors via 7243549180,Receipt,7243549180,"265,219",
+BK-0074,30-Jun-2025,Interest Income,Being receipt from Raj Distributors via 7243549180,Receipt,7243549180,,"265,219"
+BK-0075,30-Jun-2025,Bank A/c - SBI,Being receipt from Tech Solutions Pvt Ltd via CHQ-476106,Receipt,CHQ-476106,"322,289",
+BK-0075,30-Jun-2025,Loan A/c,Being receipt from Tech Solutions Pvt Ltd via CHQ-476106,Receipt,CHQ-476106,,"322,289"
+BK-0076,30-Jun-2025,Bank A/c - SBI,Being receipt from Global Traders via CHQ-482203,Receipt,CHQ-482203,"321,301",
+BK-0076,30-Jun-2025,Loan A/c,Being receipt from Global Traders via CHQ-482203,Receipt,CHQ-482203,,"321,301"
+BK-0077,30-Jun-2025,Bank A/c - SBI,Being receipt from Sunrise Enterprises via 9486200442,Receipt,9486200442,"368,429",
+BK-0077,30-Jun-2025,Debtors A/c,Being receipt from Sunrise Enterprises via 9486200442,Receipt,9486200442,,"368,429"
+BK-0078,30-Jun-2025,Bank A/c - SBI,Being receipt from Om Traders via CHQ-494519,Receipt,CHQ-494519,"407,672",
+BK-0078,30-Jun-2025,Capital A/c,Being receipt from Om Traders via CHQ-494519,Receipt,CHQ-494519,,"407,672"
+BK-0079,30-Jun-2025,Rent A/c,Being payment to Om Traders by 1948403425,Payment,1948403425,"146,445",
+BK-0079,30-Jun-2025,Bank A/c - SBI,Being payment to Om Traders by 1948403425,Payment,1948403425,,"146,445"
+BK-0080,30-Jun-2025,Bank A/c - SBI,Being receipt from Sunrise Enterprises via 8773451505,Receipt,8773451505,"1,465",
+BK-0080,30-Jun-2025,Interest Income,Being receipt from Sunrise Enterprises via 8773451505,Receipt,8773451505,,"1,465"
+BK-0081,30-Jun-2025,Bank A/c - SBI,Being receipt from Singh Logistics via 7397155013,Receipt,7397155013,"2,960",
+BK-0081,30-Jun-2025,Interest Income,Being receipt from Singh Logistics via 7397155013,Receipt,7397155013,,"2,960"
+BK-0082,30-Jun-2025,Bank A/c - SBI,Being receipt from Sunrise Enterprises via 3685554540,Receipt,3685554540,"293,933",
+BK-0082,30-Jun-2025,Interest Income,Being receipt from Sunrise Enterprises via 3685554540,Receipt,3685554540,,"293,933"
+BK-0083,30-Jun-2025,Bank A/c - SBI,Being receipt from Patel Industries via 4977575166,Receipt,4977575166,"20,627",
+BK-0083,30-Jun-2025,Sales A/c,Being receipt from Patel Industries via 4977575166,Receipt,4977575166,,"20,627"
+BK-0084,30-Jun-2025,Capital A/c,Being payment to Raj Distributors by 4442564877,Payment,4442564877,"265,111",
+BK-0084,30-Jun-2025,Bank A/c - SBI,Being payment to Raj Distributors by 4442564877,Payment,4442564877,,"265,111"
+BK-0085,30-Jun-2025,Creditors A/c,Being payment to Sunrise Enterprises by 5568682492,Payment,5568682492,"3,902",
+BK-0085,30-Jun-2025,Bank A/c - SBI,Being payment to Sunrise Enterprises by 5568682492,Payment,5568682492,,"3,902"
+BK-0086,30-Jun-2025,Salary A/c,Being payment to New India Corp by 7339721639,Payment,7339721639,"148,774",
+BK-0086,30-Jun-2025,Bank A/c - SBI,Being payment to New India Corp by 7339721639,Payment,7339721639,,"148,774"
+BK-0087,30-Jun-2025,Advance to Supplier,Being payment to National Agencies by 9672825217,Payment,9672825217,"320,783",
+BK-0087,30-Jun-2025,Bank A/c - SBI,Being payment to National Agencies by 9672825217,Payment,9672825217,,"320,783"
+BK-0088,30-Jun-2025,Bank A/c - SBI,Being receipt from Patel Industries via 4619916846,Receipt,4619916846,"324,719",
+BK-0088,30-Jun-2025,Interest Income,Being receipt from Patel Industries via 4619916846,Receipt,4619916846,,"324,719"
+BK-0089,30-Jun-2025,Salary A/c,Being payment to Om Traders by 7809489087,Payment,7809489087,"438,988",
+BK-0089,30-Jun-2025,Bank A/c - SBI,Being payment to Om Traders by 7809489087,Payment,7809489087,,"438,988"
+BK-0090,30-Jun-2025,Bank A/c - SBI,Being receipt from Tech Solutions Pvt Ltd via 9449379788,Receipt,9449379788,"265,126",
+BK-0090,30-Jun-2025,Sales A/c,Being receipt from Tech Solutions Pvt Ltd via 9449379788,Receipt,9449379788,,"265,126"
+BK-0091,30-Jun-2025,Bank A/c - SBI,Being receipt from Global Traders via 5055513512,Receipt,5055513512,"405,303",
+BK-0091,30-Jun-2025,Sales A/c,Being receipt from Global Traders via 5055513512,Receipt,5055513512,,"405,303"
+BK-0092,30-Jun-2025,Bank A/c - SBI,Being receipt from Bharat Stationery via 5563020204,Receipt,5563020204,"7,509",
+BK-0092,30-Jun-2025,Capital A/c,Being receipt from Bharat Stationery via 5563020204,Receipt,5563020204,,"7,509"
+BK-0093,30-Jun-2025,Bank Charges A/c,Being payment to Global Traders by 2116793849,Payment,2116793849,"4,398",
+BK-0093,30-Jun-2025,Bank A/c - SBI,Being payment to Global Traders by 2116793849,Payment,2116793849,,"4,398"
+BK-0094,30-Jun-2025,TDS Payable,Being payment to Laxmi Exports by 1557200265,Payment,1557200265,"233,010",
+BK-0094,30-Jun-2025,Bank A/c - SBI,Being payment to Laxmi Exports by 1557200265,Payment,1557200265,,"233,010"
+BK-0095,30-Jun-2025,Bank A/c - SBI,Being receipt from Anand Electricals via 8478021057,Receipt,8478021057,"222,287",
+BK-0095,30-Jun-2025,Interest Income,Being receipt from Anand Electricals via 8478021057,Receipt,8478021057,,"222,287"
+BK-0096,30-Jun-2025,Bank A/c - SBI,Being receipt from New India Corp via CHQ-496365,Receipt,CHQ-496365,"35,174",
+BK-0096,30-Jun-2025,Capital A/c,Being receipt from New India Corp via CHQ-496365,Receipt,CHQ-496365,,"35,174"
+BK-0097,18-Jun-2025,Creditors A/c,Being accrual for Sunrise Enterprises — cheque not yet presented,Journal,BK-MISS-001,"37,377",
+BK-0097,18-Jun-2025,Sundry Creditors,Being accrual for Sunrise Enterprises,Journal,BK-MISS-001,,"37,377"
+BK-0098,18-Apr-2025,Creditors A/c,Being accrual for Patel Industries — cheque not yet presented,Journal,BK-MISS-002,"52,652",
+BK-0098,18-Apr-2025,Sundry Creditors,Being accrual for Patel Industries,Journal,BK-MISS-002,,"52,652"
+BK-0099,13-May-2025,Creditors A/c,Being accrual for Patel Industries — cheque not yet presented,Journal,BK-MISS-003,"127,826",
+BK-0099,13-May-2025,Sundry Creditors,Being accrual for Patel Industries,Journal,BK-MISS-003,,"127,826"
+BK-0100,13-May-2025,Creditors A/c,Being accrual for Patel Industries — cheque not yet presented,Journal,BK-MISS-004,"71,631",
+BK-0100,13-May-2025,Sundry Creditors,Being accrual for Patel Industries,Journal,BK-MISS-004,,"71,631"
+BK-0101,23-Jun-2025,Creditors A/c,Being accrual for Bharat Stationery — cheque not yet presented,Journal,BK-MISS-005,"146,392",
+BK-0101,23-Jun-2025,Sundry Creditors,Being accrual for Bharat Stationery,Journal,BK-MISS-005,,"146,392"
+BK-0102,09-May-2025,Creditors A/c,Being accrual for Om Traders — cheque not yet presented,Journal,BK-MISS-006,"54,893",
+BK-0102,09-May-2025,Sundry Creditors,Being accrual for Om Traders,Journal,BK-MISS-006,,"54,893"
+BK-0103,26-Apr-2025,Creditors A/c,Being accrual for Bharat Stationery — cheque not yet presented,Journal,BK-MISS-007,"77,061",
+BK-0103,26-Apr-2025,Sundry Creditors,Being accrual for Bharat Stationery,Journal,BK-MISS-007,,"77,061"
+BK-0104,21-May-2025,Creditors A/c,Being accrual for Global Traders — cheque not yet presented,Journal,BK-MISS-008,"145,622",
+BK-0104,21-May-2025,Sundry Creditors,Being accrual for Global Traders,Journal,BK-MISS-008,,"145,622"
+BK-0105,28-Jun-2025,Creditors A/c,Being accrual for New India Corp — cheque not yet presented,Journal,BK-MISS-009,"98,606",
+BK-0105,28-Jun-2025,Sundry Creditors,Being accrual for New India Corp,Journal,BK-MISS-009,,"98,606"
+BK-0106,02-May-2025,Creditors A/c,Being accrual for Global Traders — cheque not yet presented,Journal,BK-MISS-010,"55,624",
+BK-0106,02-May-2025,Sundry Creditors,Being accrual for Global Traders,Journal,BK-MISS-010,,"55,624"
+BK-0107,21-May-2025,Creditors A/c,Being accrual for Gupta Brothers — cheque not yet presented,Journal,BK-MISS-011,"61,102",
+BK-0107,21-May-2025,Sundry Creditors,Being accrual for Gupta Brothers,Journal,BK-MISS-011,,"61,102"
+BK-0108,12-Jun-2025,Creditors A/c,Being accrual for Raj Distributors — cheque not yet presented,Journal,BK-MISS-012,"37,972",
+BK-0108,12-Jun-2025,Sundry Creditors,Being accrual for Raj Distributors,Journal,BK-MISS-012,,"37,972"
+BK-0109,24-Apr-2025,Creditors A/c,Being accrual for Raj Distributors — cheque not yet presented,Journal,BK-MISS-013,"105,440",
+BK-0109,24-Apr-2025,Sundry Creditors,Being accrual for Raj Distributors,Journal,BK-MISS-013,,"105,440"
+BK-0110,04-Apr-2025,Creditors A/c,Being accrual for Singh Logistics — cheque not yet presented,Journal,BK-MISS-014,"143,421",
+BK-0110,04-Apr-2025,Sundry Creditors,Being accrual for Singh Logistics,Journal,BK-MISS-014,,"143,421"
+BK-0111,30-Jun-2025,Creditors A/c,Being accrual for Laxmi Exports — cheque not yet presented,Journal,BK-MISS-015,"39,351",
+BK-0111,30-Jun-2025,Sundry Creditors,Being accrual for Laxmi Exports,Journal,BK-MISS-015,,"39,351"

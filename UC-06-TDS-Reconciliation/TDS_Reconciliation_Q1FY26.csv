@@ -1,0 +1,76 @@
+Sl No,Deductor Name,Deductor TAN,Section,Nature of Payment,Quarter,Certificate No,Date of Credit/Payment,Amount Paid/Credited (INR),TDS Rate (%),TDS Deducted (INR),TDS as per Books (INR),Difference (INR),26AS Status,Remarks
+1,Tech Mahindra,PUNE23456E,194H,Commission/Brokerage,Q2 FY2025-26,TDSC/27590,17-Jun-2025,"556,550",5,"27,828","27,828",0,Matched,
+2,Tech Mahindra,PUNE23456E,194J,Professional/Technical Services,Q4 FY2024-25,TDSC/19746,10-Jun-2025,"262,418",10,"26,242","26,242",0,Matched,
+3,Mahindra Ltd,MUMB45678O,194J,Professional/Technical Services,Q4 FY2024-25,TDSC/69777,11-Apr-2025,"945,293",10,"94,529","94,529",0,Matched,
+4,ICICI Bank,MUMB12345L,194J,Professional/Technical Services,Q2 FY2025-26,TDSC/19248,20-Jun-2025,"735,348",10,"73,535","73,535",0,Not in 26AS,Not reflecting in 26AS — deductor may not have filed
+5,ICICI Bank,MUMB12345L,194D,Insurance Commission,Q2 FY2025-26,TDSC/58777,12-Jun-2025,"660,745",5,"33,037","33,037",0,Matched,
+6,Reliance Retail,MUMB90123J,194J,Professional/Technical Services,Q4 FY2024-25,TDSC/30118,11-May-2025,"992,525",10,"99,252","99,252",0,Matched,
+7,Infosys Ltd,BLRI12345A,194B,Lottery Winnings,Q2 FY2025-26,TDSC/20161,05-May-2025,"133,375",30,"40,012","40,012",0,Matched,
+8,Flipkart India,BANG89012I,194A,Interest,Q1 FY2025-26,TDSC/53169,21-Jun-2025,"98,084",10,"9,808","7,847","1,961",Amount Mismatch,Rate applied 8% vs correct 10%
+9,Bajaj Finance,PUNE23456M,194I,Rent,Q2 FY2025-26,TDSC/39591,06-May-2025,"19,765",10,"1,976","1,976",0,Matched,
+10,HCL Tech,NOID34567D,194A,Interest,Q1 FY2025-26,TDSC/26187,23-Apr-2025,"531,211",10,"53,121","42,497","10,624",Amount Mismatch,Rate applied 8% vs correct 10%
+11,Reliance Retail,MUMB90123J,194H,Commission/Brokerage,Q4 FY2024-25,TDSC/22522,07-Jun-2025,"355,411",5,"17,771","17,771",0,Matched,
+12,Tech Mahindra,PUNE23456E,194B,Lottery Winnings,Q3 FY2025-26,TDSC/89621,13-Apr-2025,"897,605",30,"269,282","269,282",0,Matched,
+13,Bajaj Finance,PUNE23456M,194A,Interest,Q2 FY2025-26,TDSC/55242,26-Jun-2025,"968,320",10,"96,832","96,832",0,Matched,
+14,Reliance Retail,MUMB90123J,194H,Commission/Brokerage,Q4 FY2024-25,TDSC/72503,15-Jun-2025,"136,296",5,"6,815","6,815",0,Matched,
+15,Flipkart India,BANG89012I,194D,Insurance Commission,Q2 FY2025-26,TDSC/96188,17-Apr-2025,"151,243",5,"7,562","7,562",0,Matched,
+16,Tech Mahindra,PUNE23456E,194C,Contractor Payment,Q3 FY2025-26,TDSC/42651,26-Jun-2025,"612,616",1,"6,126","6,126",0,Matched,
+17,Wipro Ltd,BANG45678C,194A,Interest,Q3 FY2025-26,TDSC/71428,04-Jun-2025,"293,951",10,"29,395","29,395",0,Not in 26AS,Not reflecting in 26AS — deductor may not have filed
+18,Flipkart India,BANG89012I,194D,Insurance Commission,Q2 FY2025-26,TDSC/50001,21-Jun-2025,"859,342",5,"42,967","42,967",0,Not in 26AS,Not reflecting in 26AS — deductor may not have filed
+19,Microsoft India,HYDB67890G,194H,Commission/Brokerage,Q3 FY2025-26,TDSC/21814,21-Jun-2025,"88,680",5,"4,434","4,434",0,Matched,
+20,TCS Ltd,MUMB98765B,194J,Professional/Technical Services,Q1 FY2025-26,TDSC/21086,07-May-2025,"558,618",10,"55,862","55,862",0,Matched,
+21,L&T Ltd,MUMB34567N,194C,Contractor Payment,Q4 FY2024-25,TDSC/98740,05-Jun-2025,"933,117",1,"9,331","9,331",0,Matched,
+22,Amazon India,BANG78901H,194B,Lottery Winnings,Q1 FY2025-26,TDSC/63145,02-Apr-2025,"620,124",30,"186,037","173,635","12,402",Amount Mismatch,Rate applied 28% vs correct 30%
+23,ICICI Bank,MUMB12345L,194C,Contractor Payment,Q4 FY2024-25,TDSC/80035,15-May-2025,"251,784",1,"2,518","2,518",0,Matched,
+24,Mahindra Ltd,MUMB45678O,194H,Commission/Brokerage,Q1 FY2025-26,TDSC/89609,28-May-2025,"965,001",5,"48,250","48,250",0,Matched,
+25,Mahindra Ltd,MUMB45678O,194H,Commission/Brokerage,Q2 FY2025-26,TDSC/32913,10-Apr-2025,"373,380",5,"18,669","18,669",0,Matched,
+26,Oracle India,BANG56789F,194C,Contractor Payment,Q4 FY2024-25,TDSC/74947,19-May-2025,"178,779",1,"1,788","1,788",0,Not in 26AS,Not reflecting in 26AS — deductor may not have filed
+27,Oracle India,BANG56789F,194D,Insurance Commission,Q2 FY2025-26,TDSC/80663,16-Apr-2025,"297,164",5,"14,858","14,858",0,Matched,
+28,Tech Mahindra,PUNE23456E,194J,Professional/Technical Services,Q1 FY2025-26,TDSC/92729,12-Jun-2025,"399,685",10,"39,968","31,975","7,993",Amount Mismatch,Rate applied 8% vs correct 10%
+29,Mahindra Ltd,MUMB45678O,194D,Insurance Commission,Q1 FY2025-26,TDSC/70693,19-Jun-2025,"849,868",5,"42,493","42,493",0,Matched,
+30,Infosys Ltd,BLRI12345A,194B,Lottery Winnings,Q4 FY2024-25,TDSC/53063,09-May-2025,"360,354",30,"108,106","108,106",0,Matched,
+31,Mahindra Ltd,MUMB45678O,194D,Insurance Commission,Q2 FY2025-26,TDSC/62699,16-May-2025,"18,775",5,939,939,0,Matched,
+32,HCL Tech,NOID34567D,194C,Contractor Payment,Q2 FY2025-26,TDSC/63833,16-Apr-2025,"913,978",1,"9,140","9,140",0,Matched,
+33,Bajaj Finance,PUNE23456M,194D,Insurance Commission,Q3 FY2025-26,TDSC/39634,31-May-2025,"401,405",5,"20,070","20,070",0,Matched,
+34,Microsoft India,HYDB67890G,194J,Professional/Technical Services,Q3 FY2025-26,TDSC/24246,27-May-2025,"659,717",10,"65,972","65,972",0,Matched,
+35,Wipro Ltd,BANG45678C,194I,Rent,Q4 FY2024-25,TDSC/10761,16-May-2025,"884,741",10,"88,474","88,474",0,Matched,
+36,TCS Ltd,MUMB98765B,194J,Professional/Technical Services,Q3 FY2025-26,TDSC/15276,18-Apr-2025,"400,601",10,"40,060","40,060",0,Matched,
+37,Mahindra Ltd,MUMB45678O,194C,Contractor Payment,Q2 FY2025-26,TDSC/97320,26-Apr-2025,"948,892",1,"9,489","9,489",0,Not in 26AS,Not reflecting in 26AS — deductor may not have filed
+38,Tech Mahindra,PUNE23456E,194C,Contractor Payment,Q4 FY2024-25,TDSC/74103,10-Jun-2025,"500,612",1,"5,006","5,006",0,Matched,
+39,Wipro Ltd,BANG45678C,194I,Rent,Q4 FY2024-25,TDSC/75779,20-May-2025,"140,103",10,"14,010","14,010",0,Not in 26AS,Not reflecting in 26AS — deductor may not have filed
+40,Bajaj Finance,PUNE23456M,194C,Contractor Payment,Q2 FY2025-26,TDSC/30387,15-May-2025,"505,001",1,"5,050","5,050",0,Matched,
+41,HCL Tech,NOID34567D,194C,Contractor Payment,Q3 FY2025-26,TDSC/66317,16-Jun-2025,"740,057",1,"7,401","7,401",0,Matched,
+42,Tech Mahindra,PUNE23456E,194I,Rent,Q4 FY2024-25,TDSC/20828,25-May-2025,"255,270",10,"25,527","25,527",0,Matched,
+43,Flipkart India,BANG89012I,194J,Professional/Technical Services,Q2 FY2025-26,TDSC/46849,15-Apr-2025,"865,525",10,"86,552","86,552",0,Not in 26AS,Not reflecting in 26AS — deductor may not have filed
+44,HCL Tech,NOID34567D,194D,Insurance Commission,Q4 FY2024-25,TDSC/36006,31-May-2025,"709,396",5,"35,470","35,470",0,Matched,
+45,ICICI Bank,MUMB12345L,194D,Insurance Commission,Q2 FY2025-26,TDSC/34729,15-Jun-2025,"632,619",5,"31,631","31,631",0,Matched,
+46,TCS Ltd,MUMB98765B,194J,Professional/Technical Services,Q4 FY2024-25,TDSC/15028,06-May-2025,"990,495",10,"99,050","99,050",0,Not in 26AS,Not reflecting in 26AS — deductor may not have filed
+47,Microsoft India,HYDB67890G,194C,Contractor Payment,Q2 FY2025-26,TDSC/21919,07-Apr-2025,"386,549",1,"3,865","3,865",0,Matched,
+48,ICICI Bank,MUMB12345L,194D,Insurance Commission,Q2 FY2025-26,TDSC/39068,14-May-2025,"431,815",5,"21,591","21,591",0,Matched,
+49,Microsoft India,HYDB67890G,194D,Insurance Commission,Q1 FY2025-26,TDSC/49883,15-Apr-2025,"276,554",5,"13,828","13,828",0,Matched,
+50,Oracle India,BANG56789F,194D,Insurance Commission,Q4 FY2024-25,TDSC/42370,11-May-2025,"896,155",5,"44,808","44,808",0,Matched,
+51,Infosys Ltd,BLRI12345A,194C,Contractor Payment,Q3 FY2025-26,TDSC/37784,07-May-2025,"477,338",1,"4,773","-4,773","9,546",Amount Mismatch,Rate applied -1% vs correct 1%
+52,TCS Ltd,MUMB98765B,194A,Interest,Q2 FY2025-26,TDSC/43064,02-Jun-2025,"369,945",10,"36,994","36,994",0,Matched,
+53,TCS Ltd,MUMB98765B,194D,Insurance Commission,Q1 FY2025-26,TDSC/99517,10-Jun-2025,"772,759",5,"38,638","38,638",0,Matched,
+54,Oracle India,BANG56789F,194D,Insurance Commission,Q3 FY2025-26,TDSC/87189,07-Jun-2025,"608,667",5,"30,433","30,433",0,Matched,
+55,Tech Mahindra,PUNE23456E,194J,Professional/Technical Services,Q4 FY2024-25,TDSC/21433,14-Apr-2025,"139,181",10,"13,918","13,918",0,Matched,
+56,TCS Ltd,MUMB98765B,194C,Contractor Payment,Q2 FY2025-26,TDSC/35287,30-Jun-2025,"451,312",1,"4,513","4,513",0,Matched,
+57,Flipkart India,BANG89012I,194B,Lottery Winnings,Q3 FY2025-26,TDSC/49515,31-May-2025,"989,748",30,"296,924","296,924",0,Matched,
+58,ICICI Bank,MUMB12345L,194J,Professional/Technical Services,Q1 FY2025-26,TDSC/26755,25-Apr-2025,"424,030",10,"42,403","42,403",0,Matched,
+59,Mahindra Ltd,MUMB45678O,194H,Commission/Brokerage,Q3 FY2025-26,TDSC/57973,28-May-2025,"633,566",5,"31,678","31,678",0,Matched,
+60,Microsoft India,HYDB67890G,194C,Contractor Payment,Q4 FY2024-25,TDSC/64919,07-Jun-2025,"932,019",1,"9,320","9,320",0,Matched,
+61,Infosys Ltd,BLRI12345A,194J,Professional/Technical Services,Q3 FY2025-26,TDSC/26899,08-May-2025,"54,991",10,"5,499","5,499",0,Matched,
+62,Bajaj Finance,PUNE23456M,194D,Insurance Commission,Q2 FY2025-26,TDSC/62100,03-Jun-2025,"687,847",5,"34,392","20,635","13,757",Amount Mismatch,Rate applied 3% vs correct 5%
+63,TCS Ltd,MUMB98765B,194J,Professional/Technical Services,Q4 FY2024-25,TDSC/76752,20-May-2025,"566,874",10,"56,687","56,687",0,Matched,
+64,Reliance Retail,MUMB90123J,194I,Rent,Q2 FY2025-26,TDSC/34125,01-Apr-2025,"168,403",10,"16,840","16,840",0,Matched,
+65,ICICI Bank,MUMB12345L,194C,Contractor Payment,Q4 FY2024-25,TDSC/76036,30-Jun-2025,"723,373",1,"7,234","7,234",0,Matched,
+66,L&T Ltd,MUMB34567N,194J,Professional/Technical Services,Q3 FY2025-26,TDSC/45194,10-Jun-2025,"127,912",10,"12,791","12,791",0,Matched,
+67,Flipkart India,BANG89012I,194J,Professional/Technical Services,Q3 FY2025-26,TDSC/15123,21-Jun-2025,"156,658",10,"15,666","12,533","3,133",Amount Mismatch,Rate applied 8% vs correct 10%
+68,Mahindra Ltd,MUMB45678O,194J,Professional/Technical Services,Q3 FY2025-26,TDSC/16752,22-Jun-2025,"980,223",10,"98,022","98,022",0,Not in 26AS,Not reflecting in 26AS — deductor may not have filed
+69,HCL Tech,NOID34567D,194B,Lottery Winnings,Q1 FY2025-26,TDSC/10183,23-Jun-2025,"353,987",30,"106,196","106,196",0,Matched,
+70,Oracle India,BANG56789F,194I,Rent,Q1 FY2025-26,TDSC/81994,04-May-2025,"724,859",10,"72,486","72,486",0,Matched,
+71,Reliance Retail,MUMB90123J,194I,Rent,Q3 FY2025-26,TDSC/17505,20-Jun-2025,"817,763",10,"81,776","81,776",0,Matched,
+72,HCL Tech,NOID34567D,194D,Insurance Commission,Q3 FY2025-26,TDSC/33165,03-May-2025,"971,889",5,"48,594","48,594",0,Matched,
+73,L&T Ltd,MUMB34567N,194H,Commission/Brokerage,Q1 FY2025-26,TDSC/60067,23-Jun-2025,"264,772",5,"13,239","13,239",0,Matched,
+74,Reliance Retail,MUMB90123J,194B,Lottery Winnings,Q2 FY2025-26,TDSC/67958,29-Apr-2025,"331,020",30,"99,306","99,306",0,Matched,
+75,HDFC Bank,MUMB01234K,194H,Commission/Brokerage,Q4 FY2024-25,TDSC/30400,28-May-2025,"239,406",5,"11,970","11,970",0,Matched,

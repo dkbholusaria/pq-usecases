@@ -1,0 +1,91 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║  UC-06  TDS RECONCILIATION — 26AS vs BOOKS                                 ║
+║  Power Query Workshop  |  CA Deepak Bholusaria                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+OBJECTIVE
+─────────
+Reconcile TDS as per books against 26AS — flag mismatches, identify entries
+not in 26AS, and build a section-wise TDS summary.
+
+FILES IN THIS FOLDER
+────────────────────
+  TDS_Reconciliation_Q1FY26.csv   —  75 rows across multiple quarters
+
+─────────────────────────────────────────────────────────────────────────────
+STEP-BY-STEP INSTRUCTIONS
+─────────────────────────────────────────────────────────────────────────────
+
+PART A — Load the File
+────────────────────────
+  1. In Excel: DATA tab → Get Data → From File → From Text/CSV
+  2. Browse to TDS_Reconciliation_Q1FY26.csv → Import → Transform Data
+  3. Rename the query to: TDS_Recon
+
+PART B — Fix Data Types
+─────────────────────────
+  4. Hold Ctrl and select:
+     Amount Paid/Credited (INR), TDS Deducted (INR), TDS as per Books (INR),
+     Difference (INR)
+     Right-click → Change Type → Decimal Number
+  5. Select TDS Rate (%) column → Right-click → Change Type → Decimal Number
+  6. Select Date of Credit/Payment column → Home tab → Data Type → Date
+
+PART C — Add Absolute Difference Column
+────────────────────────────────────────
+  7. Add Column tab → Custom Column
+     Name: Difference (Abs)
+     Formula: = Number.Abs([#"Difference (INR)"])
+     Click OK
+     Right-click the new column → Change Type → Decimal Number
+
+PART D — Add Action Column
+───────────────────────────
+  8. Add Column tab → Conditional Column
+     Name: Action Required
+     Condition 1: If  26AS Status  equals  Matched  Then  No Action
+     Click Add Clause
+     Condition 2: If  26AS Status  equals  Not in 26AS  Then  Follow up with deductor
+     Click Add Clause
+     Condition 3: If  26AS Status  equals  Amount Mismatch  Then  Verify TDS rate
+     Else: Pending — recheck next month
+     Click OK
+
+PART E — Exception Report (non-matched rows only)
+───────────────────────────────────────────────────
+  9. Right-click TDS_Recon in the left panel → Reference
+
+      ℹ  Reference creates a LIVE link to the base query — any cleanup
+         you do on the base automatically applies here too.
+         (Duplicate would create a static copy with no link to the source)
+     Rename to: TDS_Exceptions
+  10. Click dropdown on 26AS Status column
+      Uncheck Matched → click OK
+      Only mismatches, pending, and not-in-26AS rows remain
+  11. Click Difference (Abs) column header
+      Home tab → Sort Descending
+      Highest value mismatches appear first — these are priority items
+
+PART F — Section-wise TDS Summary
+────────────────────────────────────
+  12. Right-click TDS_Recon → Reference → Rename to: Section_Summary
+  13. Home tab → Group By → click Advanced
+      Group by: Section
+      Click Add Grouping → Nature of Payment
+      Aggregations:
+        Amount Paid Total   |  Sum  |  Amount Paid/Credited (INR)
+        TDS Deducted Total  |  Sum  |  TDS Deducted (INR)
+        TDS per Books Total |  Sum  |  TDS as per Books (INR)
+        Total Difference    |  Sum  |  Difference (INR)
+      Click OK
+
+PART G — Load All
+───────────────────
+  14. Home tab → Close & Load → Close & Load To
+      Load TDS_Recon, TDS_Exceptions, Section_Summary each to separate worksheets
+
+KEY LEARNING
+────────────
+  ✔  Number.Abs() in Custom Column — useful for sorting by magnitude of difference
+  ✔  Conditional Column with multiple clauses handles complex business rules cleanly
+  ✔  Exception Report pattern (filter + sort by amount) is your audit priority list

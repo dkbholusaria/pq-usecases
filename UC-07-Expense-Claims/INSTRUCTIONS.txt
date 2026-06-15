@@ -1,0 +1,102 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║  UC-07  EXPENSE CLAIMS ANALYSIS                                             ║
+║  Power Query Workshop  |  CA Deepak Bholusaria                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+OBJECTIVE
+─────────
+Analyse 120 employee expense claims — department spend, rejection patterns,
+policy breaches, and pending approval list — with full drill-down capability.
+
+FILES IN THIS FOLDER
+────────────────────
+  Expense_Claims_Q1FY26.csv   —  120 claims across Q1 FY 2025-26
+
+─────────────────────────────────────────────────────────────────────────────
+STEP-BY-STEP INSTRUCTIONS
+─────────────────────────────────────────────────────────────────────────────
+
+PART A — Load the File
+────────────────────────
+  1. In Excel: DATA tab → Get Data → From File → From Text/CSV
+  2. Browse to Expense_Claims_Q1FY26.csv → Import → Transform Data
+  3. Rename the query to: ExpenseClaims
+
+PART B — Fix Data Types
+─────────────────────────
+  4. Select Claim Date column → Home tab → Data Type → Date
+  5. Select Expense Date column → Home tab → Data Type → Date
+  6. Select Amount Claimed (INR) column → Right-click → Change Type → Decimal Number
+  7. Select Bill Amount (INR) column → Right-click → Change Type → Decimal Number
+  8. Note: Approved Amount (INR) column has blanks for Rejected/Pending rows.
+     Leave it as Text for now — we will handle it in the next step.
+
+PART C — Handle Nulls in Approved Amount
+──────────────────────────────────────────
+  9. Select Approved Amount (INR) column
+     Transform tab → Replace Values
+     Value to Find: leave blank (empty)
+     Replace With: 0
+     Click OK
+  10. Now right-click Approved Amount (INR) → Change Type → Decimal Number
+
+PART D — Add Variance Column
+──────────────────────────────
+  11. Add Column tab → Custom Column
+      Name: Variance
+      Formula: = [#"Amount Claimed (INR)"] - [#"Approved Amount (INR)"]
+      Click OK
+      Right-click Variance → Change Type → Decimal Number
+
+PART E — Flag Policy Breaches
+───────────────────────────────
+  12. Add Column tab → Conditional Column
+      Name: Approval Outcome
+      Condition 1: If  Status  equals  Rejected  Then  Rejected
+      Click Add Clause
+      Condition 2: If  Variance  is greater than  0  Then  Partial Approval
+      Else: Full Approval
+      Click OK
+
+PART F — Department Spend Summary
+────────────────────────────────────
+  13. Right-click ExpenseClaims → Reference → Rename to: Dept_Summary
+  14. Home tab → Group By → click Advanced
+      Group by: Department
+      Click Add Grouping → Status
+      Aggregations:
+        Total Claimed    |  Sum  |  Amount Claimed (INR)
+        Total Approved   |  Sum  |  Approved Amount (INR)
+        Claim Count      |  Count Rows
+      Click OK
+
+PART G — Rejection Analysis
+─────────────────────────────
+  15. Right-click ExpenseClaims → Reference → Rename to: Rejection_Analysis
+  16. Click dropdown on Status column → check only Rejected → OK
+  17. Home tab → Group By
+      Group by: Rejection Reason
+      Aggregations:
+        Count  |  Count Rows
+        Amount |  Sum  |  Amount Claimed (INR)
+      Click OK
+      → See which rejection reason is most common
+
+PART H — Pending Approvals List
+─────────────────────────────────
+  18. Right-click ExpenseClaims → Reference → Rename to: Pending_Approvals
+  19. Click dropdown on Status → check only Pending → OK
+  20. Keep columns: Claim ID, Employee Name, Department, Claim Date,
+      Expense Category, Amount Claimed (INR)
+      Select these → right-click → Remove Other Columns
+
+PART I — Load All
+───────────────────
+  21. Home tab → Close & Load → Close & Load To
+      Load each query to a separate Table on a New worksheet
+
+KEY LEARNING
+────────────
+  ✔  Replace Values handles blanks before type conversion — always do this first
+  ✔  Reference Query + Filter = instant drill-down reports — all linked to one source load
+  ✔  Rejection Analysis pattern reveals process improvement opportunities

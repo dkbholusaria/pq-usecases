@@ -1,0 +1,171 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║  UC-10  MULTI-YEAR ORDER CONSOLIDATION                                      ║
+║  Power Query Workshop  |  CA Deepak Bholusaria                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+OBJECTIVE
+─────────
+Combine 4 years of order data from Excel files with INCONSISTENT sheet names,
+fix dirty data in a numeric column, split a compound field, and build a
+year-over-year performance summary.
+
+FILES IN THIS FOLDER
+────────────────────
+  2017 Order Data.xlsx   —  ~814 orders  (sheet name inside the file: "2017")
+  2018 Order Data.xlsx   —  ~859 orders  (sheet name: "Order Data")
+  2019 Order Data.xlsx   —  ~853 orders  (sheet name: "Order Data")
+  2020 Order Data.xlsx   —  ~716 orders  (sheet name: "Order Data") — partial year
+
+⚠  IMPORTANT: Do NOT use Combine & Transform here.
+   The sheet names are inconsistent across files — Combine & Transform
+   will lock onto sheet "2017" from the first file and fail on the other three.
+   Follow the steps below instead.
+
+─────────────────────────────────────────────────────────────────────────────
+STEP-BY-STEP INSTRUCTIONS
+─────────────────────────────────────────────────────────────────────────────
+
+PART A — Load the Folder
+──────────────────────────
+  1. In Excel: DATA tab → Get Data → From File → From Folder
+  2. Browse to this folder (UC-10-Multi-Year-Order-Analysis) → click OK
+  3. A preview window shows all 4 Excel files listed
+  4. Click Transform Data (NOT Combine — very important)
+  5. Power Query Editor opens with 4 rows — one per file
+  6. Rename the query to: OrderData
+
+PART B — Remove Unnecessary Columns
+──────────────────────────────────────
+  7. Right-click the Content column header → select Remove Other Columns
+     Wait — we need Name too. Instead:
+     Hold Ctrl → click Content column AND Name column to select both
+     Right-click → Remove Other Columns
+     You now have only 2 columns: Content and Name
+
+PART C — Open Each File as an Excel Workbook
+──────────────────────────────────────────────
+  8. Add Column tab → Custom Column
+     Name: Workbook
+     Formula: = Excel.Workbook([Content], true)
+     Click OK
+     (Note: you must type this formula — the Available Columns panel
+      only inserts column references, not function calls)
+
+PART D — Expand the Workbook Column
+─────────────────────────────────────
+  9. Click the expand icon (two arrows) on the Workbook column header
+     In the dropdown, leave ALL columns checked → click OK
+     You now see columns: Workbook.Name, Workbook.Data, Workbook.Item,
+                          Workbook.Kind, Workbook.Hidden
+  10. You may see more than 4 rows — some files have named ranges too
+
+PART E — Filter to Sheets Only  *** KEY STEP ***
+──────────────────────────────────────────────────
+  11. Click the dropdown arrow on the Workbook.Kind column header
+      Uncheck everything EXCEPT Sheet → click OK
+      You now have exactly 4 rows — one per file
+      This step works regardless of what the sheet is named
+
+PART F — Remove Helper Columns
+────────────────────────────────
+  12. Hold Ctrl and click to select: Content, Workbook.Name,
+      Workbook.Item, Workbook.Kind, Workbook.Hidden
+      Right-click → Remove Columns
+      You should now have only: Name and Workbook.Data
+
+PART G — Extract Year from Filename
+─────────────────────────────────────
+  13. Select the Name column
+      Add Column tab → Extract → First Characters
+      Count: 4 → click OK
+      A new column appears with: 2017, 2018, 2019, 2020
+  14. Rename the new column: double-click its header → type Year → Enter
+
+PART H — Expand the Data
+──────────────────────────
+  15. Click the expand icon on the Workbook.Data column header
+      Uncheck "Use original column name as prefix"
+      Leave all columns checked → click OK
+      All ~3,200 rows from all 4 years now appear in one table
+
+PART I — Fix Data Types
+─────────────────────────
+  16. Home tab → Data Type on each column:
+      Order Date → Date
+      Ship Date  → Date  (2020 rows will show null — that is correct, Open orders)
+      Revenue    → Decimal Number
+      Cost       → Decimal Number
+      Cookies Shipped → Whole Number
+  17. When you change Revenue to Decimal Number, some rows in 2017
+      will show an error (the "mn" value in the data)
+      Click the word Error in any error cell to see what happened
+
+PART J — Fix the Dirty Revenue Data
+──────────────────────────────────────
+  18. Select the Revenue column
+      Transform tab → Replace Errors
+      Value: 0
+      Click OK
+      The errors are now replaced with 0
+
+PART K — Split Customer ID
+────────────────────────────
+  19. Select the Customer ID column
+      Home tab → Split Column → By Delimiter
+      In the dialog:
+        Delimiter: Custom → type  -  (space hyphen space)
+        Split at: Left-most delimiter
+        Click OK
+      Two columns appear: Customer ID.1 and Customer ID.2
+  20. Rename Customer ID.1 → Customer Code
+      Rename Customer ID.2 → Customer Name
+
+PART L — Add Derived Columns
+──────────────────────────────
+  21. Add Column tab → Custom Column
+      Name: Profit
+      Formula: = [Revenue] - [Cost]
+      Click OK → Change Type → Decimal Number
+
+  22. Add Column tab → Custom Column
+      Name: Margin %
+      Formula: = if [Revenue] = 0 then 0 else [Profit] / [Revenue]
+      Click OK → Change Type → Decimal Number
+
+  23. Add Column tab → Custom Column
+      Name: Fulfilment Days
+      Formula: = Duration.Days([Ship Date] - [Order Date])
+      Click OK → Change Type → Whole Number
+      (Rows where Ship Date is null will show null — correct for Open orders)
+
+PART M — Year-over-Year Summary
+─────────────────────────────────
+  24. Right-click OrderData → Reference → Rename to: YoY_Summary
+  25. Home tab → Group By
+      Group by: Year
+      Aggregations:
+        Total Orders    |  Count Rows
+        Total Revenue   |  Sum  |  Revenue
+        Total Cost      |  Sum  |  Cost
+        Total Profit    |  Sum  |  Profit
+      Click OK
+  26. Click Year column → Home tab → Sort Ascending
+
+PART N — Load All
+───────────────────
+  27. Home tab → Close & Load → Close & Load To
+      Load OrderData and YoY_Summary each to a new worksheet
+
+NOTE — Power BI Users
+──────────────────────
+  All steps above work identically in Power BI Desktop (free download from
+  microsoft.com). No Excel license required. The Get Data → Folder option
+  and all M functions are the same in both tools.
+
+KEY LEARNING
+────────────
+  ✔  Filter Kind = Sheet sidesteps sheet name inconsistency entirely
+  ✔  Excel.Workbook() is a function — must be typed, not just inserted
+  ✔  Replace Errors after type change = standard dirty data handling pattern
+  ✔  Duration.Days() handles date arithmetic; nulls flow through gracefully
+  ✔  Never use Combine & Transform when files have different sheet names

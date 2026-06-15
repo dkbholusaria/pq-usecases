@@ -1,0 +1,83 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║  UC-02  MULTI-FILE CONSOLIDATION                                            ║
+║  Power Query Workshop  |  CA Deepak Bholusaria                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+OBJECTIVE
+─────────
+Combine 3 monthly sales CSV files into one clean table automatically.
+Adding a new month file later requires zero manual work — just Refresh.
+
+FILES IN THIS FOLDER
+────────────────────
+  Sales_Apr2025.csv   —  100 invoices, April 2025
+  Sales_May2025.csv   —  100 invoices, May 2025
+  Sales_Jun2025.csv   —  100 invoices, June 2025
+
+─────────────────────────────────────────────────────────────────────────────
+STEP-BY-STEP INSTRUCTIONS
+─────────────────────────────────────────────────────────────────────────────
+
+PART A — Load the Folder
+──────────────────────────
+  1. In Excel: click the DATA tab on the ribbon
+  2. Click Get Data → From File → From Folder
+  3. Browse to this folder (UC-02-Multi-File-Consolidation) → click OK
+  4. A preview shows all 3 CSV files listed
+  5. Click Combine → Combine & Transform Data
+     (This works here because all 3 files have identical column structure)
+  6. A "Combine Files" dialog opens — it shows a preview of the first file
+     Leave all settings as default → click OK
+  7. Power Query Editor opens with all 3 files already combined (~300 rows)
+
+PART B — Review the Auto-Created Queries
+──────────────────────────────────────────
+  8. Look at the left panel — you will see multiple queries:
+     • Transform Sample File — Power Query's template query
+     • Sales_Apr2025.csv — individual file query (helper)
+     • Sales_May2025.csv — individual file query (helper)
+     • Sales_Jun2025.csv — individual file query (helper)
+     • The main query (your combined table) — at the top
+  9. Click the main combined query in the left panel
+  10. You will see a column called Source.Name — this shows which file
+      each row came from
+
+PART C — Clean Up
+───────────────────
+  11. Right-click the Source.Name column header → Rename
+      Type: Source File → press Enter
+  12. Select Invoice Date column
+      Home tab → Data Type → Date
+  13. Hold Ctrl and select these columns:
+      Unit Price (INR), Net Amount (INR), GST Amount (INR), Total Invoice Value (INR)
+      Right-click → Change Type → Decimal Number
+  14. Select Quantity column
+      Right-click → Change Type → Whole Number
+  15. Select GST Rate (%) column
+      Right-click → Change Type → Whole Number
+
+PART D — Add a Month Column
+─────────────────────────────
+  16. Add Column tab → Custom Column
+      Name: Month
+      Formula: = Date.ToText([Invoice Date], "MMM-yyyy")
+      Click OK
+  17. Drag the Month column (click header, hold, drag) to position it
+      next to Invoice Date
+
+PART E — Load
+──────────────
+  18. Home tab → Close & Load → Close & Load To
+      Select Table → New worksheet → click OK
+
+EXTENSION EXERCISE
+──────────────────
+  Copy any of the CSV files → rename it Sales_Jul2025.csv → change the
+  dates inside to July. Now in Excel: Data tab → Refresh All.
+  The July data appears automatically — this is "build once, refresh forever."
+
+KEY LEARNING
+────────────
+  ✔  Combine & Transform works when all files have identical structure
+  ✔  Source.Name tells you which file each row came from
+  ✔  For files with different sheet names, use UC-10 approach instead
