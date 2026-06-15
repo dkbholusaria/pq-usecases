@@ -19,18 +19,94 @@
       "parts": [
         {
           "title": "PART A — Load the Bank Statement",
+          "steps": [
+            "1. In Excel: click the DATA tab on the ribbon",
+            "2. Click Get Data → From File → From Text/CSV",
+            "3. Browse to this folder → select Bank_Statement_SBI_Jun2025.csv → click Import",
+            "4. A preview window opens. Check that columns look correct.",
+            "5. Click Transform Data (not Load) — this opens Power Query Editor",
+            "6. In Power Query Editor, double-click the query name in the left panel",
+            "Rename it to: BankStatement",
+            "7. Select the Debit (INR) and Credit (INR) and Balance (INR) columns",
+            "(hold Ctrl and click each column header)",
+            "8. Right-click any selected column → Change Type → Decimal Number",
+            "9. Click the Value Date column header",
+            "Home tab → Data Type → Date"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART B — Load the Book Entries",
+          "steps": [
+            "10. In Power Query Editor: Home tab → New Source → Text/CSV",
+            "11. Browse to this folder → select Book_Entries_Jun2025.csv → click Import",
+            "12. Rename the query to: BookEntries",
+            "13. Select the Debit (INR) and Credit (INR) columns",
+            "Right-click → Change Type → Decimal Number",
+            "14. Select the Date column → Home tab → Data Type → Date",
+            "15. We only want Payment and Receipt vouchers for recon (not Journal entries)",
+            "Click the dropdown arrow on the Voucher Type column header",
+            "Uncheck Journal → click OK"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART C — Find Bank transactions NOT in Books (Bank-only items)",
+          "steps": [
+            "16. In the left panel, click BankStatement to make it active",
+            "17. Home tab → Merge Queries → Merge Queries as New",
+            "(This creates a separate query and keeps BankStatement unchanged)",
+            "18. In the Merge dialog:",
+            "• Top table is already BankStatement — click the \"Ref / Cheque No\" column",
+            "to highlight it (it turns green)",
+            "• Bottom dropdown: select BookEntries",
+            "• Click the \"Ref / Cheque No\" column in BookEntries table",
+            "• Join Kind dropdown: select Left Anti (rows only in left table)",
+            "• Click OK",
+            "19. A new query called \"Merge1\" appears in the left panel — rename it to: BankOnly",
+            "20. DELETE the BookEntries column:",
+            "Right-click the \"BookEntries\" column header (it shows \"Table\" in every row)",
+            "→ Remove Column",
+            "This column was only needed for the join — we don't need its contents.",
+            "21. Add an Amount column to standardise with BooksOnly later:",
+            "Add Column tab → Custom Column",
+            "Name: Amount (INR)",
+            "Formula: = if [#\"Debit (INR)\"] <> null then [#\"Debit (INR)\"]",
+            "else [#\"Credit (INR)\"]",
+            "Click OK → Right-click → Change Type → Decimal Number",
+            "22. Add Column tab → Custom Column",
+            "Name: Exception Type",
+            "Formula: = \"In Bank — Not in Books\"",
+            "Click OK",
+            "23. Keep only the columns needed for the final report:",
+            "Hold Ctrl and click: Value Date, Description, Ref / Cheque No,",
+            "Amount (INR), Exception Type",
+            "Right-click → Remove Other Columns",
+            "24. Rename Value Date column: double-click header → type Date → Enter"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART D — Find Book entries NOT in Bank (Book-only items)",
+          "steps": [
+            "25. In the left panel, click BookEntries to make it active",
+            "26. Home tab → Merge Queries → Merge Queries as New",
+            "27. In the Merge dialog:",
+            "• Top table is already BookEntries — click \"Ref / Cheque No\"",
+            "• Bottom dropdown: select BankStatement",
+            "• Click \"Ref / Cheque No\" in BankStatement",
+            "• Join Kind: Left Anti",
+            "• Click OK",
+            "28. A new query \"Merge2\" appears — rename it to: BooksOnly",
+            "29. DELETE the BankStatement column:",
+            "Right-click the \"BankStatement\" column header (shows \"Table\" in every row)",
+            "→ Remove Column",
+            "30. Add an Amount column:",
+            "Add Column tab → Custom Column",
+            "Name: Amount (INR)",
+            "Formula: = if [#\"Debit (INR)\"] <> null then [#\"Debit (INR)\"]",
+            "else [#\"Cr"
+          ],
           "screenshot": ""
         }
       ],
@@ -52,22 +128,76 @@
       "parts": [
         {
           "title": "PART A — Load the Folder",
+          "steps": [
+            "1. In Excel: click the DATA tab on the ribbon",
+            "2. Click Get Data → From File → From Folder",
+            "3. Browse to this folder (UC-02-Multi-File-Consolidation) → click OK",
+            "4. A preview shows all 3 CSV files listed",
+            "5. Click Combine → Combine & Transform Data",
+            "(This works here because all 3 files have identical column structure)",
+            "6. A \"Combine Files\" dialog opens — it shows a preview of the first file",
+            "Leave all settings as default → click OK",
+            "7. Power Query Editor opens with all 3 files already combined (~300 rows)"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART B — Review the Auto-Created Queries",
+          "steps": [
+            "8. Look at the left panel — you will see multiple queries:",
+            "• Transform Sample File — Power Query's template query",
+            "• Sales_Apr2025.csv — individual file query (helper)",
+            "• Sales_May2025.csv — individual file query (helper)",
+            "• Sales_Jun2025.csv — individual file query (helper)",
+            "• The main query (your combined table) — at the top",
+            "9. Click the main combined query in the left panel",
+            "10. You will see a column called Source.Name — this shows which file",
+            "each row came from"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART C — Clean Up",
+          "steps": [
+            "11. Right-click the Source.Name column header → Rename",
+            "Type: Source File → press Enter",
+            "12. Select Invoice Date column",
+            "Home tab → Data Type → Date",
+            "13. Hold Ctrl and select these columns:",
+            "Unit Price (INR), Net Amount (INR), GST Amount (INR), Total Invoice Value (INR)",
+            "Right-click → Change Type → Decimal Number",
+            "14. Select Quantity column",
+            "Right-click → Change Type → Whole Number",
+            "15. Select GST Rate (%) column",
+            "Right-click → Change Type → Whole Number"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART D — Add a Month Column",
+          "steps": [
+            "16. Add Column tab → Custom Column",
+            "Name: Month",
+            "Formula: = Date.ToText([Invoice Date], \"MMM-yyyy\")",
+            "Click OK",
+            "17. Drag the Month column (click header, hold, drag) to position it",
+            "next to Invoice Date"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART E — Load",
+          "steps": [
+            "18. Home tab → Close & Load → Close & Load To",
+            "Select Table → New worksheet → click OK",
+            "EXTENSION EXERCISE",
+            "Copy any of the CSV files → rename it Sales_Jul2025.csv → change the",
+            "dates inside to July. Now in Excel: Data tab → Refresh All.",
+            "The July data appears automatically — this is \"build once, refresh forever.\"",
+            "✔  Combine & Transform works when all files have identical structure",
+            "✔  Source.Name tells you which file each row came from",
+            "✔  For files with different sheet names, use UC-10 approach instead"
+          ],
           "screenshot": ""
         }
       ],
@@ -91,30 +221,180 @@
       "parts": [
         {
           "title": "PART A — Load the File",
+          "steps": [
+            "1. In Excel: DATA tab → Get Data → From File → From Text/CSV",
+            "2. Browse to GSTR2B_Mock_Jun2025.csv → click Import",
+            "3. Click Transform Data",
+            "4. Rename the query to: GSTR2B"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART B — Fix Data Types",
+          "steps": [
+            "5. Hold Ctrl and select these columns:",
+            "Invoice Value (INR), Taxable Value (INR), IGST, CGST, SGST, Cess",
+            "Right-click any selected column → Change Type → Decimal Number",
+            "6. Select Invoice Date column",
+            "Home tab → Data Type → Date"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART C — Add a Total Tax Column",
+          "steps": [
+            "7. Add Column tab → Custom Column",
+            "Name: Total Tax",
+            "Formula: = [IGST] + [CGST] + [SGST]",
+            "Click OK",
+            "8. Right-click the Total Tax column → Change Type → Decimal Number"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART D — Flag ITC Availability",
+          "steps": [
+            "9. Add Column tab → Conditional Column",
+            "Name: ITC Flag",
+            "Condition setup:",
+            "If   Column Name: ITC Availability  |  Operator: equals  |  Value: Yes",
+            "Then: Eligible",
+            "Else: Blocked / Pending",
+            "Click OK",
+            "10. Add Column tab → Conditional Column",
+            "Name: Action Required",
+            "If   Column Name: ITC Availability  |  Operator: equals  |  Value: Yes",
+            "Then: No Action",
+            "Else: Follow up with supplier / check filing status",
+            "Click OK",
+            "═══════════════════════════════════════════════════════════════════════════════",
+            "APPROACH 1 — REFERENCE QUERIES (Power Query summaries)",
+            "═══════════════════════════════════════════════════════════════════════════════",
+            "Best for: fixed formatted reports, feeding data into other queries or systems"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART E — ITC Summary by Status",
+          "steps": [
+            "11. Right-click the GSTR2B query in left panel → Reference",
+            "ℹ  Reference creates a LIVE link to the base query — any cleanup",
+            "you do on the base automatically applies here too.",
+            "(Duplicate would create a static copy with no link to the source)",
+            "Rename to: ITC_Summary_by_Status",
+            "12. With ITC_Summary_by_Status active:",
+            "Home tab → Group By",
+            "In Group By dialog:",
+            "Group by: ITC Availability",
+            "Add Aggregation:",
+            "New column name: Total Taxable Value  |  Operation: Sum  |  Column: Taxable Value (INR)",
+            "Click Add Aggregation:",
+            "New column name: Total Tax Credit  |  Operation: Sum  |  Column: Total Tax",
+            "Click Add Aggregation:",
+            "New column name: Invoice Count  |  Operation: Count Rows",
+            "Click OK"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART F — ITC Summary by Supplier",
+          "steps": [
+            "13. Right-click the GSTR2B query → Reference → Rename to: ITC_Summary_by_Supplier",
+            "14. Home tab → Group By",
+            "Group by: Trade Name",
+            "Add Aggregation: Total Taxable  |  Sum  |  Taxable Value (INR)",
+            "Add Aggregation: Total ITC      |  Sum  |  Total Tax",
+            "Add Aggregation: Invoice Count  |  Count Rows",
+            "Click OK",
+            "15. Click Total ITC column → Home tab → Sort Descending"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART G — Load All Queries",
+          "steps": [
+            "16. Home tab → Close & Load → Close & Load To",
+            "Load each query to a separate Table on a New worksheet",
+            "═══════════════════════════════════════════════════════════════════════════════",
+            "APPROACH 2 — PIVOT TABLE (recommended for ad-hoc analysis)",
+            "═══════════════════════════════════════════════════════════════════════════════",
+            "Best for: slicing and dicing interactively — no M code needed after load",
+            "Prerequisite: complete Parts A–D above first, then load as below",
+            "17. Instead of loading to a Table, load GSTR2B to the Data Model:",
+            "Home tab → Close & Load → Close & Load To",
+            "Select: Only Create Connection",
+            "Check the box: Add this data to the Data Model",
+            "Click OK",
+            "18. In Excel: Insert tab → PivotTable",
+            "Select: Use this workbook's Data Model",
+            "Choose: New Worksheet → click OK",
+            "19. In the PivotTable Fields panel, drag:",
+            "Rows:    ITC Availability → Trade Name",
+            "Columns: GSTR-1 Filing Period",
+            "Values:  Taxable Value (INR) — set to Sum",
+            "Total Tax — set to Sum (add a second value)",
+            "Filters: Invoice Type (drag here to filter Regular / Credit Note)",
+            "20. Right-click anywhere in the Pivot → Add Slicer",
+            "Add slicers for: ITC Availability, Place of Supply, GSTR-1 Filing Period",
+            "→ One click on a slicer instantly filters the entire summary",
+            "21. To add a custom formula inside the Pivot (Calculated Field):",
+            "PivotTable Analyze tab → Fields, Items & Sets → Calculated Field",
+            "Name: ITC %",
+            "Formula: = 'Total Tax' / 'Taxable Value (INR)'",
+            "Click OK",
+            "→ ITC as a % of taxable value now appears as a column in the Pivot",
+            "═══════════════════════════════════════════════════════════════════════════════",
+            "APPROACH 3 — DAX MEASURES (advanced — Power Pivot / Power BI)",
+            "═══════════════════════════════════════════════════════════════════════════════",
+            "DAX (Data Analysis Expressions) is the formula language of the Data Model.",
+            "It looks like Excel formulas but works on entire columns, not individual cells.",
+            "This is a brief introduction — DAX is a full topic on its own.",
+            "Prerequisite: GSTR2B must be loaded to the Data Model (step 17 above)",
+            "22. Power Pivot tab → Manage (opens the Power Pivot window)",
+            "If Power Pivot tab is not visible:",
+            "File → Options → Add-ins → COM Add-ins → check Microsoft Power Pivot → OK",
+            "23. In the Power Pivot window, click the GSTR2B table tab at the bottom",
+            "Click in an empty cell in the calculation area (below the data rows)",
+            "24. Type this measure and press Enter:",
+            "ITC Eligible Amount :=",
+            "CALCULATE(",
+            "SUM(GSTR2B[Taxable Value (INR)]),",
+            "GSTR2B[ITC Availability] = \"Yes\"",
+            ")",
+            "25. Add another measure:",
+            "ITC Blocked Amount :=",
+            "CALCULATE(",
+            "SUM(GSTR2B[Taxable Value (INR)]),",
+            "GSTR2B[ITC Availability] = \"No\"",
+            ")",
+            "26. Add a ratio measure:",
+            "ITC Eligible % :=",
+            "DIVIDE([ITC Eligible Amount], SUM(GSTR2B[Taxable Value (INR)]))",
+            "27. Return to Excel → these measures now appear in the PivotTable Fields panel",
+            "Drag them into the Values area — they update dynamically with every slicer click",
+            "ℹ  DAX vs Pivot Calculated Field:",
+            "Calculated Field (step 21) = simple row-level formula, limited capability",
+            "DAX Measure = dynamic, filter-aware, handles complex business logic",
+            "For CA work: use DAX when you need ratios, YoY comparisons, or",
+            "conditional aggregations that Calculated Fields cannot handle.",
+            "═══════════════════════════════════════════════════════════════════════════════",
+            "WHICH APPROACH TO USE?",
+            "═══════════════════════════════════════════════════════════════════════════════",
+            "┌─────────────────────┬──────────────────────────────────────────────────┐",
+            "│ Situation           │ Use                                              │",
+            "├─────────────────────┼──────────────────────────────────────────────────┤",
+            "│ Quick ITC summary   │ Approach 2 — Pivot Table with slicers            │",
+            "│ Fixed formatted MIS │ Approach 1 — Reference Queries → Table output    │",
+            "│ % ratios in Pivot   │ Approach 2 — Pivot Calculated Field              │",
+            "│ Complex KPIs / YoY  │ Approach 3 — DAX Measures in Data Model         │",
+            "│ Feed another query  │ Approach 1 — Reference Query output              │",
+            "└─────────────────────┴──────────────────────────────────────────────────┘",
+            "✔  Power Query's job: clean and shape — not calculate business KPIs",
+            "✔  Pivot Table + slicers = fastest ad-hoc ITC analysis, no extra queries needed",
+            "✔  Reference Query = live link to base; Duplicate = static copy",
+            "✔  DAX is the next layer after Power Query — it lives in the Data Model",
+            "✔  Keep the layers separate: PQ cleans → Data Model calculates → Pivot presents"
+          ],
           "screenshot": ""
         }
       ],
@@ -141,42 +421,146 @@
       "parts": [
         {
           "title": "PART A — Load the Trial Balance",
+          "steps": [
+            "1. In Excel: DATA tab → Get Data → From File → From Excel Workbook",
+            "2. Browse to Trial_Balance_Messy.xlsx → click Import",
+            "3. A Navigator pane opens showing sheet names",
+            "4. Select Sheet1 (or the TB sheet) → click Transform Data",
+            "5. Power Query Editor opens — you will see the messy structure with",
+            "company name and blank rows at the top, and merged-looking headers",
+            "6. Rename the query to: TrialBalance"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART B — Remove Junk Rows at Top",
+          "steps": [
+            "7. In Power Query Editor:",
+            "Home tab → Remove Rows → Remove Top Rows",
+            "In the dialog: enter 4 → click OK",
+            "This removes in one step: company name, report title, blank row,",
+            "and the \"(Amount in INR)\" note row."
+          ],
           "screenshot": ""
         },
         {
           "title": "PART C — Promote Headers",
+          "steps": [
+            "9. Home tab → Use First Row as Headers",
+            "Column names now show:",
+            "Account Code | Account Name | April 2025 | Column4 | May 2025 | Column6 | June 2025 | Column8",
+            "ℹ  Why Column4, Column6, Column8? The original Excel has merged cells for",
+            "each month (spanning Debit + Credit columns). Power Query unmerges them —",
+            "the first column gets the month name, the second gets a placeholder name.",
+            "10. The first data row is now the Debit/Credit sub-header row (null, null, Debit, Credit…)",
+            "Home tab → Remove Rows → Remove Top Rows → enter 1 → click OK",
+            "11. Rename columns to combine month + Dr/Cr into one clear name:",
+            "Double-click \"April 2025\" column header → type Apr-25 Debit → Enter",
+            "Double-click \"Column4\"    column header → type Apr-25 Credit → Enter",
+            "Double-click \"May 2025\"   column header → type May-25 Debit → Enter",
+            "Double-click \"Column6\"    column header → type May-25 Credit → Enter",
+            "Double-click \"June 2025\"  column header → type Jun-25 Debit → Enter",
+            "Double-click \"Column8\"    column header → type Jun-25 Credit → Enter",
+            "ℹ  These names matter — after Unpivot (Part E), the Attribute column will",
+            "contain exactly these names and you will split them on the space to get",
+            "Period (Apr-25) and Dr_Cr (Debit/Credit) as separate columns."
+          ],
           "screenshot": ""
         },
         {
           "title": "PART D — Remove Blank Separator Rows",
+          "steps": [
+            "12. Click the dropdown arrow on the Account Code column header",
+            "Uncheck (null) → click OK",
+            "The data file has blank rows separating account groups (Assets, Liabilities,",
+            "Income, Expenses). These rows have null in Account Code — filtering them out",
+            "leaves only the actual account rows."
+          ],
           "screenshot": ""
         },
         {
           "title": "PART E — Unpivot the Month Columns",
+          "steps": [
+            "13. Click the Account Code column header to select it",
+            "Hold Ctrl → click Account Name column header",
+            "Both columns are now selected (highlighted)",
+            "14. Right-click either selected column header",
+            "Click Unpivot Other Columns",
+            "15. Two new columns appear:",
+            "Attribute — contains \"Apr-25 Debit\", \"Apr-25 Credit\", \"May-25 Debit\" etc.",
+            "Value — contains the amounts",
+            "16. Rename the Attribute column:",
+            "Double-click Attribute column header → type Period_DrCr → Enter",
+            "17. Rename the Value column:",
+            "Double-click Value → type Amount → Enter"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART F — Split Period and Dr/Cr",
+          "steps": [
+            "18. Select the Period_DrCr column",
+            "Home tab → Split Column → By Delimiter",
+            "In the dialog:",
+            "Select or enter delimiter: Space (select \"Space\" from dropdown)",
+            "Split at: Right-most delimiter",
+            "Click OK",
+            "You now get: Period_DrCr.1 (e.g. \"Apr-25\") and Period_DrCr.2 (e.g. \"Debit\")",
+            "19. Rename Period_DrCr.1 to: Period",
+            "20. Rename Period_DrCr.2 to: Dr_Cr"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART G — Fix Data Type",
+          "steps": [
+            "21. Select the Amount column",
+            "Home tab → Data Type → Decimal Number"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART H — Load Chart of Accounts",
+          "steps": [
+            "22. Home tab → New Source → Text/CSV",
+            "23. Browse to Chart_of_Accounts.csv → click Import → click OK",
+            "24. Rename this query to: ChartOfAccounts"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART I — Merge to Enrich Trial Balance",
+          "steps": [
+            "25. In the left panel, click TrialBalance to make it active",
+            "26. Home tab → Merge Queries → Merge Queries",
+            "27. In Merge dialog:",
+            "Top table: TrialBalance — click Account Code column",
+            "Bottom dropdown: select ChartOfAccounts",
+            "Click Account Code column in ChartOfAccounts",
+            "Join Kind: Left Outer (all rows from left, matching from right)",
+            "Click OK",
+            "28. A new ChartOfAccounts column appears at the right",
+            "Click the expand icon (two arrows) on the ChartOfAccounts column header",
+            "Uncheck \"Use original column name as prefix\"",
+            "Check only: Account Group, Account Type, Nature",
+            "Click OK"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART J — Load",
+          "steps": [
+            "29. Home tab → Close & Load → Close & Load To",
+            "Table → New worksheet → OK",
+            "30. In Excel, insert a Pivot Table from this data:",
+            "Rows: Account Group → Account Name",
+            "Columns: Period",
+            "Values: Sum of Amount",
+            "→ Your MIS report updates with one click every month",
+            "✔  Unpivot Other Columns is the single most powerful step for accounting data",
+            "✔  Always select the columns to KEEP, then unpivot everything else",
+            "✔  Merge (Left Outer) enriches every row without VLOOKUP or INDEX-MATCH"
+          ],
           "screenshot": ""
         }
       ],
@@ -200,30 +584,96 @@
       "parts": [
         {
           "title": "PART A — Load the File",
+          "steps": [
+            "1. In Excel: DATA tab → Get Data → From File → From Text/CSV",
+            "2. Browse to Aged_Payables_Jun2025.csv → Import → Transform Data",
+            "3. Rename the query to: AgedPayables"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART B — Fix Data Types",
+          "steps": [
+            "4. Select Invoice Date column → Home tab → Data Type → Date",
+            "5. Select Due Date column → Home tab → Data Type → Date",
+            "6. Hold Ctrl and select:",
+            "Invoice Amount (INR), Amount Paid (INR), Balance Outstanding (INR)",
+            "Right-click → Change Type → Decimal Number",
+            "7. Select Overdue Days column → Right-click → Change Type → Whole Number"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART C — Flag Overdue Severity",
+          "steps": [
+            "8. Add Column tab → Conditional Column",
+            "Name: Overdue Flag",
+            "Condition 1: If  Overdue Days  is greater than  90  Then  Critical",
+            "Click Add Clause",
+            "Condition 2: If  Overdue Days  is greater than  30  Then  Overdue",
+            "Else: Current",
+            "Click OK"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART D — Vendor-wise Outstanding Summary",
+          "steps": [
+            "9. Right-click AgedPayables in the left panel → Reference",
+            "ℹ  Reference creates a LIVE link to the base query — any cleanup",
+            "you do on the base automatically applies here too.",
+            "(Duplicate would create a static copy with no link to the source)",
+            "Rename to: Vendor_Summary",
+            "10. With Vendor_Summary active:",
+            "Home tab → Group By",
+            "In Group By dialog — click Advanced",
+            "Group by: Vendor Name",
+            "Click Add Grouping → Vendor GSTIN",
+            "Aggregations:",
+            "Total Invoiced     |  Sum  |  Invoice Amount (INR)",
+            "Total Paid         |  Sum  |  Amount Paid (INR)",
+            "Total Outstanding  |  Sum  |  Balance Outstanding (INR)",
+            "Invoice Count      |  Count Rows",
+            "Click OK",
+            "11. Click Total Outstanding column → Home tab → Sort Descending",
+            "Highest outstanding vendors appear at top"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART E — Aging Bucket Summary",
+          "steps": [
+            "12. Right-click AgedPayables → Duplicate",
+            "Rename to: Aging_Summary",
+            "13. Home tab → Group By",
+            "Group by: Aging Bucket",
+            "Aggregations:",
+            "Total Outstanding  |  Sum  |  Balance Outstanding (INR)",
+            "Invoice Count      |  Count Rows",
+            "Click OK"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART F — Critical Overdue List",
+          "steps": [
+            "14. Right-click AgedPayables → Duplicate",
+            "Rename to: Critical_Followup",
+            "15. Click dropdown on Overdue Flag column",
+            "Uncheck everything except Critical → OK",
+            "This is your immediate collections follow-up list with contact details"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART G — Load All",
+          "steps": [
+            "16. Home tab → Close & Load → Close & Load To",
+            "Load each query to a separate Table on a New worksheet",
+            "✔  Reference Query creates a live link — all summaries update when AgedPayables refreshes",
+            "✔  Group By with Advanced mode allows grouping by multiple columns",
+            "✔  Sort Descending on Outstanding immediately shows priority vendors"
+          ],
           "screenshot": ""
         }
       ],
@@ -247,30 +697,93 @@
       "parts": [
         {
           "title": "PART A — Load the File",
+          "steps": [
+            "1. In Excel: DATA tab → Get Data → From File → From Text/CSV",
+            "2. Browse to TDS_Reconciliation_Q1FY26.csv → Import → Transform Data",
+            "3. Rename the query to: TDS_Recon"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART B — Fix Data Types",
+          "steps": [
+            "4. Hold Ctrl and select:",
+            "Amount Paid/Credited (INR), TDS Deducted (INR), TDS as per Books (INR),",
+            "Difference (INR)",
+            "Right-click → Change Type → Decimal Number",
+            "5. Select TDS Rate (%) column → Right-click → Change Type → Decimal Number",
+            "6. Select Date of Credit/Payment column → Home tab → Data Type → Date"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART C — Add Absolute Difference Column",
+          "steps": [
+            "7. Add Column tab → Custom Column",
+            "Name: Difference (Abs)",
+            "Formula: = Number.Abs([#\"Difference (INR)\"])",
+            "Click OK",
+            "Right-click the new column → Change Type → Decimal Number"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART D — Add Action Column",
+          "steps": [
+            "8. Add Column tab → Conditional Column",
+            "Name: Action Required",
+            "Condition 1: If  26AS Status  equals  Matched  Then  No Action",
+            "Click Add Clause",
+            "Condition 2: If  26AS Status  equals  Not in 26AS  Then  Follow up with deductor",
+            "Click Add Clause",
+            "Condition 3: If  26AS Status  equals  Amount Mismatch  Then  Verify TDS rate",
+            "Else: Pending — recheck next month",
+            "Click OK"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART E — Exception Report (non-matched rows only)",
+          "steps": [
+            "9. Right-click TDS_Recon in the left panel → Reference",
+            "ℹ  Reference creates a LIVE link to the base query — any cleanup",
+            "you do on the base automatically applies here too.",
+            "(Duplicate would create a static copy with no link to the source)",
+            "Rename to: TDS_Exceptions",
+            "10. Click dropdown on 26AS Status column",
+            "Uncheck Matched → click OK",
+            "Only mismatches, pending, and not-in-26AS rows remain",
+            "11. Click Difference (Abs) column header",
+            "Home tab → Sort Descending",
+            "Highest value mismatches appear first — these are priority items"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART F — Section-wise TDS Summary",
+          "steps": [
+            "12. Right-click TDS_Recon → Reference → Rename to: Section_Summary",
+            "13. Home tab → Group By → click Advanced",
+            "Group by: Section",
+            "Click Add Grouping → Nature of Payment",
+            "Aggregations:",
+            "Amount Paid Total   |  Sum  |  Amount Paid/Credited (INR)",
+            "TDS Deducted Total  |  Sum  |  TDS Deducted (INR)",
+            "TDS per Books Total |  Sum  |  TDS as per Books (INR)",
+            "Total Difference    |  Sum  |  Difference (INR)",
+            "Click OK"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART G — Load All",
+          "steps": [
+            "14. Home tab → Close & Load → Close & Load To",
+            "Load TDS_Recon, TDS_Exceptions, Section_Summary each to separate worksheets",
+            "✔  Number.Abs() in Custom Column — useful for sorting by magnitude of difference",
+            "✔  Conditional Column with multiple clauses handles complex business rules cleanly",
+            "✔  Exception Report pattern (filter + sort by amount) is your audit priority list"
+          ],
           "screenshot": ""
         }
       ],
@@ -294,38 +807,111 @@
       "parts": [
         {
           "title": "PART A — Load the File",
+          "steps": [
+            "1. In Excel: DATA tab → Get Data → From File → From Text/CSV",
+            "2. Browse to Expense_Claims_Q1FY26.csv → Import → Transform Data",
+            "3. Rename the query to: ExpenseClaims"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART B — Fix Data Types",
+          "steps": [
+            "4. Select Claim Date column → Home tab → Data Type → Date",
+            "5. Select Expense Date column → Home tab → Data Type → Date",
+            "6. Select Amount Claimed (INR) column → Right-click → Change Type → Decimal Number",
+            "7. Select Bill Amount (INR) column → Right-click → Change Type → Decimal Number",
+            "8. Note: Approved Amount (INR) column has blanks for Rejected/Pending rows.",
+            "Leave it as Text for now — we will handle it in the next step."
+          ],
           "screenshot": ""
         },
         {
           "title": "PART C — Handle Nulls in Approved Amount",
+          "steps": [
+            "9. Select Approved Amount (INR) column",
+            "Transform tab → Replace Values",
+            "Value to Find: leave blank (empty)",
+            "Replace With: 0",
+            "Click OK",
+            "10. Now right-click Approved Amount (INR) → Change Type → Decimal Number"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART D — Add Variance Column",
+          "steps": [
+            "11. Add Column tab → Custom Column",
+            "Name: Variance",
+            "Formula: = [#\"Amount Claimed (INR)\"] - [#\"Approved Amount (INR)\"]",
+            "Click OK",
+            "Right-click Variance → Change Type → Decimal Number"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART E — Flag Policy Breaches",
+          "steps": [
+            "12. Add Column tab → Conditional Column",
+            "Name: Approval Outcome",
+            "Condition 1: If  Status  equals  Rejected  Then  Rejected",
+            "Click Add Clause",
+            "Condition 2: If  Variance  is greater than  0  Then  Partial Approval",
+            "Else: Full Approval",
+            "Click OK"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART F — Department Spend Summary",
+          "steps": [
+            "13. Right-click ExpenseClaims → Reference → Rename to: Dept_Summary",
+            "14. Home tab → Group By → click Advanced",
+            "Group by: Department",
+            "Click Add Grouping → Status",
+            "Aggregations:",
+            "Total Claimed    |  Sum  |  Amount Claimed (INR)",
+            "Total Approved   |  Sum  |  Approved Amount (INR)",
+            "Claim Count      |  Count Rows",
+            "Click OK"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART G — Rejection Analysis",
+          "steps": [
+            "15. Right-click ExpenseClaims → Reference → Rename to: Rejection_Analysis",
+            "16. Click dropdown on Status column → check only Rejected → OK",
+            "17. Home tab → Group By",
+            "Group by: Rejection Reason",
+            "Aggregations:",
+            "Count  |  Count Rows",
+            "Amount |  Sum  |  Amount Claimed (INR)",
+            "Click OK",
+            "→ See which rejection reason is most common"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART H — Pending Approvals List",
+          "steps": [
+            "18. Right-click ExpenseClaims → Reference → Rename to: Pending_Approvals",
+            "19. Click dropdown on Status → check only Pending → OK",
+            "20. Keep columns: Claim ID, Employee Name, Department, Claim Date,",
+            "Expense Category, Amount Claimed (INR)",
+            "Select these → right-click → Remove Other Columns"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART I — Load All",
+          "steps": [
+            "21. Home tab → Close & Load → Close & Load To",
+            "Load each query to a separate Table on a New worksheet",
+            "✔  Replace Values handles blanks before type conversion — always do this first",
+            "✔  Reference Query + Filter = instant drill-down reports — all linked to one source load",
+            "✔  Rejection Analysis pattern reveals process improvement opportunities"
+          ],
           "screenshot": ""
         }
       ],
@@ -349,26 +935,91 @@
       "parts": [
         {
           "title": "PART A — Load the File",
+          "steps": [
+            "1. In Excel: DATA tab → Get Data → From File → From Text/CSV",
+            "2. Browse to Salary_Register_Jun2025.csv → Import → Transform Data",
+            "3. Rename the query to: SalaryRegister"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART B — Fix Data Types (Bulk)",
+          "steps": [
+            "4. Hold Ctrl and click each of these column headers:",
+            "Basic Salary (INR), HRA (INR), Conveyance Allowance (INR),",
+            "Special Allowance (INR), Gross Salary (INR),",
+            "PF Employee (12%) (INR), ESI Employee (0.75%) (INR),",
+            "Professional Tax (INR), TDS (INR), Total Deductions (INR),",
+            "Net Salary Payable (INR), PF Employer (12%) (INR),",
+            "ESI Employer (3.25%) (INR), Total CTC (INR)",
+            "5. Right-click any selected column → Change Type → Decimal Number",
+            "6. Select Date of Joining → Home tab → Data Type → Date"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART C — ESI Compliance Check",
+          "steps": [
+            "7. Add Column tab → Conditional Column",
+            "Name: ESI Eligible",
+            "Condition: If  Gross Salary (INR)  is less than or equal to  21000",
+            "Then: Yes",
+            "Else: No",
+            "Click OK",
+            "8. Add Column tab → Conditional Column",
+            "Name: ESI Compliance Check",
+            "Condition 1: If  ESI Eligible  equals  Yes  AND ...",
+            "(Simplified approach — use Custom Column instead):",
+            "Add Column tab → Custom Column",
+            "Name: ESI Compliance Check",
+            "Formula: = if [ESI Eligible] = \"Yes\" and [#\"ESI Employee (0.75%) (INR)\"] = 0",
+            "then \"ERROR — ESI not deducted\"",
+            "else if [ESI Eligible] = \"No\" and [#\"ESI Employee (0.75%) (INR)\"] > 0",
+            "then \"ERROR — ESI deducted incorrectly\"",
+            "else \"OK\"",
+            "Click OK"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART D — Employer Cost Column",
+          "steps": [
+            "9. Add Column tab → Custom Column",
+            "Name: Total Employer Cost",
+            "Formula: = [#\"PF Employer (12%) (INR)\"] + [#\"ESI Employer (3.25%) (INR)\"]",
+            "Click OK",
+            "Right-click → Change Type → Decimal Number"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART E — Department Payroll Summary",
+          "steps": [
+            "10. Right-click SalaryRegister → Reference → Rename to: Dept_Payroll_Summary",
+            "11. Home tab → Group By → click Advanced",
+            "Group by: Department",
+            "Aggregations:",
+            "Employee Count      |  Count Rows",
+            "Total Gross         |  Sum  |  Gross Salary (INR)",
+            "Total Net Payable   |  Sum  |  Net Salary Payable (INR)",
+            "Total PF (Emp)      |  Sum  |  PF Employee (12%) (INR)",
+            "Total PF (Er)       |  Sum  |  PF Employer (12%) (INR)",
+            "Total CTC           |  Sum  |  Total CTC (INR)",
+            "Click OK"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART F — Load All",
+          "steps": [
+            "12. Home tab → Close & Load → Close & Load To",
+            "Load SalaryRegister and Dept_Payroll_Summary each to a new worksheet",
+            "13. On the SalaryRegister sheet in Excel, add a filter on",
+            "ESI Compliance Check = ERROR to instantly find compliance issues",
+            "✔  Bulk type change — select all INR columns together, change once",
+            "✔  Nested if in Custom Column handles multi-condition compliance checks",
+            "✔  Employer Cost as a column shows true payroll burden beyond gross salary"
+          ],
           "screenshot": ""
         }
       ],
@@ -393,38 +1044,115 @@
       "parts": [
         {
           "title": "PART A — Load April File",
+          "steps": [
+            "1. In Excel: DATA tab → Get Data → From File → From Text/CSV",
+            "2. Browse to Stock_Register_Apr2025.csv → Import → Transform Data",
+            "3. Rename the query to: Stock_Apr"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART B — Add Month Column to April Query",
+          "steps": [
+            "4. Add Column tab → Custom Column",
+            "Name: Month",
+            "Formula: = \"Apr-2025\"",
+            "Click OK"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART C — Fix Data Types for April",
+          "steps": [
+            "5. Hold Ctrl and select:",
+            "Opening Qty, Receipts Qty, Issues Qty, Closing Qty, Reorder Level",
+            "Right-click → Change Type → Whole Number",
+            "6. Hold Ctrl and select:",
+            "Unit Cost (INR), Closing Stock Value (INR)",
+            "Right-click → Change Type → Decimal Number",
+            "7. Select Stock Entry Date → Home tab → Data Type → Date"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART D — Load May File",
+          "steps": [
+            "8. Home tab → New Source → Text/CSV",
+            "9. Browse to Stock_Register_May2025.csv → Import → click OK",
+            "10. Rename to: Stock_May",
+            "11. Repeat steps 4–7 above for Stock_May, changing the Month formula to:",
+            "= \"May-2025\""
+          ],
           "screenshot": ""
         },
         {
           "title": "PART E — Append Both Months",
+          "steps": [
+            "12. In the left panel, click Stock_Apr to make it active",
+            "13. Home tab → Append Queries → Append Queries as New",
+            "14. In Append dialog:",
+            "Select: Two tables",
+            "First table: Stock_Apr",
+            "Table to append: Stock_May",
+            "Click OK",
+            "15. A new query appears — rename it to: Stock_Combined",
+            "16. You now have 200 rows covering both months"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART F — Reorder Alert Flag",
+          "steps": [
+            "17. With Stock_Combined active:",
+            "Add Column tab → Conditional Column",
+            "Name: Reorder Alert",
+            "Condition: If  Closing Qty  is less than or equal to  Reorder Level",
+            "Then: REORDER NOW",
+            "Else: OK",
+            "Click OK"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART G — Category Stock Valuation Summary",
+          "steps": [
+            "18. Right-click Stock_Combined → Reference → Rename to: Category_Summary",
+            "19. Home tab → Group By → click Advanced",
+            "Group by: Category",
+            "Click Add Grouping → Month",
+            "Aggregations:",
+            "Total Stock Value  |  Sum  |  Closing Stock Value (INR)",
+            "Total Receipts     |  Sum  |  Receipts Qty",
+            "Total Issues       |  Sum  |  Issues Qty",
+            "Click OK",
+            "→ Month-over-month stock value by category"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART H — Reorder List",
+          "steps": [
+            "20. Right-click Stock_Combined → Reference → Rename to: Reorder_List",
+            "21. Click dropdown on Reorder Alert → check only REORDER NOW → OK",
+            "22. Select columns to keep: Item Code, Item Description, Category,",
+            "Closing Qty, Reorder Level, Unit Cost (INR), Supplier Code, Location",
+            "Right-click → Remove Other Columns",
+            "23. Click Closing Qty column → Home tab → Sort Ascending",
+            "Items furthest below reorder level appear first"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART I — Load All",
+          "steps": [
+            "24. Home tab → Close & Load → Close & Load To",
+            "Load Stock_Combined, Category_Summary, Reorder_List each to new worksheets",
+            "(You can choose not to load Stock_Apr and Stock_May to sheets —",
+            "right-click them → Load To → Only Create Connection)",
+            "✔  Add Month column BEFORE appending — so you know which month each row is from",
+            "✔  Append (not Merge) = stacking rows from tables with same structure",
+            "✔  Only Create Connection for helper queries — keeps your workbook clean"
+          ],
           "screenshot": ""
         }
       ],
@@ -451,58 +1179,182 @@
       "parts": [
         {
           "title": "PART A — Load the Folder",
+          "steps": [
+            "1. In Excel: DATA tab → Get Data → From File → From Folder",
+            "2. Browse to this folder (UC-10-Multi-Year-Order-Analysis) → click OK",
+            "3. A preview window shows all 4 Excel files listed",
+            "4. Click Transform Data (NOT Combine — very important)",
+            "5. Power Query Editor opens with 4 rows — one per file",
+            "6. Rename the query to: OrderData"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART B — Remove Unnecessary Columns",
+          "steps": [
+            "7. Right-click the Content column header → select Remove Other Columns",
+            "Wait — we need Name too. Instead:",
+            "Hold Ctrl → click Content column AND Name column to select both",
+            "Right-click → Remove Other Columns",
+            "You now have only 2 columns: Content and Name"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART C — Open Each File as an Excel Workbook",
+          "steps": [
+            "8. Add Column tab → Custom Column",
+            "Name: Workbook",
+            "Formula: = Excel.Workbook([Content], true)",
+            "Click OK",
+            "(Note: you must type this formula — the Available Columns panel",
+            "only inserts column references, not function calls)"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART D — Expand the Workbook Column",
+          "steps": [
+            "9. Click the expand icon (two arrows) on the Workbook column header",
+            "In the dropdown, leave ALL columns checked → click OK",
+            "You now see columns: Workbook.Name, Workbook.Data, Workbook.Item,",
+            "Workbook.Kind, Workbook.Hidden",
+            "10. You may see more than 4 rows — some files have named ranges too"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART E — Filter to Sheets Only  *** KEY STEP ***",
+          "steps": [
+            "11. Click the dropdown arrow on the Workbook.Kind column header",
+            "Uncheck everything EXCEPT Sheet → click OK",
+            "You now have exactly 4 rows — one per file",
+            "This step works regardless of what the sheet is named"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART F — Remove Helper Columns",
+          "steps": [
+            "12. Hold Ctrl and click to select: Content, Workbook.Name,",
+            "Workbook.Item, Workbook.Kind, Workbook.Hidden",
+            "Right-click → Remove Columns",
+            "You should now have only: Name and Workbook.Data"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART G — Extract Year from Filename",
+          "steps": [
+            "13. Select the Name column",
+            "Add Column tab → Extract → First Characters",
+            "Count: 4 → click OK",
+            "A new column appears with: 2017, 2018, 2019, 2020",
+            "14. Rename the new column: double-click its header → type Year → Enter"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART H — Expand the Data",
+          "steps": [
+            "15. Click the expand icon on the Workbook.Data column header",
+            "Uncheck \"Use original column name as prefix\"",
+            "Leave all columns checked → click OK",
+            "All ~3,200 rows from all 4 years now appear in one table"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART I — Fix Data Types",
+          "steps": [
+            "16. Home tab → Data Type on each column:",
+            "Order Date → Date",
+            "Ship Date  → Date  (2020 rows will show null — that is correct, Open orders)",
+            "Revenue    → Decimal Number",
+            "Cost       → Decimal Number",
+            "Cookies Shipped → Whole Number",
+            "17. When you change Revenue to Decimal Number, some rows in 2017",
+            "will show an error (the \"mn\" value in the data)",
+            "Click the word Error in any error cell to see what happened"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART J — Fix the Dirty Revenue Data",
+          "steps": [
+            "18. Select the Revenue column",
+            "Transform tab → Replace Errors",
+            "Value: 0",
+            "Click OK",
+            "The errors are now replaced with 0"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART K — Split Customer ID",
+          "steps": [
+            "19. Select the Customer ID column",
+            "Home tab → Split Column → By Delimiter",
+            "In the dialog:",
+            "Delimiter: Custom → type  -  (space hyphen space)",
+            "Split at: Left-most delimiter",
+            "Click OK",
+            "Two columns appear: Customer ID.1 and Customer ID.2",
+            "20. Rename Customer ID.1 → Customer Code",
+            "Rename Customer ID.2 → Customer Name"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART L — Add Derived Columns",
+          "steps": [
+            "21. Add Column tab → Custom Column",
+            "Name: Profit",
+            "Formula: = [Revenue] - [Cost]",
+            "Click OK → Change Type → Decimal Number",
+            "22. Add Column tab → Custom Column",
+            "Name: Margin %",
+            "Formula: = if [Revenue] = 0 then 0 else [Profit] / [Revenue]",
+            "Click OK → Change Type → Decimal Number",
+            "23. Add Column tab → Custom Column",
+            "Name: Fulfilment Days",
+            "Formula: = Duration.Days([Ship Date] - [Order Date])",
+            "Click OK → Change Type → Whole Number",
+            "(Rows where Ship Date is null will show null — correct for Open orders)"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART M — Year-over-Year Summary",
+          "steps": [
+            "24. Right-click OrderData → Reference → Rename to: YoY_Summary",
+            "25. Home tab → Group By",
+            "Group by: Year",
+            "Aggregations:",
+            "Total Orders    |  Count Rows",
+            "Total Revenue   |  Sum  |  Revenue",
+            "Total Cost      |  Sum  |  Cost",
+            "Total Profit    |  Sum  |  Profit",
+            "Click OK",
+            "26. Click Year column → Home tab → Sort Ascending"
+          ],
           "screenshot": ""
         },
         {
           "title": "PART N — Load All",
+          "steps": [
+            "27. Home tab → Close & Load → Close & Load To",
+            "Load OrderData and YoY_Summary each to a new worksheet",
+            "NOTE — Power BI Users",
+            "All steps above work identically in Power BI Desktop (free download from",
+            "microsoft.com). No Excel license required. The Get Data → Folder option",
+            "and all M functions are the same in both tools.",
+            "✔  Filter Kind = Sheet sidesteps sheet name inconsistency entirely",
+            "✔  Excel.Workbook() is a function — must be typed, not just inserted",
+            "✔  Replace Errors after type change = standard dirty data handling pattern",
+            "✔  Duration.Days() handles date arithmetic; nulls flow through gracefully",
+            "✔  Never use Combine & Transform when files have different sheet names"
+          ],
           "screenshot": ""
         }
       ],

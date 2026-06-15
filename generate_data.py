@@ -52,13 +52,24 @@ def parse_instructions(path):
     # One-line description = first sentence of objective
     description = objective.split(".")[0].strip() if objective else ""
 
-    # PART headings — "PART A — Load the Bank Statement" style
+    # PART headings + their step content
     parts = []
-    for m in re.finditer(r"^(PART [A-Z\d]+ ?[—\-–].+)$", text, re.MULTILINE):
+    part_pattern = re.compile(r"^(PART [A-Z\d]+ ?[—\-–].+)$", re.MULTILINE)
+    part_matches = list(part_pattern.finditer(text))
+    for i, m in enumerate(part_matches):
         title = m.group(1).strip()
-        # Normalise dash variants to em-dash
         title = re.sub(r"\s*[—\-–]+\s*", " — ", title, count=1)
-        parts.append({"title": title, "screenshot": ""})
+        # Extract lines between this PART heading and the next (or KEY LEARNING / end)
+        start = m.end()
+        end = part_matches[i + 1].start() if i + 1 < len(part_matches) else len(text)
+        block = text[start:end]
+        # Strip the underline row and collect non-empty lines
+        steps = []
+        for line in block.splitlines():
+            stripped = line.strip().lstrip("─—–-").strip()
+            if stripped and not re.match(r"^KEY LEARNING", stripped, re.IGNORECASE):
+                steps.append(stripped)
+        parts.append({"title": title, "steps": steps, "screenshot": ""})
 
     # KEY LEARNING bullets
     key_match = re.search(
@@ -118,6 +129,7 @@ def build_uc_entry(folder_name, folder_path, existing):
     existing_parts_map = {p["title"]: p.get("screenshot", "") for p in existing.get("parts", [])}
     for part in parts:
         part["screenshot"] = existing_parts_map.get(part["title"], "")
+
 
     return {
         "id": uc_id,

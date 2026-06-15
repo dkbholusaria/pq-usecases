@@ -3,99 +3,227 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Use Case Detail — Power Query</title>
+  <title>Use Case — Power Query</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --navy:   #0f1f3d;
+      --navy2:  #162447;
+      --blue:   #1a56db;
+      --gold:   #f0a500;
+      --gold2:  #e09300;
+      --white:  #ffffff;
+      --gray50: #f8fafc;
+      --gray100:#f1f5f9;
+      --gray200:#e2e8f0;
+      --gray400:#94a3b8;
+      --gray600:#475569;
+      --gray700:#334155;
+      --gray800:#1e293b;
+      --green:  #059669;
+      --green2: #047857;
+    }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #f5f7fa;
-      color: #1a1a2e;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--gray50);
+      color: var(--gray800);
       min-height: 100vh;
     }
 
-    /* Top nav */
-    .topnav {
-      background: #1a1a2e;
-      padding: 0.75rem 1.5rem;
+    /* ── TOPBAR ── */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15,31,61,0.96);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .topbar-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+      height: 52px;
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 1rem;
     }
-    .topnav a {
-      color: #a0aec0;
-      text-decoration: none;
-      font-size: 0.85rem;
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      min-width: 0;
+    }
+    .back-btn {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      transition: color 0.15s;
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 0.3rem 0.7rem;
+      border-radius: 6px;
+      transition: color 0.15s, background 0.15s;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
-    .topnav a:hover { color: #fff; }
-    .topnav .separator { color: #4a5568; }
-    .topnav .current { color: #63b3ed; font-weight: 600; }
+    .back-btn:hover { color: #fff; background: rgba(255,255,255,0.08); }
+    .topbar-sep { color: rgba(255,255,255,0.15); font-size: 1rem; flex-shrink: 0; }
+    .topbar-uc-title {
+      color: #e2e8f0;
+      font-size: 0.85rem;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .topbar-links {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      flex-shrink: 0;
+    }
+    .topbar-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 0.35rem 0.7rem;
+      border-radius: 6px;
+      transition: color 0.15s, background 0.15s;
+      white-space: nowrap;
+    }
+    .topbar-link:hover { color: #fff; background: rgba(255,255,255,0.08); }
+    .topbar-link svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .topbar-link.linkedin { color: #60a5fa; }
+    .topbar-link.linkedin:hover { color: #fff; background: rgba(96,165,250,0.15); }
 
-    /* Hero */
+    /* ── HERO ── */
     .hero {
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
-      color: #fff;
-      padding: 2rem 1.5rem 2rem;
+      background: linear-gradient(135deg, var(--navy) 0%, #162447 60%, #1a3a6b 100%);
+      padding: 2.5rem 1.5rem 2.5rem;
+      position: relative;
+      overflow: hidden;
     }
-    .hero-inner { max-width: 860px; margin: 0 auto; }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(240,165,0,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
     .hero-badge {
-      display: inline-block;
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.3);
-      color: #e0e0e0;
-      font-size: 0.7rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(240,165,0,0.12);
+      border: 1px solid rgba(240,165,0,0.35);
+      color: var(--gold);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border-radius: 2rem;
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-size: clamp(1.5rem, 4vw, 2.4rem);
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 0.6rem;
+    }
+    .hero-meta {
+      color: #94a3b8;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .hero-meta span { color: rgba(255,255,255,0.2); }
+
+    /* ── MAIN LAYOUT ── */
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--white);
+      border: 1px solid var(--gray200);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .card-header {
+      padding: 1rem 1.4rem 0.75rem;
+      border-bottom: 1px solid var(--gray100);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .card-header-icon {
+      width: 28px; height: 28px;
+      border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+    .icon-blue  { background: #eff6ff; }
+    .icon-gold  { background: #fffbeb; }
+    .icon-green { background: #f0fdf4; }
+    .icon-purple{ background: #f5f3ff; }
+    .card-label {
+      font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      padding: 0.3rem 0.75rem;
-      border-radius: 2rem;
-      margin-bottom: 0.75rem;
+      color: var(--gray400);
     }
-    .hero h1 {
-      font-size: clamp(1.4rem, 3.5vw, 2rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.35rem;
-    }
-    .hero .meta { color: #a0aec0; font-size: 0.85rem; }
+    .card-body { padding: 1.2rem 1.4rem; }
 
-    /* Main */
-    main { max-width: 860px; margin: 2rem auto; padding: 0 1.25rem 3rem; }
-
-    /* Section card */
-    .card {
-      background: #fff;
-      border: 1px solid #e2e8f0;
-      border-radius: 10px;
-      padding: 1.5rem;
-      margin-bottom: 1.25rem;
-    }
-    .card-label {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #718096;
-      margin-bottom: 0.6rem;
-    }
+    /* ── OBJECTIVE ── */
     .objective-text {
       font-size: 1rem;
-      line-height: 1.7;
-      color: #2d3748;
+      line-height: 1.75;
+      color: var(--gray700);
+      font-weight: 400;
     }
 
-    /* Video embed */
+    /* ── VIDEO ── */
     .video-wrapper {
       position: relative;
       padding-bottom: 56.25%;
       height: 0;
-      border-radius: 8px;
-      overflow: hidden;
       background: #000;
+      border-radius: 10px;
+      overflow: hidden;
     }
     .video-wrapper iframe {
       position: absolute;
@@ -104,7 +232,7 @@
       border: none;
     }
 
-    /* Files */
+    /* ── FILES ── */
     .files-row {
       display: flex;
       flex-wrap: wrap;
@@ -115,232 +243,408 @@
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-      background: #f7fafc;
-      border: 1px solid #e2e8f0;
-      color: #2d3748;
+      background: var(--gray50);
+      border: 1px solid var(--gray200);
+      color: var(--gray600);
       text-decoration: none;
       font-size: 0.78rem;
       font-weight: 500;
-      padding: 0.35rem 0.7rem;
+      padding: 0.38rem 0.75rem;
       border-radius: 6px;
-      transition: background 0.15s, border-color 0.15s;
+      transition: all 0.15s;
     }
-    .file-chip:hover { background: #ebf8ff; border-color: #90cdf4; color: #2b6cb0; }
+    .file-chip:hover { background: #eff6ff; border-color: #93c5fd; color: var(--blue); }
+    .ext-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    .ext-csv  { background: #10b981; }
+    .ext-xlsx { background: #059669; }
+    .ext-txt  { background: #6366f1; }
+    .ext-other{ background: #94a3b8; }
+
     .download-all-btn {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      background: #276749;
+      background: var(--green);
       color: #fff;
       text-decoration: none;
       font-size: 0.78rem;
-      font-weight: 600;
+      font-weight: 700;
       padding: 0.4rem 0.9rem;
       border-radius: 6px;
       margin-left: auto;
       transition: background 0.15s;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
-    .download-all-btn:hover { background: #22543d; }
+    .download-all-btn:hover { background: var(--green2); }
 
-    /* Steps accordion */
-    .steps-title {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #718096;
-      margin-bottom: 0.75rem;
-    }
+    /* ── PARTS ACCORDION ── */
+    .parts-list { display: flex; flex-direction: column; gap: 0.6rem; padding: 1rem 1.4rem; }
 
     details.part {
-      border: 1px solid #e2e8f0;
-      border-radius: 8px;
-      margin-bottom: 0.6rem;
+      border: 1px solid var(--gray200);
+      border-radius: 10px;
       overflow: hidden;
+      transition: border-color 0.2s;
     }
-    details.part[open] { border-color: #bee3f8; }
+    details.part[open] { border-color: #bfdbfe; box-shadow: 0 2px 12px rgba(26,86,219,0.07); }
 
     details.part summary {
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      padding: 0.85rem 1.1rem;
-      background: #f7fafc;
+      padding: 0.9rem 1.1rem;
+      background: var(--gray50);
       cursor: pointer;
       user-select: none;
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: #2d3748;
       list-style: none;
+      transition: background 0.15s;
     }
-    details.part[open] summary { background: #ebf8ff; color: #2b6cb0; }
     details.part summary::-webkit-details-marker { display: none; }
-    details.part summary::before {
-      content: "▶";
-      font-size: 0.6rem;
-      color: #a0aec0;
-      transition: transform 0.2s;
+    details.part[open] summary { background: #eff6ff; }
+
+    .part-chevron {
+      width: 18px; height: 18px;
+      border-radius: 4px;
+      background: var(--gray200);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.15s, transform 0.2s;
+      font-size: 0.55rem;
+      color: var(--gray600);
+    }
+    details.part[open] .part-chevron {
+      background: var(--blue);
+      color: #fff;
+      transform: rotate(90deg);
+    }
+    .part-letter {
+      width: 26px; height: 26px;
+      border-radius: 6px;
+      background: #dbeafe;
+      color: var(--blue);
+      font-size: 0.72rem;
+      font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
     }
-    details.part[open] summary::before {
-      transform: rotate(90deg);
-      color: #2b6cb0;
+    details.part[open] .part-letter { background: var(--blue); color: #fff; }
+    .part-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--gray800);
+      flex: 1;
     }
-    .part-body {
-      padding: 1rem 1.25rem;
-      border-top: 1px solid #e2e8f0;
-      background: #fff;
-    }
-    .part-screenshot {
-      margin-top: 0.75rem;
-      border-radius: 6px;
-      overflow: hidden;
-      border: 1px solid #e2e8f0;
-    }
-    .part-screenshot img {
-      width: 100%;
-      display: block;
+    details.part[open] .part-title { color: var(--blue); }
+    .part-step-count {
+      font-size: 0.7rem;
+      color: var(--gray400);
+      font-weight: 500;
+      flex-shrink: 0;
     }
 
-    /* Key learning */
+    .part-body {
+      padding: 0.5rem 1.1rem 1.1rem;
+      border-top: 1px solid var(--gray200);
+      background: #fff;
+    }
+
+    /* Step lines */
+    .step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding-top: 0.5rem;
+    }
+    .step-item {
+      display: flex;
+      gap: 0.75rem;
+      padding: 0.55rem 0;
+      border-bottom: 1px solid var(--gray100);
+      align-items: flex-start;
+    }
+    .step-item:last-child { border-bottom: none; }
+    .step-num {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--blue);
+      background: #eff6ff;
+      border-radius: 4px;
+      min-width: 24px;
+      height: 20px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    .step-text {
+      font-size: 0.86rem;
+      color: var(--gray700);
+      line-height: 1.55;
+      flex: 1;
+    }
+    /* Sub-steps (lines starting with • or indented continuation) */
+    .step-sub {
+      padding: 0.35rem 0 0.35rem 1.75rem;
+      font-size: 0.83rem;
+      color: var(--gray600);
+      line-height: 1.5;
+      border-bottom: 1px solid var(--gray100);
+    }
+    .step-sub:last-child { border-bottom: none; }
+    .step-sub::before { content: "›"; margin-right: 0.5rem; color: var(--gray400); }
+
+    .part-screenshot {
+      margin-top: 0.75rem;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--gray200);
+    }
+    .part-screenshot img { width: 100%; display: block; }
+
+    /* ── KEY LEARNING ── */
     .key-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.6rem;
     }
     .key-list li {
       display: flex;
       align-items: flex-start;
-      gap: 0.6rem;
+      gap: 0.75rem;
       font-size: 0.88rem;
-      color: #2d3748;
-      line-height: 1.5;
+      color: var(--gray700);
+      line-height: 1.55;
     }
-    .key-list li::before {
-      content: "✔";
-      color: #38a169;
-      font-weight: 700;
+    .key-check {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: #dcfce7;
+      color: var(--green);
+      font-size: 0.65rem;
+      font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
-      margin-top: 0.05rem;
+      margin-top: 0.1rem;
     }
 
-    /* Loading / error */
-    #loading { text-align: center; color: #718096; padding: 3rem 0; }
+    /* ── LOADING ── */
+    #loading { text-align: center; color: var(--gray400); padding: 4rem 0; font-size: 0.95rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: #94a3b8;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.82rem;
+    }
+    footer a { color: #60a5fa; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
 
     @media (max-width: 600px) {
       .download-all-btn { margin-left: 0; width: 100%; justify-content: center; }
+      .topbar-link span { display: none; }
+      .topbar-link { padding: 0.35rem 0.5rem; }
     }
   </style>
 </head>
 <body>
 
-<nav class="topnav">
-  <a href="index.html">← All Use Cases</a>
-  <span class="separator">/</span>
-  <span class="current" id="nav-title">Loading…</span>
+<!-- TOPBAR -->
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <a class="back-btn" href="index.html">
+        <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/></svg>
+        All Use Cases
+      </a>
+      <span class="topbar-sep">/</span>
+      <span class="topbar-uc-title" id="topbar-title">Loading…</span>
+    </div>
+    <div class="topbar-links">
+      <a class="topbar-link" href="mailto:deepak@bholusaria.com">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+        <span>deepak@bholusaria.com</span>
+      </a>
+      <a class="topbar-link linkedin" href="https://www.linkedin.com/in/deepakbholusaria/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        <span>LinkedIn</span>
+      </a>
+    </div>
+  </div>
 </nav>
 
+<!-- HERO -->
 <div class="hero">
   <div class="hero-inner">
-    <div class="hero-badge" id="hero-badge">…</div>
+    <div class="hero-badge" id="hero-badge">UC-01</div>
     <h1 id="hero-title">Loading…</h1>
-    <div class="meta">Power Query Workshop &nbsp;·&nbsp; CA Deepak Bholusaria</div>
+    <div class="hero-meta">
+      Power Query Workshop <span>·</span> CA Deepak Bholusaria
+    </div>
   </div>
 </div>
 
+<!-- MAIN -->
 <main id="main-content">
   <div id="loading">Loading use case…</div>
 </main>
+
+<footer>
+  <p>&copy; <strong style="color:#fff">CA Deepak Bholusaria</strong> &nbsp;·&nbsp;
+    <a href="index.html">All Use Cases</a> &nbsp;·&nbsp;
+    <a href="https://training-hub.ailearrning.guru" target="_blank" rel="noopener">All Workshops</a>
+  </p>
+</footer>
 
 <script>
 const GITHUB_RAW = "https://github.com/dkbholusaria/pq-usecases/raw/main";
 const ZIP_BASE   = "https://download-directory.github.io/?url=https://github.com/dkbholusaria/pq-usecases/tree/main";
 
-function fileIcon(name) {
+function extDot(name) {
   const ext = name.split(".").pop().toLowerCase();
-  if (ext === "csv")  return "📄";
-  if (ext === "xlsx") return "📊";
-  if (ext === "txt")  return "📝";
-  return "📁";
+  if (ext === "csv")  return '<span class="ext-dot ext-csv"></span>';
+  if (ext === "xlsx") return '<span class="ext-dot ext-xlsx"></span>';
+  if (ext === "txt")  return '<span class="ext-dot ext-txt"></span>';
+  return '<span class="ext-dot ext-other"></span>';
 }
 
 function getId() {
   return new URLSearchParams(window.location.search).get("id") || "";
 }
 
+// Extract letter from "PART A — ..." → "A"
+function partLetter(title) {
+  const m = title.match(/^PART\s+([A-Z\d]+)/i);
+  return m ? m[1] : "?";
+}
+
+// Detect if a line is a numbered step (starts with digits) vs sub-bullet
+function classifyLine(line) {
+  if (/^\d+\./.test(line)) return "step";
+  if (/^[•·▸►→-]/.test(line)) return "sub";
+  // continuation lines (indented bullets like "• Top table is ...")
+  return "sub";
+}
+
+function renderSteps(steps) {
+  if (!steps || steps.length === 0) {
+    return '<p style="color:var(--gray400);font-size:0.85rem;padding:0.5rem 0;">See INSTRUCTIONS.txt for details.</p>';
+  }
+  return steps.map(line => {
+    const numMatch = line.match(/^(\d+)\.\s+(.*)/s);
+    if (numMatch) {
+      return `<div class="step-item">
+        <span class="step-num">${numMatch[1]}</span>
+        <span class="step-text">${escHtml(numMatch[2])}</span>
+      </div>`;
+    }
+    // sub-bullet or continuation
+    const clean = line.replace(/^[•·▸►→\-]\s*/, "").trim();
+    return `<div class="step-sub">${escHtml(clean)}</div>`;
+  }).join("");
+}
+
+function escHtml(str) {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
 fetch("data.json?v=" + Date.now())
   .then(r => r.json())
   .then(data => {
-    const id = getId();
-    const uc = (data.usecases || []).find(u => u.id === id);
+    const id  = getId();
+    const uc  = (data.usecases || []).find(u => u.id === id);
 
     if (!uc) {
       document.getElementById("loading").innerHTML =
-        `<p>Use case "<strong>${id}</strong>" not found. <a href="index.html">Back to all use cases</a></p>`;
+        `<p>Use case "<strong>${escHtml(id)}</strong>" not found. <a href="index.html">Back</a></p>`;
       return;
     }
 
-    // Update page title and hero
     document.title = `${uc.title} — Power Query`;
-    document.getElementById("nav-title").textContent = uc.title;
-    document.getElementById("hero-badge").textContent = uc.id.toUpperCase();
-    document.getElementById("hero-title").textContent = uc.title;
+    document.getElementById("topbar-title").textContent = uc.title;
+    document.getElementById("hero-badge").textContent   = uc.id.toUpperCase();
+    document.getElementById("hero-title").textContent   = uc.title;
 
     const main = document.getElementById("main-content");
     let html = "";
 
-    // Video section (only if youtube_id set)
+    // ── Video ──
     if (uc.youtube_id) {
       html += `
         <div class="card">
-          <div class="card-label">Video Guide</div>
-          <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/${uc.youtube_id}"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
+          <div class="card-header">
+            <div class="card-header-icon icon-blue">▶</div>
+            <span class="card-label">Video Guide</span>
+          </div>
+          <div class="card-body">
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/${uc.youtube_id}"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </div>
           </div>
         </div>`;
     }
 
-    // Objective
+    // ── Objective ──
     if (uc.objective) {
       html += `
         <div class="card">
-          <div class="card-label">Objective</div>
-          <p class="objective-text">${uc.objective}</p>
+          <div class="card-header">
+            <div class="card-header-icon icon-gold">🎯</div>
+            <span class="card-label">Objective</span>
+          </div>
+          <div class="card-body">
+            <p class="objective-text">${escHtml(uc.objective)}</p>
+          </div>
         </div>`;
     }
 
-    // Files
+    // ── Files ──
     const filesHtml = (uc.files || []).map(f =>
       `<a class="file-chip" href="${GITHUB_RAW}/${uc.folder}/${encodeURIComponent(f)}" download target="_blank" rel="noopener">
-         ${fileIcon(f)} ${f}
+         ${extDot(f)} ${escHtml(f)}
        </a>`
     ).join("");
-    const zipUrl = `${ZIP_BASE}/${uc.folder}`;
     html += `
       <div class="card">
-        <div class="card-label">Files in This Use Case</div>
-        <div class="files-row">
-          ${filesHtml}
-          <a class="download-all-btn" href="${zipUrl}" target="_blank" rel="noopener">⬇ Download All (ZIP)</a>
+        <div class="card-header">
+          <div class="card-header-icon icon-green">📁</div>
+          <span class="card-label">Files in This Use Case</span>
+        </div>
+        <div class="card-body">
+          <div class="files-row">
+            ${filesHtml}
+            <a class="download-all-btn" href="${ZIP_BASE}/${uc.folder}" target="_blank" rel="noopener">⬇ Download All (ZIP)</a>
+          </div>
         </div>
       </div>`;
 
-    // Step-by-step parts
+    // ── Parts ──
     if (uc.parts && uc.parts.length > 0) {
-      const partsHtml = uc.parts.map(part => {
+      const partsHtml = uc.parts.map((part, i) => {
+        const letter    = partLetter(part.title);
+        const stepCount = (part.steps || []).filter(s => /^\d+\./.test(s)).length;
+        const countLabel = stepCount > 0 ? `${stepCount} steps` : "";
         const screenshot = part.screenshot
-          ? `<div class="part-screenshot"><img src="${part.screenshot}" alt="${part.title} screenshot" loading="lazy"></div>`
+          ? `<div class="part-screenshot"><img src="${part.screenshot}" alt="${escHtml(part.title)}" loading="lazy"></div>`
           : "";
         return `
-          <details class="part">
-            <summary>${part.title}</summary>
+          <details class="part"${i === 0 ? " open" : ""}>
+            <summary>
+              <span class="part-chevron">▶</span>
+              <span class="part-letter">${escHtml(letter)}</span>
+              <span class="part-title">${escHtml(part.title.replace(/^PART [A-Z\d]+ ?— ?/i, ""))}</span>
+              ${countLabel ? `<span class="part-step-count">${countLabel}</span>` : ""}
+            </summary>
             <div class="part-body">
-              <p style="color:#718096;font-size:0.85rem;">
-                Open INSTRUCTIONS.txt for the full step-by-step guide for this part.
-              </p>
+              <div class="step-list">${renderSteps(part.steps)}</div>
               ${screenshot}
             </div>
           </details>`;
@@ -348,26 +652,35 @@ fetch("data.json?v=" + Date.now())
 
       html += `
         <div class="card">
-          <div class="steps-title">Step-by-Step Instructions</div>
-          ${partsHtml}
+          <div class="card-header">
+            <div class="card-header-icon icon-purple">📋</div>
+            <span class="card-label">Step-by-Step Instructions</span>
+          </div>
+          <div class="parts-list">${partsHtml}</div>
         </div>`;
     }
 
-    // Key Learning
+    // ── Key Learning ──
     if (uc.key_learning && uc.key_learning.length > 0) {
-      const klHtml = uc.key_learning.map(k => `<li>${k}</li>`).join("");
+      const klHtml = uc.key_learning.map(k =>
+        `<li><span class="key-check">✔</span>${escHtml(k)}</li>`
+      ).join("");
       html += `
         <div class="card">
-          <div class="card-label">Key Learning</div>
-          <ul class="key-list">${klHtml}</ul>
+          <div class="card-header">
+            <div class="card-header-icon icon-green">💡</div>
+            <span class="card-label">Key Learning</span>
+          </div>
+          <div class="card-body">
+            <ul class="key-list">${klHtml}</ul>
+          </div>
         </div>`;
     }
 
     main.innerHTML = html;
   })
-  .catch(err => {
+  .catch(() => {
     document.getElementById("loading").textContent = "Failed to load. Please refresh.";
-    console.error(err);
   });
 </script>
 </body>
