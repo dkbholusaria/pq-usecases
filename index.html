@@ -206,10 +206,51 @@
     footer a { color: #63b3ed; text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
+    /* Download All UCs banner */
+    .download-all-banner {
+      background: #1a365d;
+      border: 1px solid #2a4a7f;
+      border-radius: 10px;
+      padding: 1.1rem 1.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .download-all-banner .info { flex: 1; }
+    .download-all-banner .info strong {
+      display: block;
+      color: #fff;
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+    .download-all-banner .info span {
+      color: #90cdf4;
+      font-size: 0.8rem;
+    }
+    .download-all-banner .btn-zip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #3182ce;
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 0.6rem 1.25rem;
+      border-radius: 7px;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+    .download-all-banner .btn-zip:hover { background: #2b6cb0; }
+
     @media (max-width: 600px) {
       .uc-header { flex-wrap: wrap; }
       .uc-view-btn { width: 100%; text-align: center; }
       .download-all-btn { margin-left: 0; width: 100%; justify-content: center; }
+      .download-all-banner .btn-zip { width: 100%; justify-content: center; }
     }
   </style>
 </head>
@@ -227,6 +268,16 @@
 </div>
 
 <main>
+  <div class="download-all-banner">
+    <div class="info">
+      <strong>Download All 10 Use Cases</strong>
+      <span>All data files + instructions in one ZIP · No login required</span>
+    </div>
+    <a class="btn-zip" href="https://github.com/dkbholusaria/pq-usecases/archive/refs/heads/main.zip" target="_blank" rel="noopener">
+      ⬇ Download Everything (ZIP)
+    </a>
+  </div>
+
   <div class="section-title">All Use Cases</div>
   <div id="uc-list"><div id="loading">Loading use cases…</div></div>
 </main>
